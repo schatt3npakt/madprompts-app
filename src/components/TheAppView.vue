@@ -7,16 +7,16 @@
         />
 
         <div class="form">
-          <button id="challenge">Challenge me!</button>
-
-          <div class="slider">
+          <div class="number-input">
             <label
-              class="slider__label"
+              class="number-input__label"
               for="adjectives"
-              >Adjectives</label>
+            >
+              Adjectives
+            </label>
 
             <input
-              class="slider__input"
+              class="number-input__input"
               id="adjectives"
               maxlength="1"
               name="adjectives"
@@ -25,7 +25,40 @@
               value="2"
             />
           </div>
+
+          <div class="slider">
+            <button
+              class="slider__button"
+              id="left"
+            />
+
+            <div
+              class="slider__label"
+              for="adjectives"
+            >
+              People
+            </div>
+
+            <button
+              class="slider__button"
+              id="right"
+            />
+          </div>
+
+          <button
+            class="button"
+            id="challenge"
+          >
+            Challenge me!
+          </button>
         </div>
+
+        <button
+          class="submitbutton"
+          id="submit"
+        >
+          Let's go!
+        </button>
       </div>
   </div>
 </template>
@@ -69,7 +102,10 @@ export default Vue.extend({
         }
 
         .form {
-          button,
+          margin-bottom: 100px;
+
+          .button,
+          .number-input,
           .slider {
               border-radius: 15px;
               box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -78,12 +114,15 @@ export default Vue.extend({
               font-size: 22px;
               font-weight: 700;
               height: 61px;
-              margin: margins.$mobile-btn-margin;
               transition:
                 background-color 0.1s ease-out,
                 box-shadow 0.1s ease-out,
                 transform 0.1s ease-out;
               width: 100%;
+
+              &:not(:last-child) {
+                margin: margins.$mobile-btn-margin;
+              }
 
               &:active,
               &:focus {
@@ -96,7 +135,7 @@ export default Vue.extend({
               }
             }
 
-          button {
+          .button {
             background-color: colors.$amethyst;
             border: none;
 
@@ -110,14 +149,14 @@ export default Vue.extend({
             }
           }
 
-          .slider {
+          .number-input {
             background-color: colors.$concrete;
             display: flex;
             justify-content: space-between;
             overflow: hidden;
 
             &__input {
-              background-color: colors.$peter-river;
+              background-color: colors.$turqouise;
               border: none;
               color: white;
               font-size: 22px;
@@ -126,6 +165,12 @@ export default Vue.extend({
               padding: 0;
               text-align: center;
               width: 60px;
+
+              &:active,
+              &:focus {
+                background-color: colors.$green-sea;
+                outline: none;
+              }
             }
 
             &__label {
@@ -135,6 +180,101 @@ export default Vue.extend({
               text-align: center;
               width: 100%;
             }
+          }
+
+          .slider {
+            background-color: colors.$peter-river;
+            display: flex;
+            overflow: hidden;
+
+            &__button {
+              background-color: transparent;
+              border: none;
+              color: white;
+              font-size: 22px;
+              font-weight: 700;
+              margin: 0;
+              padding: 0;
+              position: relative;
+              text-align: center;
+              transition: background-color 0.1s ease-out;
+              width: 60px;
+
+              &:active,
+              &:focus {
+                outline: none;
+              }
+
+              &:active {
+                background-color: colors.$belize-hole;
+              }
+
+              &#left {
+                &::after {
+                  border-bottom: 12px solid transparent;
+                  border-right:12px solid white;
+                  border-top: 12px solid transparent;
+                  content: "";
+                  display: block;
+                  height: 0;
+                  left: 50%;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 0;
+                }
+              }
+
+              &#right {
+                &::after {
+                  border-bottom: 12px solid transparent;
+                  border-left:12px solid white;
+                  border-top: 12px solid transparent;
+                  content: "";
+                  display: block;
+                  height: 0;
+                  left: 50%;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 0;
+                }
+              }
+            }
+
+            &__label {
+              margin: 0;
+              padding: 13px 0 0 0;
+              text-align: center;
+              width: 100%;
+            }
+          }
+        }
+
+        .submitbutton {
+          background-color: colors.$emerald;
+          border: none;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          color: white;
+          display: block;
+          font-size: 22px;
+          font-weight: 700;
+          height: 61px;
+          margin: margins.$mobile-btn-margin;
+          transition:
+            background-color 0.1s ease-out,
+            box-shadow 0.1s ease-out,
+            transform 0.1s ease-out;
+          width: 100%;
+
+          &:active,
+          &:focus {
+            outline: none;
+          }
+
+          &:active {
+            box-shadow: 0 0 0 rgb(0, 0, 0);
+            transform: scale(0.985);
           }
         }
       }
