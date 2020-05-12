@@ -36,7 +36,7 @@
               class="slider__label"
               for="adjectives"
             >
-              People
+              <p class="slider__item">People</p>
             </div>
 
             <button
@@ -241,6 +241,14 @@ export default Vue.extend({
                 }
               }
             }
+
+            &__item {
+                background-color: transparent;
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+              }
 
             &__label {
               margin: 0;
