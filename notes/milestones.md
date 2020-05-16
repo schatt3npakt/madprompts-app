@@ -2,8 +2,8 @@
 
 ## Mobile Menu
 
-- Logo
-- Prompt-Buttons
-  - Adjektive
-  - Nouns
-- Submit-Buttons
+- Logo [X]
+- Prompt-Buttons [X]
+  - Adjektive [X]
+  - Nouns [X]
+- Submit-Buttons [X]
