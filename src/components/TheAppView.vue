@@ -8,19 +8,19 @@
 
         <div class="form">
           <div class="number-input">
-            <label
+            <div
               class="number-input__label"
-              for="adjectives"
             >
-              Adjectives
-            </label>
+              <label class="number-input__label__text">Adjectives</label>
+            </div>
 
             <input
               class="number-input__input"
               id="adjectives"
               maxlength="1"
               name="adjectives"
-              oninput="javascript: this.value=this.value.slice(0,this.maxLength)"
+              onclick="javascript: this.select();"
+              oninput="javascript: this.value=this.value.slice(0,this.maxLength); this.select();"
               type="number"
               value="2"
             />
@@ -34,9 +34,8 @@
 
             <div
               class="slider__label"
-              for="adjectives"
             >
-              <p class="slider__item">People</p>
+              <label class="slider__label__text">People</label>
             </div>
 
             <button
@@ -75,6 +74,22 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+  @font-face {
+      font-family: 'VT323';
+      src: url('../assets/fonts/VT323-Regular.eot');
+      src: url('../assets/fonts/VT323-Regular.eot?#iefix') format('embedded-opentype'),
+          url('../assets/fonts/VT323-Regular.woff2') format('woff2'),
+          url('../assets/fonts/VT323-Regular.woff') format('woff'),
+          url('../assets/fonts/VT323-Regular.ttf') format('truetype'),
+          url('../assets/fonts/VT323-Regular.svg#VT323-Regular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+  }
+
+  * {
+    font-family: fonts.$base-font;
+  }
+
   .app-view {
       background-color: colors.$wet-asphalt;
       height: 100%;
@@ -104,40 +119,26 @@ export default Vue.extend({
         .form {
           margin-bottom: 100px;
 
-          .button,
-          .number-input,
-          .slider {
-              border-radius: 15px;
-              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-              color: white;
-              display: block;
-              font-size: 22px;
-              font-weight: 700;
-              height: 61px;
-              transition:
-                background-color 0.1s ease-out,
-                box-shadow 0.1s ease-out,
-                transform 0.1s ease-out;
-              width: 100%;
-
-              &:not(:last-child) {
-                margin: margins.$mobile-btn-margin;
-              }
-
-              &:active,
-              &:focus {
-                outline: none;
-              }
-
-              &:active {
-                box-shadow: 0 0 0 rgb(0, 0, 0);
-                transform: scale(0.985);
-              }
-            }
-
           .button {
             background-color: colors.$amethyst;
             border: none;
+            border-bottom: 5px solid colors.$wisteria;
+            border-radius: 0;
+            box-shadow: 0 5px 0px rgba(0, 0, 0, 0.3);
+            color: white;
+            display: block;
+            font-size: 30px;
+            font-weight: normal;
+            height: 61px;
+            transition:
+              background-color 0.1s ease-out,
+              box-shadow 0.1s ease-out,
+              transform 0.1s ease-out;
+            width: 100%;
+
+            &:not(:last-child) {
+              margin: margins.$mobile-btn-margin;
+            }
 
             &:active,
             &:focus {
@@ -146,58 +147,116 @@ export default Vue.extend({
 
             &:active {
               background-color: colors.$wisteria;
+              box-shadow: 0 0 0 rgb(0, 0, 0);
+              transform: scale(0.985);
             }
           }
 
           .number-input {
-            background-color: colors.$concrete;
             display: flex;
+            border-radius: 0;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 30px;
+            font-weight: normal;
+            height: 61px;
             justify-content: space-between;
             overflow: hidden;
+            width: 100%;
+
+            &:not(:last-child) {
+              margin: margins.$mobile-btn-margin;
+            }
+
+            &:active,
+            &:focus {
+              outline: none;
+            }
 
             &__input {
               background-color: colors.$turqouise;
-              border: none;
+              border: 0;
+              border-bottom: 5px solid colors.$green-sea;
               color: white;
-              font-size: 22px;
-              font-weight: 700;
+              font-size: 30px;
+              font-weight: normal;
               margin: 0;
               padding: 0;
               text-align: center;
+              transition:
+                background-color 0.1s ease-out,
+                transform 0.1s ease-out;
               width: 60px;
 
               &:active,
               &:focus {
                 background-color: colors.$green-sea;
                 outline: none;
+                transform: translateY(5px);
+              }
+
+              &::-webkit-outer-spin-button,
+              &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+
+              &[type=number] {
+                -moz-appearance: textfield;
               }
             }
 
             &__label {
-              display: block;
-              margin: 13px 0 0 0;
+              align-items: center;
+              background-color: colors.$concrete;
+              border: 0;
+              border-bottom: 5px solid colors.$asbestos;
+              display: flex;
+              justify-content: center;
+              margin: 0;
               padding: 0;
               text-align: center;
+              transform: none;
               width: 100%;
             }
           }
 
           .slider {
-            background-color: colors.$peter-river;
+            border: none;
+            border-bottom: 5px solid colors.$belize-hole;
             display: flex;
+            border-radius: 0;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 30px;
+            font-weight: normal;
+            height: 61px;
+            justify-content: space-between;
             overflow: hidden;
+            width: 100%;
+
+            &:not(:last-child) {
+              margin: margins.$mobile-btn-margin;
+            }
+
+            &:active,
+            &:focus {
+              outline: none;
+            }
 
             &__button {
-              background-color: transparent;
+              background-color: colors.$peter-river;
               border: none;
               color: white;
-              font-size: 22px;
-              font-weight: 700;
+              font-size: 30px;
+              font-weight: normal;
               margin: 0;
               padding: 0;
               position: relative;
               text-align: center;
-              transition: background-color 0.1s ease-out;
+              transition:
+                background-color 0.1s ease-out,
+                transform 0.1s ease-out;
               width: 60px;
 
               &:active,
@@ -207,6 +266,7 @@ export default Vue.extend({
 
               &:active {
                 background-color: colors.$belize-hole;
+                transform: translateY(5px);
               }
 
               &#left {
@@ -242,19 +302,20 @@ export default Vue.extend({
               }
             }
 
-            &__item {
+            &__label {
+              align-items: center;
+              background-color: colors.$peter-river;
+              display: flex;
+              justify-content: center;
+              margin: 0;
+              text-align: center;
+              width: 100%;
+
+              &__text {
                 background-color: transparent;
-                height: 100%;
-                width: 100%;
                 margin: 0;
                 padding: 0;
               }
-
-            &__label {
-              margin: 0;
-              padding: 13px 0 0 0;
-              text-align: center;
-              width: 100%;
             }
           }
         }
@@ -262,18 +323,23 @@ export default Vue.extend({
         .submitbutton {
           background-color: colors.$emerald;
           border: none;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+          border-bottom: 5px solid colors.$nephritis;
+          border-radius: 0;
+          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
           color: white;
           display: block;
-          font-size: 22px;
-          font-weight: 700;
+          font-size: 30px;
+          font-weight: normal;
           height: 61px;
-          margin: margins.$mobile-btn-margin;
           transition:
             background-color 0.1s ease-out,
             box-shadow 0.1s ease-out,
             transform 0.1s ease-out;
           width: 100%;
+
+          &:not(:last-child) {
+            margin: margins.$mobile-btn-margin;
+          }
 
           &:active,
           &:focus {
@@ -281,6 +347,7 @@ export default Vue.extend({
           }
 
           &:active {
+            background-color: colors.$nephritis;
             box-shadow: 0 0 0 rgb(0, 0, 0);
             transform: scale(0.985);
           }

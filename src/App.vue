@@ -27,7 +27,6 @@ export default Vue.extend({
   }
 
   #app {
-    font-family: 'Open Sans';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
