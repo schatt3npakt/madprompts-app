@@ -91,16 +91,23 @@ export default Vue.extend({
   }
 
   .app-view {
-      background-color: colors.$wet-asphalt;
+      background-image: url(../assets/img/bg.jpg);
+      background-position: top 0 left 0;
+      background-size: cover;
       height: 100%;
       margin: 0;
       overflow: hidden;
       width: 100%;
 
       &__container {
-          margin: 25px auto 40px auto;
-          max-width: calc(100% - 80px);
-          width: 100%;
+        margin: 25px auto 40px auto;
+        max-width: calc(100% - 80px);
+        width: 100%;
+
+        @media screen and (min-width: 768px) {
+          margin: 0 auto 40px auto;
+          padding: 0 25px;
+        }
 
         .logo {
           display: block;
