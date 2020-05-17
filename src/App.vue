@@ -17,6 +17,18 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
+  @font-face {
+    font-family: 'VT323';
+    src: url('./assets/fonts/VT323-Regular.eot');
+    src: url('./assets/fonts/VT323-Regular.eot?#iefix') format('embedded-opentype'),
+        url('./assets/fonts/VT323-Regular.woff2') format('woff2'),
+        url('./assets/fonts/VT323-Regular.woff') format('woff'),
+        url('./assets/fonts/VT323-Regular.ttf') format('truetype'),
+        url('./assets/fonts/VT323-Regular.svg#VT323-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   body,
   html,
   #app {

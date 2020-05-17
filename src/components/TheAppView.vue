@@ -1,16 +1,16 @@
 <template>
   <div class="app-view">
       <div class="app-view__container">
-        <img
+        <a
           class="logo"
-          src="@/assets/img/logo.svg"
-        />
+          href="#"
+          >
+          BADPROMPTS
+        </a>
 
         <div class="form">
           <div class="number-input">
-            <div
-              class="number-input__label"
-            >
+            <div class="number-input__label">
               <label class="number-input__label__text">Adjectives</label>
             </div>
 
@@ -32,9 +32,7 @@
               id="left"
             />
 
-            <div
-              class="slider__label"
-            >
+            <div class="slider__label">
               <label class="slider__label__text">People</label>
             </div>
 
@@ -44,28 +42,36 @@
             />
           </div>
 
-          <button
-            class="button"
-            id="challenge"
-          >
-            Challenge me!
-          </button>
+          <ToggleButton
+            button-id="challenge"
+            button-type="button--challenge"
+            button-text="Challenge me!"
+          />
         </div>
 
-        <button
-          class="submitbutton"
-          id="submit"
-        >
-          Let's go!
-        </button>
+        <BaseButton
+          button-id="submit"
+          button-type="button--submit"
+          button-text="Let's go!"
+        />
+
+        <div class="footer-text">
+          <a href="#">Artwork by a_very_long_artist_name</a>
+        </div>
       </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import BaseButton from './BaseButton.vue'
+import ToggleButton from './ToggleButton.vue'
 
 export default Vue.extend({
+  components: {
+    BaseButton,
+    ToggleButton
+  },
   name: 'HelloWorld',
   props: {
     msg: String
@@ -74,18 +80,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-  @font-face {
-      font-family: 'VT323';
-      src: url('../assets/fonts/VT323-Regular.eot');
-      src: url('../assets/fonts/VT323-Regular.eot?#iefix') format('embedded-opentype'),
-          url('../assets/fonts/VT323-Regular.woff2') format('woff2'),
-          url('../assets/fonts/VT323-Regular.woff') format('woff'),
-          url('../assets/fonts/VT323-Regular.ttf') format('truetype'),
-          url('../assets/fonts/VT323-Regular.svg#VT323-Regular') format('svg');
-      font-weight: normal;
-      font-style: normal;
-  }
-
   * {
     font-family: fonts.$base-font;
   }
@@ -109,55 +103,8 @@ export default Vue.extend({
           padding: 0 25px;
         }
 
-        .logo {
-          display: block;
-          filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-          margin: 0 auto 77px auto;
-          max-height: 132px;
-          max-width: 132px;
-          transition: filter 0.1s ease-out;
-
-          &:active {
-            filter: drop-shadow(0 0 0 rgb(0, 0, 0));
-            transform: scale(0.985);
-          }
-        }
-
         .form {
           margin-bottom: 100px;
-
-          .button {
-            background-color: colors.$amethyst;
-            border: none;
-            border-bottom: 5px solid colors.$wisteria;
-            border-radius: 0;
-            box-shadow: 0 5px 0px rgba(0, 0, 0, 0.3);
-            color: white;
-            display: block;
-            font-size: 30px;
-            font-weight: normal;
-            height: 61px;
-            transition:
-              background-color 0.1s ease-out,
-              box-shadow 0.1s ease-out,
-              transform 0.1s ease-out;
-            width: 100%;
-
-            &:not(:last-child) {
-              margin: margins.$mobile-btn-margin;
-            }
-
-            &:active,
-            &:focus {
-              outline: none;
-            }
-
-            &:active {
-              background-color: colors.$wisteria;
-              box-shadow: 0 0 0 rgb(0, 0, 0);
-              transform: scale(0.985);
-            }
-          }
 
           .number-input {
             display: flex;
@@ -327,36 +274,29 @@ export default Vue.extend({
           }
         }
 
-        .submitbutton {
-          background-color: colors.$emerald;
-          border: none;
-          border-bottom: 5px solid colors.$nephritis;
-          border-radius: 0;
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        .logo {
           color: white;
           display: block;
-          font-size: 30px;
-          font-weight: normal;
-          height: 61px;
-          transition:
-            background-color 0.1s ease-out,
-            box-shadow 0.1s ease-out,
-            transform 0.1s ease-out;
-          width: 100%;
+          font-size: 68px;
+          margin-bottom: 77px;
+          text-align: center;
+          text-decoration: none;
+          text-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+          transition: filter 0.1s ease-out;
+        }
 
-          &:not(:last-child) {
-            margin: margins.$mobile-btn-margin;
-          }
+        .footer-text {
+          font-size: 20px;
+          text-align: center;
 
-          &:active,
-          &:focus {
-            outline: none;
-          }
-
-          &:active {
-            background-color: colors.$nephritis;
-            box-shadow: 0 0 0 rgb(0, 0, 0);
-            transform: scale(0.985);
+          > a {
+            &:link,
+            &:visited,
+            &:hover,
+            &:active {
+              color: white;
+              text-decoration: none;
+            }
           }
         }
       }

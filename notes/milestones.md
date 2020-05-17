@@ -12,13 +12,6 @@
 
 # Mobile Rework
 
-## Tablet Styling
-
-## Desktop Styling
-
-- CSS Grid in Place
-  - 50/50 on Desktop
-  - Description left
-  - Logo left
-  - Setup right
-- Hover Effects
+- Tablet Styling
+- New Logo in place
+- Footertexts
