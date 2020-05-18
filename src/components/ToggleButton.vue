@@ -1,22 +1,25 @@
 <template>
   <BaseButton
     :buttonId="buttonId"
-    :buttonName="buttonName"
+    :buttonText="buttonText"
     :buttonType="buttonType"
     class="toggle-button"
-    :class="[this.$store.state.appView.formElements.challengeButton.isActive ? activeClass : '']"
-    @click.native="toggleChallenge"
-  />
+    :class="[storeIsActive? activeClass : '']"
+    @click.native="storeToggleChallenge" />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import BaseButton from './BaseButton.vue'
-import { mapState } from 'vuex'
 
 export default Vue.extend({
   components: {
     BaseButton
+  },
+  computed: {
+    storeIsActive (): boolean {
+      return this.$store.state.appView.formElements.challengeButton.isActive
+    }
   },
   data () {
     return {
@@ -24,7 +27,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    toggleChallenge () {
+    storeToggleChallenge () {
       this.$store.commit('toggleChallenge')
     }
   },
@@ -32,6 +35,7 @@ export default Vue.extend({
   props: {
     buttonId: String,
     buttonName: String,
+    buttonText: String,
     buttonType: String
   }
 })

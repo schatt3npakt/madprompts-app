@@ -9,10 +9,26 @@ export default new Vuex.Store({
   modules: {
   },
   mutations: {
+    decreaseActiveItem (state) {
+      const slider = state.appView.formElements.slider
+
+      slider.activeItem === 0
+        ? slider.activeItem = slider.items.length - 1
+        : slider.activeItem--
+    },
+    increaseActiveItem (state) {
+      const slider = state.appView.formElements.slider
+
+      slider.activeItem === slider.items.length - 1
+        ? slider.activeItem = 0
+        : slider.activeItem++
+    },
     toggleChallenge (state) {
-      state.appView.formElements.challengeButton.isActive
-        ? state.appView.formElements.challengeButton.isActive = false
-        : state.appView.formElements.challengeButton.isActive = true
+      const challengeButton = state.appView.formElements.challengeButton
+
+      challengeButton.isActive
+        ? challengeButton.isActive = false
+        : challengeButton.isActive = true
     }
   },
   state: {
@@ -20,6 +36,19 @@ export default new Vuex.Store({
       formElements: {
         challengeButton: {
           isActive: false
+        },
+        slider: {
+          activeItem: 0,
+          items: [
+            {
+              id: 0,
+              name: 'People'
+            },
+            {
+              id: 1,
+              name: 'Places'
+            }
+          ]
         }
       }
     }

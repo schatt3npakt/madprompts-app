@@ -31,6 +31,7 @@ export default Vue.extend({
     font-size: 30px;
     font-weight: normal;
     height: 61px;
+    text-transform: uppercase;
     transition: background-color 0.1s ease-out, box-shadow 0.1s ease-out,
       transform 0.1s ease-out;
     width: 100%;

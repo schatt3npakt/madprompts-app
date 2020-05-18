@@ -26,21 +26,7 @@
             />
           </div>
 
-          <div class="slider">
-            <button
-              class="slider__button"
-              id="left"
-            />
-
-            <div class="slider__label">
-              <label class="slider__label__text">People</label>
-            </div>
-
-            <button
-              class="slider__button"
-              id="right"
-            />
-          </div>
+          <BaseSlider />
 
           <ToggleButton
             button-id="challenge"
@@ -65,11 +51,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import BaseButton from './BaseButton.vue'
+import BaseSlider from './BaseSlider.vue'
 import ToggleButton from './ToggleButton.vue'
 
 export default Vue.extend({
   components: {
     BaseButton,
+    BaseSlider,
     ToggleButton
   },
   name: 'HelloWorld',
@@ -170,106 +158,9 @@ export default Vue.extend({
               margin: 0;
               padding: 0;
               text-align: center;
+              text-transform: uppercase;
               transform: none;
               width: 100%;
-            }
-          }
-
-          .slider {
-            border: none;
-            border-bottom: 5px solid colors.$belize-hole;
-            display: flex;
-            border-radius: 0;
-            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-            color: white;
-            font-size: 30px;
-            font-weight: normal;
-            height: 61px;
-            justify-content: space-between;
-            overflow: hidden;
-            width: 100%;
-
-            &:not(:last-child) {
-              margin: margins.$mobile-btn-margin;
-            }
-
-            &:active,
-            &:focus {
-              outline: none;
-            }
-
-            &__button {
-              background-color: colors.$peter-river;
-              border: none;
-              color: white;
-              font-size: 30px;
-              font-weight: normal;
-              margin: 0;
-              padding: 0;
-              position: relative;
-              text-align: center;
-              transition:
-                background-color 0.1s ease-out,
-                transform 0.1s ease-out;
-              width: 60px;
-
-              &:active,
-              &:focus {
-                outline: none;
-              }
-
-              &:active {
-                background-color: colors.$belize-hole;
-                transform: translateY(5px);
-              }
-
-              &#left {
-                &::after {
-                  border-bottom: 12px solid transparent;
-                  border-right:12px solid white;
-                  border-top: 12px solid transparent;
-                  content: "";
-                  display: block;
-                  height: 0;
-                  left: 50%;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0;
-                }
-              }
-
-              &#right {
-                &::after {
-                  border-bottom: 12px solid transparent;
-                  border-left:12px solid white;
-                  border-top: 12px solid transparent;
-                  content: "";
-                  display: block;
-                  height: 0;
-                  left: 50%;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0;
-                }
-              }
-            }
-
-            &__label {
-              align-items: center;
-              background-color: colors.$peter-river;
-              display: flex;
-              justify-content: center;
-              margin: 0;
-              text-align: center;
-              width: 100%;
-
-              &__text {
-                background-color: transparent;
-                margin: 0;
-                padding: 0;
-              }
             }
           }
         }
