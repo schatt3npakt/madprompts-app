@@ -13,5 +13,6 @@
 # Mobile Rework
 
 - Tablet Styling
-- New Logo in place
-- Footertexts
+- New Logo in place [X]
+- Footertexts [X]
+- moved components into sepaeate files [X]

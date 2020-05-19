@@ -1,50 +1,53 @@
 <template>
   <div class="app-view">
       <div class="app-view__container">
-        <a
-          class="logo"
-          href="#"
-          >
-          BADPROMPTS
-        </a>
+        <div>
+          <a
+            class="logo"
+            href="#"
+            >
+            BADPROMPTS
+          </a>
 
-        <div class="form">
-          <div class="number-input">
-            <div class="number-input__label">
-              <label class="number-input__label__text">Adjectives</label>
+          <div class="form">
+            <div class="number-input">
+              <div class="number-input__label">
+                <label class="number-input__label__text">Adjectives</label>
+              </div>
+
+              <input
+                class="number-input__input"
+                id="adjectives"
+                maxlength="1"
+                name="adjectives"
+                onclick="javascript: this.select();"
+                oninput="javascript: this.value=this.value.slice(0,this.maxLength); this.select();"
+                type="number"
+                value="2"
+              />
             </div>
 
-            <input
-              class="number-input__input"
-              id="adjectives"
-              maxlength="1"
-              name="adjectives"
-              onclick="javascript: this.select();"
-              oninput="javascript: this.value=this.value.slice(0,this.maxLength); this.select();"
-              type="number"
-              value="2"
+            <BaseSlider />
+
+            <ToggleButton
+              active-text="Disable challenge"
+              button-id="challenge"
+              button-type="button--challenge"
+              inactive-text="Enable challenge"
             />
           </div>
 
-          <BaseSlider />
-
-          <ToggleButton
-            button-id="challenge"
-            button-type="button--challenge"
-            button-text="Challenge me!"
+          <BaseButton
+            button-id="submit"
+            button-type="button--submit"
+            button-text="Let's go!"
           />
         </div>
-
-        <BaseButton
-          button-id="submit"
-          button-type="button--submit"
-          button-text="Let's go!"
-        />
 
         <div class="footer-text">
           <a href="#">Artwork by a_very_long_artist_name</a>
         </div>
-      </div>
+    </div>
   </div>
 </template>
 
@@ -82,7 +85,12 @@ export default Vue.extend({
       width: 100%;
 
       &__container {
-        margin: 25px auto 40px auto;
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+        justify-content: space-between;
+        margin: 25px auto 30px auto;
+        max-height: calc(100% - 55px);
         max-width: calc(100% - 80px);
         width: 100%;
 
@@ -92,7 +100,13 @@ export default Vue.extend({
         }
 
         .form {
-          margin-bottom: 100px;
+          margin-bottom: 60px;
+
+          > * {
+            &:not(:last-child) {
+              margin: margins.$mobile-btn-margin;
+            }
+          }
 
           .number-input {
             display: flex;
@@ -177,6 +191,7 @@ export default Vue.extend({
         }
 
         .footer-text {
+          justify-self: flex-end;
           font-size: 20px;
           text-align: center;
 

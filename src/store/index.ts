@@ -40,14 +40,8 @@ export default new Vuex.Store({
         slider: {
           activeItem: 0,
           items: [
-            {
-              id: 0,
-              name: 'People'
-            },
-            {
-              id: 1,
-              name: 'Places'
-            }
+            { id: 0, name: 'People' },
+            { id: 1, name: 'Places' }
           ]
         }
       }

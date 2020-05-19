@@ -36,10 +36,6 @@ export default Vue.extend({
       transform 0.1s ease-out;
     width: 100%;
 
-    &:not(:last-child) {
-      margin: margins.$mobile-btn-margin;
-    }
-
     &:active,
     &:focus {
       outline: none;

@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     :buttonId="buttonId"
-    :buttonText="buttonText"
+    :buttonText="storeIsActive? activeText : inactiveText"
     :buttonType="buttonType"
     class="toggle-button"
     :class="[storeIsActive? activeClass : '']"
@@ -33,10 +33,11 @@ export default Vue.extend({
   },
   name: 'ToggleButton',
   props: {
+    activeText: String,
     buttonId: String,
     buttonName: String,
-    buttonText: String,
-    buttonType: String
+    buttonType: String,
+    inactiveText: String
   }
 })
 </script>

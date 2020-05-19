@@ -73,10 +73,6 @@ export default Vue.extend({
   overflow: hidden;
   width: 100%;
 
-  &:not(:last-child) {
-    margin: margins.$mobile-btn-margin;
-  }
-
   &:active,
   &:focus {
     outline: none;
@@ -143,6 +139,7 @@ export default Vue.extend({
 
     &__text {
       background-color: transparent;
+      left: 50%;
       margin: 0;
       opacity: 0;
       padding: 0;
@@ -150,7 +147,7 @@ export default Vue.extend({
       text-transform: uppercase;
       top: 50%;
       transform: translate(-50%, -50%);
-      left: 50%;
+      width: 100%;
 
       &--active {
         opacity: 1;
