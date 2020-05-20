@@ -44,12 +44,27 @@ export default Vue.extend({
     }
   },
   methods: {
+    /**
+     * Returns whether the passed itemId is identical to the id of the active item
+     * @param itemId: number
+     * @returns boolean
+    */
     isActiveItem: function (itemId: number): boolean {
       return itemId === this.storeActiveSliderItem
     },
+
+    /**
+     * Commit decrease active item mutation
+     * @returns void
+    */
     storeDecreaseActiveItem: function (): void {
       this.$store.commit('decreaseActiveItem')
     },
+
+    /**
+     * Commit increase active item mutation
+     * @returns void
+    */
     storeIncreaseActiveItem: function (): void {
       this.$store.commit('increaseActiveItem')
     }
@@ -115,7 +130,7 @@ export default Vue.extend({
       top: 50%;
       transform: translate(-50%, -50%);
       width: 0;
-    }
+    };
 
     &:first-of-type {
       &::after {

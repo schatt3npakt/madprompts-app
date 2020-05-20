@@ -54,5 +54,22 @@ export default Vue.extend({
           background-color: colors.$nephritis;
       }
     }
+
+    &--highlighted {
+      animation: buttonSlowPulse 2s forwards infinite ease-out;
+      box-shadow: 0 0 15px colors.$emerald;
+    }
   }
+
+  @keyframes buttonSlowPulse {
+  0% {
+    transform: scale(1);
+  };
+  50% {
+    transform: scale(1.05);
+  };
+  100% {
+    transform: scale(1);
+  }
+}
 </style>

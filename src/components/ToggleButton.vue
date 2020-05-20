@@ -27,6 +27,10 @@ export default Vue.extend({
     }
   },
   methods: {
+    /**
+     * Commit toggleChallenge mutation
+     * @returns void
+    */
     storeToggleChallenge () {
       this.$store.commit('toggleChallenge')
     }

@@ -29,6 +29,10 @@ export default Vue.extend({
     font-style: normal;
   }
 
+   * {
+    font-family: fonts.$base-font;
+  }
+
   body,
   html,
   #app {
