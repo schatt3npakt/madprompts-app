@@ -50,12 +50,25 @@ export default new Vuex.Store({
      * @param state
      * @returns void
     */
-    toggleChallenge (state) {
+    toggleChallenge (state): void {
       const challengeButton = state.appView.formElements.challengeButton
 
       challengeButton.isActive
         ? challengeButton.isActive = false
         : challengeButton.isActive = true
+    },
+
+    /**
+     * Toggle visibility of the prompt overlay
+     * @param state
+     * @returns void
+    */
+    togglePromptOverlay (state): void {
+      const promptOverlay = state.appView.promptOverlay
+
+      promptOverlay.isVisible
+        ? promptOverlay.isVisible = false
+        : promptOverlay.isVisible = true
     }
   },
   state: {
@@ -74,6 +87,9 @@ export default new Vuex.Store({
             { id: 1, name: 'Places' }
           ]
         }
+      },
+      promptOverlay: {
+        isVisible: false
       }
     }
   }

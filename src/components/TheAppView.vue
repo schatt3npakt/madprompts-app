@@ -26,6 +26,7 @@
             button-id="submit"
             button-type="button--submit"
             button-text="Let's go!"
+            @click.native="storeTogglePromptVisibility"
           />
         </div>
 
@@ -53,6 +54,16 @@ export default Vue.extend({
     BaseSlider,
     ThePromptOverlay,
     ToggleButton
+  },
+  methods: {
+    /**
+     * Commit togglePromptOverlay store mutation
+     * @param state
+     * @returns void
+    */
+    storeTogglePromptVisibility (): void {
+      this.$store.commit('togglePromptOverlay')
+    }
   },
   name: 'HelloWorld',
   props: {

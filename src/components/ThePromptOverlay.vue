@@ -1,5 +1,8 @@
 <template>
-  <div class="prompt-overlay">
+  <div
+    class="prompt-overlay"
+    :class="[storeIsVisible ? activeClass : '', startHiding ? hidingClass : '']"
+  >
     <div class="prompt-overlay__text-wrapper">
       <span>You should draw a</span><br />
 
@@ -15,6 +18,7 @@
       button-id="submit"
       button-type="button--submit button--highlighted"
       button-text="New Prompt"
+      @click.native="storeTogglePromptVisibility"
     />
   </div>
 </template>
@@ -26,6 +30,33 @@ import BaseButton from '@/components/BaseButton.vue'
 export default Vue.extend({
   components: {
     BaseButton
+  },
+  computed: {
+    storeIsVisible () {
+      return this.$store.state.appView.promptOverlay.isVisible
+    }
+  },
+  data () {
+    return {
+      activeClass: 'prompt-overlay--show',
+      hidingClass: 'prompt-overlay--hide',
+      startHiding: false
+    }
+  },
+  methods: {
+    /**
+     * Commit togglePromptOverlay store mutation
+     * @param state
+     * @returns void
+    */
+    storeTogglePromptVisibility (): void {
+      this.startHiding = true
+      this.$store.commit('togglePromptOverlay')
+
+      window.setTimeout(() => {
+        this.startHiding = false
+      }, 1000)
+    }
   },
   name: 'ThePromptOverlay'
 })
@@ -49,8 +80,10 @@ export default Vue.extend({
     width: calc(100vw - 80px);
     z-index: 999;
 
-    &--show {
-      transform: translateY(0);
+    .button--submit {
+      opacity: 0;
+      transition: opacity 0.5s;
+      transition-delay: 1.5s;
     }
 
     &__text {
@@ -71,6 +104,28 @@ export default Vue.extend({
       font-size: 40px;
       line-height: 40px;
       text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+      transition-delay: 1s;
+    }
+
+    &--hide {
+      transform: translateY(0);
+
+      .button--submit,
+      .prompt-overlay__text-wrapper {
+        opacity: 0;
+        transition-delay: 0s;
+      }
+    }
+
+    &--show {
+        transform: translateY(0);
+
+      .button--submit,
+      .prompt-overlay__text-wrapper {
+        opacity: 1;
+      }
     }
   }
 </style>
