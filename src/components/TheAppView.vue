@@ -1,71 +1,71 @@
 <template>
   <div class="app-view">
       <div class="app-view__container">
-        <img
-          class="logo"
-          src="@/assets/img/logo.svg"
-        />
-
-        <div class="form">
-          <div class="number-input">
-            <div
-              class="number-input__label"
-            >
-              <label class="number-input__label__text">Adjectives</label>
-            </div>
-
-            <input
-              class="number-input__input"
-              id="adjectives"
-              maxlength="1"
-              name="adjectives"
-              onclick="javascript: this.select();"
-              oninput="javascript: this.value=this.value.slice(0,this.maxLength); this.select();"
-              type="number"
-              value="2"
-            />
-          </div>
-
-          <div class="slider">
-            <button
-              class="slider__button"
-              id="left"
-            />
-
-            <div
-              class="slider__label"
-            >
-              <label class="slider__label__text">People</label>
-            </div>
-
-            <button
-              class="slider__button"
-              id="right"
-            />
-          </div>
-
-          <button
-            class="button"
-            id="challenge"
+        <div>
+          <a
+            class="logo"
+            href="#"
           >
-            Challenge me!
-          </button>
+            BADPROMPTS
+          </a>
+
+          <div class="form">
+            <BaseNumberInput />
+
+            <BaseSlider />
+
+            <ToggleButton
+              active-text="Disable challenge"
+              button-id="challenge"
+              button-type="button--challenge"
+              inactive-text="Enable challenge"
+            />
+          </div>
+
+          <BaseButton
+            button-id="submit"
+            button-type="button--submit"
+            button-text="Let's go!"
+            @click.native="storeTogglePromptVisibility"
+          />
         </div>
 
-        <button
-          class="submitbutton"
-          id="submit"
-        >
-          Let's go!
-        </button>
-      </div>
+        <div class="footer-text">
+          <a href="#">Artwork by a_very_long_artist_name</a>
+          <a class="footer-text__version" href="#">v. 1.0.3</a>
+        </div>
+
+        <ThePromptOverlay />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import BaseButton from './BaseButton.vue'
+import BaseNumberInput from './BaseNumberInput.vue'
+import BaseSlider from './BaseSlider.vue'
+import ThePromptOverlay from '@/components/ThePromptOverlay.vue'
+import ToggleButton from './ToggleButton.vue'
 
 export default Vue.extend({
+  components: {
+    BaseButton,
+    BaseNumberInput,
+    BaseSlider,
+    ThePromptOverlay,
+    ToggleButton
+  },
+  methods: {
+    /**
+     * Commit togglePromptOverlay store mutation
+     * @param state
+     * @returns void
+    */
+    storeTogglePromptVisibility (): void {
+      this.$store.commit('togglePromptOverlay')
+    }
+  },
   name: 'HelloWorld',
   props: {
     msg: String
@@ -74,282 +74,99 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-  @font-face {
-      font-family: 'VT323';
-      src: url('../assets/fonts/VT323-Regular.eot');
-      src: url('../assets/fonts/VT323-Regular.eot?#iefix') format('embedded-opentype'),
-          url('../assets/fonts/VT323-Regular.woff2') format('woff2'),
-          url('../assets/fonts/VT323-Regular.woff') format('woff'),
-          url('../assets/fonts/VT323-Regular.ttf') format('truetype'),
-          url('../assets/fonts/VT323-Regular.svg#VT323-Regular') format('svg');
-      font-weight: normal;
-      font-style: normal;
-  }
-
-  * {
-    font-family: fonts.$base-font;
-  }
-
   .app-view {
-      background-color: colors.$wet-asphalt;
+      background-image: url(../assets/img/bg-376px.jpg);
+      background-position: top 0 left 0;
+      background-size: cover;
       height: 100%;
       margin: 0;
       overflow: hidden;
       width: 100%;
 
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        background-image: url(../assets/img/bg-768px.jpg);
+      }
+
       &__container {
-          margin: 25px auto 40px auto;
-          max-width: calc(100% - 80px);
-          width: 100%;
+        display: flex;
+        flex-flow: column nowrap;
+        height: 100%;
+        justify-content: space-between;
+        margin: 25px auto 30px auto;
+        max-height: calc(100% - 55px);
+        max-width: calc(100% - 80px);
+        width: 100%;
 
-        .logo {
-          display: block;
-          filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-          margin: 0 auto 77px auto;
-          max-height: 132px;
-          max-width: 132px;
-          transition: filter 0.1s ease-out;
-
-          &:active {
-            filter: drop-shadow(0 0 0 rgb(0, 0, 0));
-            transform: scale(0.985);
-          }
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          margin: 80px auto 40px 50px;
+          max-height: calc(100% - 120px);
+          max-width: 344px;
+          padding: 0;
         }
 
         .form {
-          margin-bottom: 100px;
+          margin-bottom: 60px;
 
-          .button {
-            background-color: colors.$amethyst;
-            border: none;
-            border-bottom: 5px solid colors.$wisteria;
-            border-radius: 0;
-            box-shadow: 0 5px 0px rgba(0, 0, 0, 0.3);
-            color: white;
-            display: block;
-            font-size: 30px;
-            font-weight: normal;
-            height: 61px;
-            transition:
-              background-color 0.1s ease-out,
-              box-shadow 0.1s ease-out,
-              transform 0.1s ease-out;
-            width: 100%;
-
-            &:not(:last-child) {
-              margin: margins.$mobile-btn-margin;
-            }
-
-            &:active,
-            &:focus {
-              outline: none;
-            }
-
-            &:active {
-              background-color: colors.$wisteria;
-              box-shadow: 0 0 0 rgb(0, 0, 0);
-              transform: scale(0.985);
-            }
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            margin-bottom: 97px;
           }
 
-          .number-input {
-            display: flex;
-            border-radius: 0;
-            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-            color: white;
-            font-size: 30px;
-            font-weight: normal;
-            height: 61px;
-            justify-content: space-between;
-            overflow: hidden;
-            width: 100%;
-
+          > * {
             &:not(:last-child) {
-              margin: margins.$mobile-btn-margin;
-            }
+              margin: map_get(margins.$button-margins, "mobile");
 
-            &:active,
-            &:focus {
-              outline: none;
-            }
-
-            &__input {
-              background-color: colors.$turqouise;
-              border: 0;
-              border-bottom: 5px solid colors.$green-sea;
-              color: white;
-              font-size: 30px;
-              font-weight: normal;
-              margin: 0;
-              padding: 0;
-              text-align: center;
-              transition:
-                background-color 0.1s ease-out,
-                transform 0.1s ease-out;
-              width: 60px;
-
-              &:active,
-              &:focus {
-                background-color: colors.$green-sea;
-                outline: none;
-                transform: translateY(5px);
-              }
-
-              &::-webkit-outer-spin-button,
-              &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-              }
-
-              &[type=number] {
-                -moz-appearance: textfield;
-              }
-            }
-
-            &__label {
-              align-items: center;
-              background-color: colors.$concrete;
-              border: 0;
-              border-bottom: 5px solid colors.$asbestos;
-              display: flex;
-              justify-content: center;
-              margin: 0;
-              padding: 0;
-              text-align: center;
-              transform: none;
-              width: 100%;
-            }
-          }
-
-          .slider {
-            border: none;
-            border-bottom: 5px solid colors.$belize-hole;
-            display: flex;
-            border-radius: 0;
-            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-            color: white;
-            font-size: 30px;
-            font-weight: normal;
-            height: 61px;
-            justify-content: space-between;
-            overflow: hidden;
-            width: 100%;
-
-            &:not(:last-child) {
-              margin: margins.$mobile-btn-margin;
-            }
-
-            &:active,
-            &:focus {
-              outline: none;
-            }
-
-            &__button {
-              background-color: colors.$peter-river;
-              border: none;
-              color: white;
-              font-size: 30px;
-              font-weight: normal;
-              margin: 0;
-              padding: 0;
-              position: relative;
-              text-align: center;
-              transition:
-                background-color 0.1s ease-out,
-                transform 0.1s ease-out;
-              width: 60px;
-
-              &:active,
-              &:focus {
-                outline: none;
-              }
-
-              &:active {
-                background-color: colors.$belize-hole;
-                transform: translateY(5px);
-              }
-
-              &#left {
-                &::after {
-                  border-bottom: 12px solid transparent;
-                  border-right:12px solid white;
-                  border-top: 12px solid transparent;
-                  content: "";
-                  display: block;
-                  height: 0;
-                  left: 50%;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0;
-                }
-              }
-
-              &#right {
-                &::after {
-                  border-bottom: 12px solid transparent;
-                  border-left:12px solid white;
-                  border-top: 12px solid transparent;
-                  content: "";
-                  display: block;
-                  height: 0;
-                  left: 50%;
-                  position: absolute;
-                  top: 50%;
-                  transform: translate(-50%, -50%);
-                  width: 0;
-                }
-              }
-            }
-
-            &__label {
-              align-items: center;
-              background-color: colors.$peter-river;
-              display: flex;
-              justify-content: center;
-              margin: 0;
-              text-align: center;
-              width: 100%;
-
-              &__text {
-                background-color: transparent;
-                margin: 0;
-                padding: 0;
+              @media screen and (min-width: breakpoints.$tablet-portrait) {
+                margin: map_get(margins.$button-margins, "tablet");
               }
             }
           }
         }
 
-        .submitbutton {
-          background-color: colors.$emerald;
-          border: none;
-          border-bottom: 5px solid colors.$nephritis;
-          border-radius: 0;
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        .logo {
           color: white;
           display: block;
-          font-size: 30px;
-          font-weight: normal;
-          height: 61px;
-          transition:
-            background-color 0.1s ease-out,
-            box-shadow 0.1s ease-out,
-            transform 0.1s ease-out;
-          width: 100%;
+          font-size: 68px;
+          margin-bottom: 77px;
+          text-align: center;
+          text-decoration: none;
+          text-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 
-          &:not(:last-child) {
-            margin: margins.$mobile-btn-margin;
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            font-size: 85px;
+            text-align: left;
+          }
+        }
+
+        .footer-text {
+          justify-self: flex-end;
+          font-size: 20px;
+          text-align: center;
+
+          > a {
+            &:link,
+            &:visited,
+            &:hover,
+            &:active {
+              color: white;
+              text-decoration: none;
+            }
           }
 
-          &:active,
-          &:focus {
-            outline: none;
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            font-size: 29px;
+            text-align: left;
           }
 
-          &:active {
-            background-color: colors.$nephritis;
-            box-shadow: 0 0 0 rgb(0, 0, 0);
-            transform: scale(0.985);
+          &__version {
+            display: none;
+
+            @media screen and (min-width: breakpoints.$tablet-portrait) {
+              bottom: 40px;
+              display: block;
+              position: fixed;
+              right: 50px;
+              z-index: z-index.$version-text;
+            }
           }
         }
       }
