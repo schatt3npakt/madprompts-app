@@ -60,12 +60,17 @@ export default Vue.extend({
     border-radius: 0;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
     color: white;
-    font-size: 30px;
+    font-size: map_get(fonts.$button-sizes, "mobile");
     font-weight: normal;
-    height: 61px;
+    height: map_get(dimensions.$buttonHeight, "mobile");;
     justify-content: space-between;
     overflow: hidden;
     width: 100%;
+
+    @media screen and (min-width: breakpoints.$tablet-portrait) {
+      font-size: map_get(fonts.$button-sizes, "tablet");
+      height: map_get(dimensions.$buttonHeight, "tablet");
+    }
 
     &:active,
     &:focus {
@@ -77,7 +82,7 @@ export default Vue.extend({
       border: 0;
       border-bottom: 5px solid colors.$green-sea;
       color: white;
-      font-size: 30px;
+      font-size: map_get(fonts.$button-sizes, "mobile");
       font-weight: normal;
       margin: 0;
       padding: 0;
@@ -85,7 +90,12 @@ export default Vue.extend({
       transition:
         background-color 0.1s ease-out,
         transform 0.1s ease-out;
-      width: 60px;
+      width: map_get(dimensions.$buttonHeight, "tablet");
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        font-size: map_get(fonts.$button-sizes, "tablet");
+        width: map_get(dimensions.$buttonHeight, "tablet");
+      }
 
       &:active,
       &:focus {

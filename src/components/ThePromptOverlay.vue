@@ -16,7 +16,7 @@
 
     <BaseButton
       button-id="submit"
-      button-type="button--submit button--highlighted"
+      button-type="button--submit"
       button-text="New Prompt"
       @click.native="storeTogglePromptVisibility"
     />
@@ -45,7 +45,7 @@ export default Vue.extend({
   },
   methods: {
     /**
-     * Commit togglePromptOverlay store mutation
+     * Initiate layer hiding and commit togglePromptOverlay store mutation
      * @param state
      * @returns void
     */
@@ -78,12 +78,18 @@ export default Vue.extend({
     transform: translateY(-100%);
     transition: transform 0.85s ease-out;
     width: calc(100vw - 80px);
-    z-index: 999;
+    z-index: z-index.$prompt-layer;
 
     .button--submit {
       opacity: 0;
       transition: opacity 0.5s;
       transition-delay: 1.5s;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 341px;
+      }
     }
 
     &__text {
@@ -107,6 +113,11 @@ export default Vue.extend({
       opacity: 0;
       transition: opacity 0.5s;
       transition-delay: 1s;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        font-size: 58px;
+        line-height: 58.3px;
+      }
     }
 
     &--hide {

@@ -32,6 +32,7 @@
 
         <div class="footer-text">
           <a href="#">Artwork by a_very_long_artist_name</a>
+          <a class="footer-text__version" href="#">v. 1.0.3</a>
         </div>
 
         <ThePromptOverlay />
@@ -74,13 +75,17 @@ export default Vue.extend({
 
 <style scoped lang="scss">
   .app-view {
-      background-image: url(../assets/img/bg.jpg);
+      background-image: url(../assets/img/bg-376px.jpg);
       background-position: top 0 left 0;
       background-size: cover;
       height: 100%;
       margin: 0;
       overflow: hidden;
       width: 100%;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        background-image: url(../assets/img/bg-768px.jpg);
+      }
 
       &__container {
         display: flex;
@@ -92,17 +97,27 @@ export default Vue.extend({
         max-width: calc(100% - 80px);
         width: 100%;
 
-        @media screen and (min-width: 768px) {
-          margin: 0 auto 40px auto;
-          padding: 0 25px;
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          margin: 80px auto 40px 50px;
+          max-height: calc(100% - 120px);
+          max-width: 344px;
+          padding: 0;
         }
 
         .form {
           margin-bottom: 60px;
 
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            margin-bottom: 97px;
+          }
+
           > * {
             &:not(:last-child) {
-              margin: margins.$mobile-btn-margin;
+              margin: map_get(margins.$button-margins, "mobile");
+
+              @media screen and (min-width: breakpoints.$tablet-portrait) {
+                margin: map_get(margins.$button-margins, "tablet");
+              }
             }
           }
         }
@@ -115,7 +130,11 @@ export default Vue.extend({
           text-align: center;
           text-decoration: none;
           text-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-          transition: filter 0.1s ease-out;
+
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            font-size: 85px;
+            text-align: left;
+          }
         }
 
         .footer-text {
@@ -130,6 +149,23 @@ export default Vue.extend({
             &:active {
               color: white;
               text-decoration: none;
+            }
+          }
+
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            font-size: 29px;
+            text-align: left;
+          }
+
+          &__version {
+            display: none;
+
+            @media screen and (min-width: breakpoints.$tablet-portrait) {
+              bottom: 40px;
+              display: block;
+              position: fixed;
+              right: 50px;
+              z-index: z-index.$version-text;
             }
           }
         }
