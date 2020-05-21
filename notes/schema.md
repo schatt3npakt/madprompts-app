@@ -11,5 +11,5 @@
   1. Adjective
   2. Different Adjective 
   3. Place / Noun or one special single noun
-  4. Different Place / Noun
+  4. Place / Noun
   5. Challenge 

@@ -23,7 +23,7 @@
 
 - SCSS Refactoring [X]
 - prompt vocab architecture [X]
-- new prompt on "let's go" click
+- new prompt on "let's go" click [X]
 - small text in prompt overlay on 5 or more adjectives
 - pixel art arrows [X]
 - update documentation
