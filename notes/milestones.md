@@ -1,7 +1,5 @@
 # 0.1.0
 
-## Mobile Menu
-
 - Logo [X]
 - Prompt-Buttons [X]
   - Adjektive [X]
@@ -10,14 +8,25 @@
 
 # 0.2.0
 
-# Mobile Rework
-
-- Tablet Styling
+- Tablet Styling [X]
 - New Logo in place [X]
 - Footertexts [X]
 - moved components into sepaeate files [X]
 
+# 0.3.0
+
+- Desktop Styling [X]
+- further scss refactoring [X]
+- fix background sizes [X]
+
+# 0.4.0
+
+- prompt vocab architecture
+- new prompt on "let's go" click
+- small text in prompt overlay on 5 or more adjectives
+- pixel art arrows
 
 - Auto enclose parts of prompt with google images link
 - seasonal prompt categories
 - prompt logic in seperate javascript module
+- app options -> themes?
