@@ -58,7 +58,7 @@ export default Vue.extend({
   .number-input {
     display: flex;
     border-radius: 0;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: colors.$button-shadow;
     color: white;
     font-size: map_get(fonts.$button-sizes, "mobile");
     font-weight: normal;

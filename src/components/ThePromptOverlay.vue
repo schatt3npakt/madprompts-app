@@ -64,8 +64,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
   .prompt-overlay {
-    color: white;
     background-color: rgba(0, 0, 0, 0.85);
+    color: white;
     display: flex;
     flex-flow: column nowrap;
     height: calc(100vh - 80px);
@@ -131,7 +131,7 @@ export default Vue.extend({
     }
 
     &--show {
-        transform: translateY(0);
+      transform: translateY(0);
 
       .button--submit,
       .prompt-overlay__text-wrapper {

@@ -83,13 +83,11 @@ export default Vue.extend({
       overflow: hidden;
       width: 100%;
 
-      @media
-        screen and (min-width: breakpoints.$tablet-portrait) {
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
         background-image: url(../assets/img/bg-tablet.jpg);
       }
 
-      @media
-        screen and (min-width: breakpoints.$desktop) {
+      @media screen and (min-width: breakpoints.$desktop) {
         background-image: url(../assets/img/bg-desktop.jpg);
       }
 
@@ -144,7 +142,7 @@ export default Vue.extend({
           margin-bottom: 77px;
           text-align: center;
           text-decoration: none;
-          text-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+          text-shadow: colors.$button-shadow;
 
           @media screen and (min-width: breakpoints.$tablet-portrait) {
             font-size: 85px;
@@ -197,7 +195,7 @@ export default Vue.extend({
               display: inline;
               position: fixed;
               right: 47px;
-              z-index: z-index.$version-text;
+              z-index: z-index.$artist-text;
             }
 
             &::after {
@@ -216,7 +214,7 @@ export default Vue.extend({
                 position: absolute;
                 right: 0;
                 width: 100%;
-                z-index: 500;
+                z-index: z-index.$artist-text;
               }
             }
           }
@@ -255,7 +253,7 @@ export default Vue.extend({
                 left: 0;
                 transition: width 0.25s ease-out;
                 width: 100%;
-                z-index: 500;
+                z-index: z-index.$version-text;
               }
             }
           }

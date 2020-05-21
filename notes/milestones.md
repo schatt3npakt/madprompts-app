@@ -21,11 +21,13 @@
 
 # 0.4.0
 
-- SCSS Refactoring
+- SCSS Refactoring [X]
 - prompt vocab architecture
 - new prompt on "let's go" click
 - small text in prompt overlay on 5 or more adjectives
 - pixel art arrows [X]
+
+# Backlog
 
 - Auto enclose parts of prompt with google images link
 - seasonal prompt categories
@@ -36,3 +38,9 @@
 - smaller devices detection
 - Tablet Landscape fixes
 - loading screen
+- structured data
+- Color refactoring => Themes?
+- tab index cleanup
+- update documentation
+- BACKLOG PRIORIZATION
+- new pixelart buttons

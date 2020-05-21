@@ -76,9 +76,9 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .slider {
   border: none;
-  display: flex;
   border-radius: 0;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: colors.$button-shadow;
+  display: flex;
   color: white;
   font-size: map_get(fonts.$button-sizes, "mobile");
   font-weight: normal;
@@ -121,10 +121,6 @@ export default Vue.extend({
       transform 0.1s ease-out;
     width: 100px;
 
-    @media screen and (min-width: breakpoints.$tablet-portrait) {
-      width: 100px;
-    }
-
     @media screen and (min-width: breakpoints.$desktop) {
       cursor: pointer;
       width: 110px;
@@ -140,7 +136,7 @@ export default Vue.extend({
       transform: translateY(5px);
     }
 
-    &:hover:not(:active) {
+    &:hover:not(:active):not(:focus) {
       @media screen and (min-width: breakpoints.$desktop) {
         background-color: lighten(colors.$peter-river, 5%);
         border-bottom: 5px solid lighten (colors.$belize-hole);
@@ -168,13 +164,16 @@ export default Vue.extend({
       }
     };
 
+    &::after {
+      background-size: 100% 100%;
+      background-position: top left;
+    }
+
     &:first-of-type {
       margin-right: -1px;
 
       &::after {
         background-image: icons.$arrow-left;
-        background-size: 100% 100%;
-        background-position: top left;
       }
     }
 
@@ -183,8 +182,6 @@ export default Vue.extend({
 
       &::after {
         background-image: icons.$arrow-right;
-        background-size: 100% 100%;
-        background-position: top left;
       }
     }
   }
