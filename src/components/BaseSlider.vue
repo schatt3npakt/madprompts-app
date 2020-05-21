@@ -76,21 +76,25 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .slider {
   border: none;
-  border-bottom: 5px solid colors.$belize-hole;
   display: flex;
   border-radius: 0;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
   color: white;
   font-size: map_get(fonts.$button-sizes, "mobile");
   font-weight: normal;
-  height: map_get(dimensions.$buttonHeight, "mobile");
+  height: map_get(dimensions.$button-height, "mobile");
   justify-content: space-between;
   overflow: hidden;
   width: 100%;
 
   @media screen and (min-width: breakpoints.$tablet-portrait) {
     font-size: map_get(fonts.$button-sizes, "tablet");
-    height: map_get(dimensions.$buttonHeight, "tablet");
+    height: map_get(dimensions.$button-height, "tablet");
+  }
+
+  @media screen and (min-width: breakpoints.$desktop) {
+    font-size: map_get(fonts.$button-sizes, "dekstop");
+    height: map_get(dimensions.$button-height, "dekstop");
   }
 
   &:active,
@@ -100,8 +104,12 @@ export default Vue.extend({
 
   &__button {
     background-color: colors.$peter-river;
-    border: none;
+    border-bottom: 5px solid colors.$belize-hole;
+    border-left: none;
+    border-right: none;
+    border-top: none;
     color: white;
+    cursor: pointer;
     display: block;
     font-size: 30px;
     font-weight: normal;
@@ -118,6 +126,10 @@ export default Vue.extend({
       width: 100px;
     }
 
+    @media screen and (min-width: breakpoints.$desktop) {
+      width: 110px;
+    }
+
     &:active,
     &:focus {
       outline: none;
@@ -126,6 +138,11 @@ export default Vue.extend({
     &:active {
       background-color: colors.$belize-hole;
       transform: translateY(5px);
+    }
+
+    &:hover:not(:active) {
+      background-color: lighten(colors.$peter-river, 5%);
+      border-bottom: 5px solid lighten (colors.$belize-hole);
     }
 
     &::after {
@@ -142,12 +159,16 @@ export default Vue.extend({
     };
 
     &:first-of-type {
+      margin-right: -1px;
+
       &::after {
         border-right:12px solid white;
       }
     }
 
     &:last-of-type {
+      margin-left: -1px;
+
       &::after {
         border-left:12px solid white;
       }
@@ -156,6 +177,7 @@ export default Vue.extend({
 
   &__label {
     background-color: colors.$peter-river;
+    border-bottom: 5px solid colors.$belize-hole;
     margin: 0;
     position: relative;
     text-align: center;

@@ -62,14 +62,19 @@ export default Vue.extend({
     color: white;
     font-size: map_get(fonts.$button-sizes, "mobile");
     font-weight: normal;
-    height: map_get(dimensions.$buttonHeight, "mobile");;
+    height: map_get(dimensions.$button-height, "mobile");;
     justify-content: space-between;
     overflow: hidden;
     width: 100%;
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
       font-size: map_get(fonts.$button-sizes, "tablet");
-      height: map_get(dimensions.$buttonHeight, "tablet");
+      height: map_get(dimensions.$button-height, "tablet");
+    }
+
+    @media screen and (min-width: breakpoints.$desktop) {
+      font-size: map_get(fonts.$button-sizes, "dekstop");
+      height: map_get(dimensions.$button-height, "dekstop");
     }
 
     &:active,
@@ -82,6 +87,7 @@ export default Vue.extend({
       border: 0;
       border-bottom: 5px solid colors.$green-sea;
       color: white;
+      cursor: pointer;
       font-size: map_get(fonts.$button-sizes, "mobile");
       font-weight: normal;
       margin: 0;
@@ -90,11 +96,17 @@ export default Vue.extend({
       transition:
         background-color 0.1s ease-out,
         transform 0.1s ease-out;
-      width: map_get(dimensions.$buttonHeight, "tablet");
+      width: map_get(dimensions.$button-height, "tablet");
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: map_get(fonts.$button-sizes, "tablet");
-        width: map_get(dimensions.$buttonHeight, "tablet");
+        width: map_get(dimensions.$button-height, "tablet");
+      }
+
+      @media screen and (min-width: breakpoints.$desktop) {
+        font-size: map_get(fonts.$button-sizes, "desktop");
+        margin-left: -1px;
+        width: 70px;
       }
 
       &:active,
@@ -102,6 +114,11 @@ export default Vue.extend({
         background-color: colors.$green-sea;
         outline: none;
         transform: translateY(5px);
+      }
+
+      &:hover:not(:active):not(:focus) {
+        background-color: lighten(colors.$turqouise, 5%);
+        border-bottom: 5px solid lighten(colors.$green-sea, 5%);
       }
 
       &::-webkit-outer-spin-button,

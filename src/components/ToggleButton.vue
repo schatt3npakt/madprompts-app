@@ -51,14 +51,19 @@ export default Vue.extend({
   background-color: colors.$concrete;
   border-bottom: 5px solid colors.$asbestos;
 
-  &--active {
-    background-color: colors.$amethyst;
-    border-bottom: 5px solid colors.$wisteria;
-  }
-
   &:active {
     background-color: colors.$wisteria;
     border-bottom: none;
+  }
+
+  &:hover:not(:active) {
+    background-color: lighten(colors.$amethyst, 5%);
+    border-bottom: 5px solid lighten(colors.$wisteria, 5%);
+  }
+
+  &--active {
+    background-color: colors.$amethyst;
+    border-bottom: 5px solid colors.$wisteria;
   }
 }
 </style>

@@ -17,6 +17,7 @@
 
 - Desktop Styling
 - further scss refactoring
+- fix background sizes
 
 - Auto enclose parts of prompt with google images link
 - seasonal prompt categories
