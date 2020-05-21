@@ -93,8 +93,8 @@ export default Vue.extend({
   }
 
   @media screen and (min-width: breakpoints.$desktop) {
-    font-size: map_get(fonts.$button-sizes, "dekstop");
-    height: map_get(dimensions.$button-height, "dekstop");
+    font-size: map_get(fonts.$button-sizes, "desktop");
+    height: map_get(dimensions.$button-height, "desktop");
   }
 
   &:active,
@@ -109,7 +109,6 @@ export default Vue.extend({
     border-right: none;
     border-top: none;
     color: white;
-    cursor: pointer;
     display: block;
     font-size: 30px;
     font-weight: normal;
@@ -120,13 +119,14 @@ export default Vue.extend({
     transition:
       background-color 0.1s ease-out,
       transform 0.1s ease-out;
-    width: 85px;
+    width: 100px;
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
       width: 100px;
     }
 
     @media screen and (min-width: breakpoints.$desktop) {
+      cursor: pointer;
       width: 110px;
     }
 
@@ -141,28 +141,40 @@ export default Vue.extend({
     }
 
     &:hover:not(:active) {
-      background-color: lighten(colors.$peter-river, 5%);
-      border-bottom: 5px solid lighten (colors.$belize-hole);
+      @media screen and (min-width: breakpoints.$desktop) {
+        background-color: lighten(colors.$peter-river, 5%);
+        border-bottom: 5px solid lighten (colors.$belize-hole);
+      }
     }
 
     &::after {
-      border-bottom: 12px solid transparent;
-      border-top: 12px solid transparent;
       content: "";
       display: block;
-      height: 0;
+      height: 20px;
       left: 50%;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 0;
+      width: 20px;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        height: 21px;
+        width: 21px;
+      }
+
+      @media screen and (min-width: breakpoints.$desktop) {
+        height: 23px;
+        width: 23px;
+      }
     };
 
     &:first-of-type {
       margin-right: -1px;
 
       &::after {
-        border-right:12px solid white;
+        background-image: icons.$arrow-left;
+        background-size: 100% 100%;
+        background-position: top left;
       }
     }
 
@@ -170,7 +182,9 @@ export default Vue.extend({
       margin-left: -1px;
 
       &::after {
-        border-left:12px solid white;
+        background-image: icons.$arrow-right;
+        background-size: 100% 100%;
+        background-position: top left;
       }
     }
   }

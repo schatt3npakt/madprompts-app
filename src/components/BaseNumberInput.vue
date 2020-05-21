@@ -73,8 +73,8 @@ export default Vue.extend({
     }
 
     @media screen and (min-width: breakpoints.$desktop) {
-      font-size: map_get(fonts.$button-sizes, "dekstop");
-      height: map_get(dimensions.$button-height, "dekstop");
+      font-size: map_get(fonts.$button-sizes, "desktop");
+      height: map_get(dimensions.$button-height, "desktop");
     }
 
     &:active,
@@ -87,7 +87,6 @@ export default Vue.extend({
       border: 0;
       border-bottom: 5px solid colors.$green-sea;
       color: white;
-      cursor: pointer;
       font-size: map_get(fonts.$button-sizes, "mobile");
       font-weight: normal;
       margin: 0;
@@ -96,7 +95,7 @@ export default Vue.extend({
       transition:
         background-color 0.1s ease-out,
         transform 0.1s ease-out;
-      width: map_get(dimensions.$button-height, "tablet");
+      width: map_get(dimensions.$button-height, "mobile");
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: map_get(fonts.$button-sizes, "tablet");
@@ -104,6 +103,7 @@ export default Vue.extend({
       }
 
       @media screen and (min-width: breakpoints.$desktop) {
+        cursor: pointer;
         font-size: map_get(fonts.$button-sizes, "desktop");
         margin-left: -1px;
         width: 70px;

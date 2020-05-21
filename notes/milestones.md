@@ -21,12 +21,18 @@
 
 # 0.4.0
 
+- SCSS Refactoring
 - prompt vocab architecture
 - new prompt on "let's go" click
 - small text in prompt overlay on 5 or more adjectives
-- pixel art arrows
+- pixel art arrows [X]
 
 - Auto enclose parts of prompt with google images link
 - seasonal prompt categories
 - prompt logic in seperate javascript module
 - app options -> themes?
+- Mobile Landsacpe optimization
+- Device optimization
+- smaller devices detection
+- Tablet Landscape fixes
+- loading screen
