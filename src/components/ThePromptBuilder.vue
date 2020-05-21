@@ -5,13 +5,19 @@
       <span class="prompt-overlay__text--adjective">test,</span><br />
       <span class="prompt-overlay__text--adjective">ancient,</span><br />
 
-      <span class="prompt-overlay__text--theme">anime character</span><br />
+      <span
+        class="prompt-overlay__text--theme"
+        v-for="item in storeGetPromptTheme"
+        :key="item.id"
+      >
+        {{item.name}}
+      </span><br />
 
       <span
         class="prompt-overlay__text--challenge"
         v-show="storeGetChallengeValidation"
       >
-        {{storeGetChallengePrompt}}
+        {{storeGetPromptChallenge}}
       </span>
   </div>
 </template>
@@ -25,8 +31,16 @@ export default Vue.extend({
      * Get the current challenge from the store
      * @returns string
     */
-    storeGetChallengePrompt (): string {
+    storeGetPromptChallenge (): string {
       return this.$store.state.promptBuilder.challenge
+    },
+
+    /**
+     * Get the current Theme from the store
+     * @returns string
+    */
+    storeGetPromptTheme (): string {
+      return this.$store.state.promptBuilder.theme
     },
 
     /**

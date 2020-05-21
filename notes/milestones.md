@@ -22,10 +22,11 @@
 # 0.4.0
 
 - SCSS Refactoring [X]
-- prompt vocab architecture
+- prompt vocab architecture [X]
 - new prompt on "let's go" click
 - small text in prompt overlay on 5 or more adjectives
 - pixel art arrows [X]
+- update documentation
 
 # Backlog
 
@@ -41,6 +42,5 @@
 - structured data
 - Color refactoring => Themes?
 - tab index cleanup
-- update documentation
 - BACKLOG PRIORIZATION
 - new pixelart buttons
