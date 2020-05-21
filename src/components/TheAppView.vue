@@ -26,7 +26,7 @@
             button-id="submit"
             button-type="button--submit"
             button-text="Let's go!"
-            @click.native="storeTogglePromptVisibility"
+            @click.native="submitClickHandler"
           />
         </div>
 
@@ -64,6 +64,25 @@ export default Vue.extend({
     */
     storeTogglePromptVisibility (): void {
       this.$store.commit('togglePromptOverlay')
+    },
+
+    /**
+     * Set a new challenge in the app state
+     * @param state
+     * @returns void
+    */
+    storeBuildPrompt (): void {
+      this.$store.dispatch('buildPrompt')
+    },
+
+    /**
+     * Build a new Prompt and toggle layer visibility on submit click
+     * @param state
+     * @returns void
+    */
+    submitClickHandler (): void {
+      this.storeTogglePromptVisibility()
+      this.storeBuildPrompt()
     }
   },
   name: 'HelloWorld',

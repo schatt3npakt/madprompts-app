@@ -1,10 +1,31 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as challenges from '@/lib/challenges.json'
 
 Vue.use(Vuex)
 
+// heloers
+
+/**
+ * Returns a random number between 0 and the passed max-1, because the length
+ * of the Array is 1 larger that the indexes of the items
+ * @param max: number
+ * @returns number
+*/
+const randomizer = (max: number): number => {
+  return Math.floor(Math.random() * (max))
+}
+
 export default new Vuex.Store({
   actions: {
+    /**
+     * Build a new Prompt and commit it to the app state.
+     * @param context
+     * @returns void
+    */
+    buildPrompt({ commit }) {
+      commit('setChallengePrompt')
+    }
   },
   modules: {
   },
@@ -43,6 +64,15 @@ export default new Vuex.Store({
     */
     setNumberInputValue (state, value: number): void {
       state.appView.formElements.numberInput.value = value
+    },
+
+    /**
+     * Set zhe challenge for the current prompt to a random item in the challenge array
+     * @param state
+     * @returns void
+    */
+    setChallengePrompt (state): void {
+      state.promptBuilder.challenge = state.lib.challenges[randomizer(state.lib.challenges.length)]
     },
 
     /**
@@ -91,6 +121,12 @@ export default new Vuex.Store({
       promptOverlay: {
         isVisible: false
       }
+    },
+    lib: {
+      challenges: challenges.data
+    },
+    promptBuilder: {
+      challenge: ''
     }
   }
 })

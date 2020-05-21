@@ -3,16 +3,7 @@
     class="prompt-overlay"
     :class="[storeIsVisible ? activeClass : '', startHiding ? hidingClass : '']"
   >
-    <div class="prompt-overlay__text-wrapper">
-      <span>You should draw a</span><br />
-
-      <span class="prompt-overlay__text--adjective">possesed,</span><br />
-      <span class="prompt-overlay__text--adjective">ancient,</span><br />
-
-      <span class="prompt-overlay__text--theme">anime character</span><br />
-
-      <span class="prompt-overlay__text--challenge">made of bagels </span>
-    </div>
+    <ThePromptBuilder />
 
     <BaseButton
       button-id="submit"
@@ -26,10 +17,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import BaseButton from '@/components/BaseButton.vue'
+import ThePromptBuilder from '@/components/ThePromptBuilder.vue'
 
 export default Vue.extend({
   components: {
-    BaseButton
+    BaseButton,
+    ThePromptBuilder
   },
   computed: {
     storeIsVisible () {
@@ -89,20 +82,6 @@ export default Vue.extend({
         margin-left: auto;
         margin-right: auto;
         max-width: 341px;
-      }
-    }
-
-    &__text {
-      &--adjective {
-        color: colors.$emerald;
-      }
-
-      &--challenge {
-        color: colors.$wisteria;
-      }
-
-      &--theme {
-        color: colors.$peter-river;
       }
     }
 
