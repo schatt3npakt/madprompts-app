@@ -23,7 +23,7 @@ export default new Vuex.Store({
      * @param context
      * @returns void
     */
-    buildPrompt({ commit }) {
+    buildPrompt ({ commit }) {
       commit('setChallengePrompt')
     }
   },
