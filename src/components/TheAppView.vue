@@ -112,7 +112,7 @@ export default Vue.extend({
 
         @media screen and (min-width: breakpoints.$desktop) {
           background-color: colors.$pickled-bluewood;
-          box-shadow: 20px 0 20px rgba(0, 0, 0, 0.2);
+          box-shadow: 20px 0 20px rgba(0, 0, 0, 0.1);
           margin: 0;
           max-height: calc(100% - 100px);
           max-width: 350px;
@@ -235,7 +235,8 @@ export default Vue.extend({
               right: unset;
             }
 
-            &::after {
+            &:link::after,
+            &:visited::after {
               content: "";
               display: block;
               transition: width 0.25s ease-out;
@@ -243,11 +244,13 @@ export default Vue.extend({
             }
 
             &:hover::after,
+            &:focus::after,
             &:active::after {
                 background-color: white;
                 height: 2px;
                 position: absolute;
                 left: 0;
+                transition: width 0.25s ease-out;
                 width: 100%;
                 z-index: 500;
             }
