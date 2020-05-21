@@ -15,9 +15,16 @@
 
 # 0.3.0
 
-- Desktop Styling
-- further scss refactoring
-- fix background sizes
+- Desktop Styling [X]
+- further scss refactoring [X]
+- fix background sizes [X]
+
+# 0.4.0
+
+- prompt vocab architecture
+- new prompt on "let's go" click
+- small text in prompt overlay on 5 or more adjectives
+- pixel art arrows
 
 - Auto enclose parts of prompt with google images link
 - seasonal prompt categories

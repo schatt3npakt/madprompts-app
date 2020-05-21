@@ -32,7 +32,7 @@
 
         <div class="footer-text">
           <a class="footer-text__artist" href="#">Artwork by a_very_long_artist_name</a>
-          <a class="footer-text__version" href="#">v. 0.2.0</a>
+          <a class="footer-text__version" href="#">v. 0.3.0</a>
         </div>
 
         <ThePromptOverlay />
