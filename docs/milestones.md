@@ -51,3 +51,8 @@
 - link styling
 - font-and button size rework
 - prevent adjective duplicates
+- - only use general adjectives if challenge mode is enabled
+- PWA Features
+- Favicon
+- Structured Data
+- sounds?

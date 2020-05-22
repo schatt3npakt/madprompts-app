@@ -175,20 +175,34 @@ export default new Vuex.Store({
     },
 
     /**
-     * Set zhe adjectives for the current prompt to a number of random adjectives based on the adjectives number input value in the frontend
+     * Set zhe adjectives for the current prompt to a number of random, unique adjectives based on the adjectives number input value in the frontend
      * @param state
      * @returns void
     */
     setAdjectivesPrompt (state): void {
+      // Empty Array and define Array for adjective Ids in use
       state.promptBuilder.adjectives = []
+      const exsistingAdjectiveIds = [{}]
 
+      // Run Loop for number of times based on user input
       for (let i = 0; i < state.appView.formElements.numberInput.value; i++) {
+        let currentAdjectiveKey
+
+        // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
+        do {
+          currentAdjectiveKey = arrayRandomizer(state.lib.adjectives.general.length)
+        } while (exsistingAdjectiveIds.indexOf(currentAdjectiveKey) >= 1)
+
+        // push adjective and index into state array
         state.promptBuilder.adjectives.push(
           {
             id: 'adjective' + i,
-            text: state.lib.adjectives.general[arrayRandomizer(state.lib.adjectives.general.length)]
+            text: state.lib.adjectives.general[currentAdjectiveKey]
           }
         )
+
+        // Update exsisting Ids with the currntly passed Id
+        exsistingAdjectiveIds.push(currentAdjectiveKey)
       }
     },
 
@@ -206,10 +220,10 @@ export default new Vuex.Store({
     },
 
     /**
-       * Set first prompt created to true for valid prompt rendering
-       * @param state
-       * @returns void
-      */
+     * Set first prompt created to true for valid prompt rendering
+     * @param state
+     * @returns void
+    */
     setFirstPromptCreated (state): void {
       if (!state.promptBuilder.firstPromptCreated) {
         state.promptBuilder.firstPromptCreated = true
