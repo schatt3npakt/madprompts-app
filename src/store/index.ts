@@ -95,8 +95,8 @@ const adjectivesHelper = (state: any, passedArray: any): void => {
 */
 // eslint-disable-next-line
 const themeHelper = (state: any, array: any, specialArray: any): void => {
-  // Determine whether to show normal or special value (15% Chance to get Special)
-  if (chanceHelper(85)) {
+  // Determine whether to show normal or special value (5% Chance to get Special)
+  if (chanceHelper(95)) {
     state.promptBuilder.theme =
     [
       // Add two values to theme Array inside the app state

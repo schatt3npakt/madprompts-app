@@ -11,7 +11,8 @@
           :key="item.id"
         >
           <span class="prompt-overlay__text--adjective">
-            {{item.text}}<span v-if="checkItemId(item.id, storeGetPromptAdjectives)">,</span>
+            <span v-if="checkIfItemIdIsFirst(item.id)">{{promptArticle}}&nbsp;</span>
+              {{item.text}}<span v-if="checkIfItemIdIsLast(item.id, storeGetPromptAdjectives)">,</span>
           </span><br />
         </div>
 
@@ -28,7 +29,7 @@
 
           <pre
             class="prompt-overlay__text__space"
-            v-if="checkItemId(item.id, storeGetPromptTheme)">&nbsp;</pre>
+            v-if="checkIfItemIdIsLast(item.id, storeGetPromptTheme)">&nbsp;</pre>
         </span><br />
 
         <span
@@ -47,10 +48,18 @@ import Vue from 'vue'
 export default Vue.extend({
   computed: {
     /**
+     * Checks eheter the first adjective starts with a vowel and returns An if matched or A if not
+     * @returns boolean
+    */
+    promptArticle (): string {
+      return this.storeGetPromptAdjectives[0].text.match('^[aieouAIEOU].') ? 'An' : 'A'
+    },
+
+    /**
      * Get the current Adjectives from the store
      * @returns Record<string, string | number>
     */
-    storeGetPromptAdjectives (): Record<string, string | number> {
+    storeGetPromptAdjectives (): any {
       return this.$store.state.promptBuilder.adjectives
     },
 
@@ -74,7 +83,7 @@ export default Vue.extend({
      * Get the current Theme from the store
      * @returns Record<string, string | number>
     */
-    storeGetPromptTheme (): Record<string, string | number> {
+    storeGetPromptTheme (): any {
       return this.$store.state.promptBuilder.theme
     },
 
@@ -107,8 +116,18 @@ export default Vue.extend({
      * @param storeProperty: Record<string, string | number>
      * @returns boolean
     */
-    checkItemId (itemId: string, storeProperty: Record<string, string | number>): boolean {
+    checkIfItemIdIsLast (itemId: string, storeProperty: Record<string, string | number>): boolean {
       return parseInt(itemId.slice(-1)) !== Object.keys(storeProperty).length - 1
+    },
+
+    /**
+     * Reutrn whether the sliced item id is identical to the first index of the
+     * passed Array
+     * @param itemId: string
+     * @returns boolean
+    */
+    checkIfItemIdIsFirst (itemId: string): boolean {
+      return parseInt(itemId.slice(-1)) === 0
     },
 
     /**

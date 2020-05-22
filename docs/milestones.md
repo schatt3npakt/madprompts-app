@@ -39,7 +39,6 @@
 - tab index cleanup [X]
 - Start working on prompt vocab [X]
 - link styling [X]
-- Color refactoring => Themes?
 - new pixelart buttons
 - loading screen
 - startup animations
@@ -51,6 +50,7 @@
 - webspace and mail addresses
 - homepage
 - structured data
+- Light/dark themes
 - random prompt introduction
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
 - hint system
