@@ -51,6 +51,15 @@ All Options are found under the state.appView-property.
 6. Update general theme Array with the new Arrays under state.lib.theme.general
 7. Add a switch case to the setThemePrompt Mutation
 
+### Adding adjectives
+1. Add JSON-File under lib/adjectives
+2. Add desired adjectives to the Array in the data property of the file
+3. Import the file inside the store/index.ts under //vocab libraries
+4. create a new property under state.lib.adjectives or add to an exsisting property if the adjectives
+   should also describe other themes, like person or place and refernce your import there
+5. Add a reference import to the general adjective pool under state.lib.adjectives.general
+6. Add a Case to the setAdjectivePrompt Mutation
+
 ### Library data flow
 **For themes**
 Possible themes are defined in JSON-Files under the src/lib folder.

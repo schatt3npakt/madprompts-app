@@ -144,12 +144,7 @@ export default Vue.extend({
       text-align: center;
       text-transform: uppercase;
       transform: none;
-      padding-left: map_get(margins.$number-input-left-padding, "mobile");
       width: 100%;
-
-      @media screen and (min-width: breakpoints.$tablet-portrait) {
-        padding-left: map_get(margins.$number-input-left-padding, "tablet");
-      }
 
       @media screen and (min-width: breakpoints.$desktop) {
         padding-left: map_get(margins.$number-input-left-padding, "desktop");

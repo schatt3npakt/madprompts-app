@@ -30,19 +30,20 @@
 # 0.5.0
 - BACKLOG PRIORIZATION [X]
 - move artist name to store [X]
-- only use general adjectives if challenge mode is enabled
-- Device optimization/ font-and button size rework
-- Mobile Landsacpe optimization
-- Tablet Landscape fixes
+- only use general adjectives if challenge mode is enabled []
+- Device optimization/ font-and button size rework [X]
+- Tablet Landscape fixes [X]
 
 # Backlog
 - tab index cleanup
+- Start working on prompt vocab
 - link styling
 - Color refactoring => Themes?
 - new pixelart buttons
 - loading screen
-- -startup animations
+- startup animations
 - Favicon
+- visual cue if challenge mode is enabled
 - Twitter/instagran Account
 - webspace and mail addresses
 - homepage

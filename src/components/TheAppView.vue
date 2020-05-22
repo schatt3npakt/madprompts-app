@@ -1,7 +1,7 @@
 <template>
   <div class="app-view">
       <div class="app-view__container">
-        <div>
+        <div class="app-view__container__inner">
           <a
             class="logo"
             href="#"
@@ -9,25 +9,27 @@
             BADPROMPTS
           </a>
 
-          <div class="form">
-            <BaseNumberInput />
+          <div>
+            <div class="form">
+              <BaseNumberInput />
 
-            <BaseSlider />
+              <BaseSlider />
 
-            <ToggleButton
-              active-text="Disable challenge"
-              button-id="challenge"
-              button-type="button--challenge"
-              inactive-text="Enable challenge"
+              <ToggleButton
+                active-text="Disable challenge"
+                button-id="challenge"
+                button-type="button--challenge"
+                inactive-text="Enable challenge"
+              />
+            </div>
+
+            <BaseButton
+              button-id="submit"
+              button-type="button--submit"
+              button-text="Let's go!"
+              @click.native="submitClickHandler"
             />
           </div>
-
-          <BaseButton
-            button-id="submit"
-            button-type="button--submit"
-            button-text="Let's go!"
-            @click.native="submitClickHandler"
-          />
         </div>
 
         <div class="footer-text">
@@ -60,7 +62,7 @@ export default Vue.extend({
     return {
       footerText: {
         artist: 'Artwork by a_very_long_artist_name',
-        version: '0.3.0'
+        version: '0.4.0'
       }
     }
   },
@@ -144,11 +146,28 @@ export default Vue.extend({
           padding: 50px 47px;
         }
 
+        &__inner {
+          display: flex;
+          height: 100%;
+          flex-flow: column nowrap;
+          justify-content: space-between;
+          max-height: 400px;
+          margin-bottom: 15px;
+
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            max-height: 480px;
+          }
+
+          @media screen and (min-width: breakpoints.$desktop) {
+            background-color: colors.$pickled-bluewood;
+          }
+        }
+
         .form {
           margin-bottom: 60px;
 
           @media screen and (min-width: breakpoints.$tablet-portrait) {
-            margin-bottom: 97px;
+            margin-bottom: 65px;
           }
 
           > * {
@@ -166,7 +185,7 @@ export default Vue.extend({
           color: white;
           display: block;
           font-size: map_get(fonts.$logo-size, "mobile");
-          margin-bottom: 77px;
+          margin-bottom: 15px;
           text-align: center;
           text-decoration: none;
           text-shadow: colors.$button-shadow;
@@ -192,7 +211,7 @@ export default Vue.extend({
 
         .footer-text {
           justify-self: flex-end;
-          font-size: 20px;
+          font-size: 25px;
           text-align: center;
 
           > a {

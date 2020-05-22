@@ -48,9 +48,9 @@ export default Vue.extend({
   computed: {
     /**
      * Get the current Adjectives from the store
-     * @returns Array
+     * @returns Record<string, string | number>
     */
-    storeGetPromptAdjectives (): Array {
+    storeGetPromptAdjectives (): Record<string, string | number> {
       return this.$store.state.promptBuilder.adjectives
     },
 
@@ -72,9 +72,9 @@ export default Vue.extend({
 
     /**
      * Get the current Theme from the store
-     * @returns string
+     * @returns Record<string, string | number>
     */
-    storeGetPromptTheme (): Array {
+    storeGetPromptTheme (): Record<string, string | number> {
       return this.$store.state.promptBuilder.theme
     },
 
@@ -104,10 +104,10 @@ export default Vue.extend({
      * Reutrn whether the sliced item id (eg. theme1 -> 1) is identical to the last index of the
      * passed Array
      * @param itemId: string
-     * @param storeProperty: Array
+     * @param storeProperty: Record<string, string | number>
      * @returns boolean
     */
-    checkItemId (itemId: string, storeProperty: Array): boolean {
+    checkItemId (itemId: string, storeProperty: Record<string, string | number>): boolean {
       return parseInt(itemId.slice(-1)) !== Object.keys(storeProperty).length - 1
     },
 
