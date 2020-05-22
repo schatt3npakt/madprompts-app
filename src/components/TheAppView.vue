@@ -1,7 +1,7 @@
 <template>
   <div class="app-view">
       <div class="app-view__container">
-        <div>
+        <div class="app-view__container__inner">
           <a
             class="logo"
             href="#"
@@ -9,30 +9,32 @@
             BADPROMPTS
           </a>
 
-          <div class="form">
-            <BaseNumberInput />
+          <div>
+            <div class="form">
+              <BaseNumberInput />
 
-            <BaseSlider />
+              <BaseSlider />
 
-            <ToggleButton
-              active-text="Disable challenge"
-              button-id="challenge"
-              button-type="button--challenge"
-              inactive-text="Enable challenge"
+              <ToggleButton
+                active-text="Disable challenge"
+                button-id="challenge"
+                button-type="button--challenge"
+                inactive-text="Enable challenge"
+              />
+            </div>
+
+            <BaseButton
+              button-id="submit"
+              button-type="button--submit"
+              button-text="Let's go!"
+              @click.native="submitClickHandler"
             />
           </div>
-
-          <BaseButton
-            button-id="submit"
-            button-type="button--submit"
-            button-text="Let's go!"
-            @click.native="submitClickHandler"
-          />
         </div>
 
         <div class="footer-text">
-          <a class="footer-text__artist" href="#">Artwork by a_very_long_artist_name</a>
-          <a class="footer-text__version" href="#">v. 0.3.0</a>
+          <a class="footer-text__artist" href="#">{{footerText.artist}}</a>
+          <a class="footer-text__version" href="#">{{footerText.version}}</a>
         </div>
 
         <ThePromptOverlay />
@@ -55,6 +57,14 @@ export default Vue.extend({
     BaseSlider,
     ThePromptOverlay,
     ToggleButton
+  },
+  data () {
+    return {
+      footerText: {
+        artist: 'Artwork by a_very_long_artist_name',
+        version: '0.5.0'
+      }
+    }
   },
   methods: {
     /**
@@ -136,11 +146,28 @@ export default Vue.extend({
           padding: 50px 47px;
         }
 
+        &__inner {
+          display: flex;
+          height: 100%;
+          flex-flow: column nowrap;
+          justify-content: space-between;
+          max-height: 400px;
+          margin-bottom: 15px;
+
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            max-height: 480px;
+          }
+
+          @media screen and (min-width: breakpoints.$desktop) {
+            background-color: colors.$pickled-bluewood;
+          }
+        }
+
         .form {
           margin-bottom: 60px;
 
           @media screen and (min-width: breakpoints.$tablet-portrait) {
-            margin-bottom: 97px;
+            margin-bottom: 65px;
           }
 
           > * {
@@ -157,20 +184,19 @@ export default Vue.extend({
         .logo {
           color: white;
           display: block;
-          font-size: 68px;
-          margin-bottom: 77px;
+          font-size: map_get(fonts.$logo-size, "mobile");
+          margin-bottom: 15px;
           text-align: center;
           text-decoration: none;
           text-shadow: colors.$button-shadow;
 
           @media screen and (min-width: breakpoints.$tablet-portrait) {
-            font-size: 85px;
-            text-align: left;
+            font-size: map_get(fonts.$logo-size, "tablet");
             text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
           }
 
           @media screen and (min-width: breakpoints.$desktop) {
-            font-size: 75px;
+            font-size: map_get(fonts.$logo-size, "desktop");
             text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
             transition: text-shadow 0.25s;
           }
@@ -185,7 +211,7 @@ export default Vue.extend({
 
         .footer-text {
           justify-self: flex-end;
-          font-size: 20px;
+          font-size: 25px;
           text-align: center;
 
           > a {

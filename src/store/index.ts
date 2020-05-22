@@ -51,9 +51,44 @@ const chanceHelper = (chance: number) => {
 }
 
 /**
+* helper function to get a random item from the passed Array, that ensures Adjectives are unique per
+* prompt
+* @param state: any
+* @param passedArray: any
+* @returns void
+*/
+// eslint-disable-next-line
+const adjectivesHelper = (state: any, passedArray: any): void => {
+  // Empty Array and define Array for adjective Ids in use
+  state.promptBuilder.adjectives = []
+  const exsistingAdjectiveIds = [{}]
+
+  // Run Loop for number of times based on user input
+  for (let i = 0; i < state.appView.formElements.numberInput.value; i++) {
+    let currentAdjectiveKey
+
+    // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
+    do {
+      currentAdjectiveKey = arrayRandomizer(passedArray.length)
+    } while (exsistingAdjectiveIds.indexOf(currentAdjectiveKey) >= 1)
+
+    // push adjective and index into state array
+    state.promptBuilder.adjectives.push(
+      {
+        id: 'adjective' + i,
+        text: passedArray[currentAdjectiveKey]
+      }
+    )
+
+    // Update exsisting Ids with the currntly passed Id
+    exsistingAdjectiveIds.push(currentAdjectiveKey)
+  }
+}
+
+/**
  * helper function for theme prompt determination. it takes in the state
  * of the store, the normal and special Array of the theme Category.
- * @param themeVar: any
+ * @param state: any
  * @param array: any
  * @param specialArray: any
  * @returns void
@@ -168,6 +203,7 @@ export default new Vuex.Store({
           themeHelper(state, state.lib.theme.people.normal, state.lib.theme.people.special)
           break
 
+        // Case for Places prompts
         case 1:
           themeHelper(state, state.lib.theme.places.normal, state.lib.theme.places.special)
           break
@@ -175,34 +211,26 @@ export default new Vuex.Store({
     },
 
     /**
-     * Set zhe adjectives for the current prompt to a number of random, unique adjectives based on the adjectives number input value in the frontend
+     * Set zhe adjectives for the current prompt from the general array if challenge is enabled or
+     * themed adjective array if challenge is disabled
      * @param state
      * @returns void
     */
     setAdjectivesPrompt (state): void {
-      // Empty Array and define Array for adjective Ids in use
-      state.promptBuilder.adjectives = []
-      const exsistingAdjectiveIds = [{}]
+      if (state.appView.formElements.challengeButton.isActive) {
+        adjectivesHelper(state, state.lib.adjectives.general)
+      } else {
+        switch (state.appView.formElements.slider.activeItem) {
+          // Case for People prompts
+          case 0:
+            adjectivesHelper(state, state.lib.adjectives.people)
+            break
 
-      // Run Loop for number of times based on user input
-      for (let i = 0; i < state.appView.formElements.numberInput.value; i++) {
-        let currentAdjectiveKey
-
-        // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
-        do {
-          currentAdjectiveKey = arrayRandomizer(state.lib.adjectives.general.length)
-        } while (exsistingAdjectiveIds.indexOf(currentAdjectiveKey) >= 1)
-
-        // push adjective and index into state array
-        state.promptBuilder.adjectives.push(
-          {
-            id: 'adjective' + i,
-            text: state.lib.adjectives.general[currentAdjectiveKey]
-          }
-        )
-
-        // Update exsisting Ids with the currntly passed Id
-        exsistingAdjectiveIds.push(currentAdjectiveKey)
+          // Case for Places prompts
+          case 1:
+            adjectivesHelper(state, state.lib.adjectives.places)
+            break
+        }
       }
     },
 
@@ -270,6 +298,12 @@ export default new Vuex.Store({
         general: adjectivesPeople.data.concat(
           adjectivesMood.data,
           adjectivesPlaces.data
+        ),
+        people: adjectivesPeople.data.concat(
+          adjectivesMood.data
+        ),
+        places: adjectivesPlaces.data.concat(
+          adjectivesMood.data
         )
       },
       challenges: challenges.data,

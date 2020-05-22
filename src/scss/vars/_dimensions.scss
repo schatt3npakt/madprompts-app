@@ -1,5 +1,30 @@
+//submitbutton, toggle button
 $button-height: (
-  mobile: 61px,
-  tablet: 69px,
-  desktop: 69px
+  mobile: 50px,
+  tablet: 57px,
+  desktop: 60px
+);
+
+$slider-arrows-height: (
+  mobile: 14px,
+  tablet: 15px,
+  desktop: 16px
+);
+
+$slider-arrows-width: (
+  mobile: 14px,
+  tablet: 15px,
+  desktop: 16px
+);
+
+$slider-button-width: (
+  mobile: 68px,
+  tablet: 85px,
+  desktop: 90px
+);
+
+$number-input-width: (
+  mobile: 50px,
+  tablet: 58px,
+  desktop: 62px
 );
