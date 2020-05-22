@@ -31,8 +31,8 @@
         </div>
 
         <div class="footer-text">
-          <a class="footer-text__artist" href="#">Artwork by a_very_long_artist_name</a>
-          <a class="footer-text__version" href="#">v. 0.3.0</a>
+          <a class="footer-text__artist" href="#">{{footerText.artist}}</a>
+          <a class="footer-text__version" href="#">{{footerText.version}}</a>
         </div>
 
         <ThePromptOverlay />
@@ -55,6 +55,14 @@ export default Vue.extend({
     BaseSlider,
     ThePromptOverlay,
     ToggleButton
+  },
+  data () {
+    return {
+      footerText: {
+        artist: 'Artwork by a_very_long_artist_name',
+        version: '0.3.0'
+      }
+    }
   },
   methods: {
     /**
@@ -157,20 +165,19 @@ export default Vue.extend({
         .logo {
           color: white;
           display: block;
-          font-size: 68px;
+          font-size: map_get(fonts.$logo-size, "mobile");
           margin-bottom: 77px;
           text-align: center;
           text-decoration: none;
           text-shadow: colors.$button-shadow;
 
           @media screen and (min-width: breakpoints.$tablet-portrait) {
-            font-size: 85px;
-            text-align: left;
+            font-size: map_get(fonts.$logo-size, "tablet");
             text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
           }
 
           @media screen and (min-width: breakpoints.$desktop) {
-            font-size: 75px;
+            font-size: map_get(fonts.$logo-size, "desktop");
             text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
             transition: text-shadow 0.25s;
           }

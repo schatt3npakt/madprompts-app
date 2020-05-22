@@ -119,11 +119,15 @@ export default Vue.extend({
     transition:
       background-color 0.1s ease-out,
       transform 0.1s ease-out;
-    width: 100px;
+    width: map_get(dimensions.$slider-button-width, "mobile");
+
+    @media screen and (min-width: breakpoints.$tablet-portrait) {
+      width: map_get(dimensions.$slider-button-width, "tablet");
+    }
 
     @media screen and (min-width: breakpoints.$desktop) {
       cursor: pointer;
-      width: 110px;
+      width: map_get(dimensions.$slider-button-width, "desktop");
     }
 
     &:active,
@@ -146,21 +150,21 @@ export default Vue.extend({
     &::after {
       content: "";
       display: block;
-      height: 20px;
+      height: map_get(dimensions.$slider-arrows-height, mobile);
       left: 50%;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 20px;
+      width: map_get(dimensions.$slider-arrows-width, mobile);
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
-        height: 21px;
-        width: 21px;
+        height: map_get(dimensions.$slider-arrows-height, tablet);
+        width: map_get(dimensions.$slider-arrows-width, tablet);
       }
 
       @media screen and (min-width: breakpoints.$desktop) {
-        height: 23px;
-        width: 23px;
+        height: map_get(dimensions.$slider-arrows-height, desktop);
+        width: map_get(dimensions.$slider-arrows-width, desktop);
       }
     };
 

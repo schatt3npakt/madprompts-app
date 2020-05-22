@@ -1,5 +1,4 @@
 # 0.1.0
-
 - Logo [X]
 - Prompt-Buttons [X]
   - Adjektive [X]
@@ -7,20 +6,17 @@
 - Submit-Buttons [X]
 
 # 0.2.0
-
 - Tablet Styling [X]
 - New Logo in place [X]
 - Footertexts [X]
 - moved components into sepaeate files [X]
 
 # 0.3.0
-
 - Desktop Styling [X]
 - further scss refactoring [X]
 - fix background sizes [X]
 
 # 0.4.0
-
 - SCSS Refactoring [X]
 - prompt vocab architecture [X]
 - new prompt on "let's go" click [X]
@@ -29,35 +25,34 @@
 - update documentation [X]
 - Auto enclose parts of prompt with google images link [X]
 - refactor item id checking mechanism in adjective-themelist [X]
+- prevent adjective duplicates [X]
+
+# 0.5.0
+- BACKLOG PRIORIZATION [X]
+- move artist name to store [X]
+- only use general adjectives if challenge mode is enabled
+- Device optimization/ font-and button size rework
+- Mobile Landsacpe optimization
+- Tablet Landscape fixes
 
 # Backlog
-
-- seasonal prompt categories
-- prompt logic in seperate javascript module
-- app options -> themes?
-- Mobile Landsacpe optimization
-- Device optimization
-- smaller devices detection
-- Tablet Landscape fixes
-- loading screen
-- structured data
-- Color refactoring => Themes?
 - tab index cleanup
-- BACKLOG PRIORIZATION
-- new pixelart buttons
-- random prompt introduction
-- hint system
-- custom search parameters for items
 - link styling
-- font-and button size rework
-- prevent adjective duplicates
-- - only use general adjectives if challenge mode is enabled
-- PWA Features
-- Favicon
-- Structured Data
-- sounds?
+- Color refactoring => Themes?
+- new pixelart buttons
+- loading screen
 - -startup animations
-- move artist name to store
+- Favicon
+- Twitter/instagran Account
+- webspace and mail addresses
+- homepage
+- structured data
+- random prompt introduction
+- custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
+- hint system
+- app options -> themes?
+- PWA Features
+- sounds?
 
 ## Version end checklist
 - updated version number in frontend?

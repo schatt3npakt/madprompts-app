@@ -95,18 +95,18 @@ export default Vue.extend({
       transition:
         background-color 0.1s ease-out,
         transform 0.1s ease-out;
-      width: map_get(dimensions.$button-height, "mobile");
+      width: map_get(dimensions.$number-input-width, "mobile");
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: map_get(fonts.$button-sizes, "tablet");
-        width: map_get(dimensions.$button-height, "tablet");
+        width: map_get(dimensions.$number-input-width, "tablet");
       }
 
       @media screen and (min-width: breakpoints.$desktop) {
         cursor: pointer;
         font-size: map_get(fonts.$button-sizes, "desktop");
         margin-left: -1px;
-        width: 70px;
+        width: map_get(dimensions.$number-input-width, "desktop");
       }
 
       &:active,
@@ -144,7 +144,16 @@ export default Vue.extend({
       text-align: center;
       text-transform: uppercase;
       transform: none;
+      padding-left: map_get(margins.$number-input-left-padding, "mobile");
       width: 100%;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        padding-left: map_get(margins.$number-input-left-padding, "tablet");
+      }
+
+      @media screen and (min-width: breakpoints.$desktop) {
+        padding-left: map_get(margins.$number-input-left-padding, "desktop");
+      }
     }
   }
 </style>
