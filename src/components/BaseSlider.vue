@@ -140,7 +140,8 @@ export default Vue.extend({
       transform: translateY(5px);
     }
 
-    &:hover:not(:active):not(:focus) {
+    &:hover:not(:active):not(:focus),
+    &:focus:not(:active) {
       @media screen and (min-width: breakpoints.$desktop) {
         background-color: lighten(colors.$peter-river, 5%);
         border-bottom: 5px solid lighten (colors.$belize-hole);

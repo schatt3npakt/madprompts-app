@@ -136,6 +136,42 @@ export default Vue.extend({
 <style lang="scss" scoped>
   .prompt-overlay {
     &__text {
+      &-wrapper {
+        a {
+          &:active,
+          &:hover,
+          &:focus,
+          &:link,
+          &:visited {
+            text-decoration: none;
+            outline: none;
+            position: relative;
+
+            &::after {
+              bottom: 0;
+              content: "";
+              display: block;
+              position: absolute;
+              height: 2px;
+              left: 50%;
+              transform: translateX(-50%);
+              transition: width 0.25s;
+              width: 0;
+              z-index: 500;
+            }
+          }
+
+          &:active,
+          &:focus,
+          &:hover {
+            &::after {
+              background-color: colors.$peter-river;
+              width: 100%;
+            }
+          }
+        }
+      }
+
       &--adjective {
         color: colors.$emerald;
       }

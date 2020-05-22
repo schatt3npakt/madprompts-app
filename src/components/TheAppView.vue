@@ -33,7 +33,14 @@
         </div>
 
         <div class="footer-text">
-          <a class="footer-text__artist" href="#">{{footerText.artist}}</a>
+          <a
+            class="footer-text__artist"
+            :href="footerText.artistLink"
+            target="_blank"
+            :title="footerText.artistTitle"
+          >
+            {{footerText.artist}}
+          </a>
           <a class="footer-text__version" href="#">{{footerText.version}}</a>
         </div>
 
@@ -62,6 +69,8 @@ export default Vue.extend({
     return {
       footerText: {
         artist: 'Artwork by a_very_long_artist_name',
+        artistTitle: 'Visit a_very_long_artist_name on Instagram!',
+        artistLink: '#',
         version: '0.5.0'
       }
     }
@@ -202,10 +211,15 @@ export default Vue.extend({
           }
 
           &:active,
-          &:hover {
+          &:hover,
+          &:focus {
             @media screen and (min-width: breakpoints.$desktop) {
               text-shadow: 0 0 13px rgba(255, 255, 255, 0.3);
             }
+          }
+
+          &:focus {
+            outline: none;
           }
         }
 
@@ -234,33 +248,33 @@ export default Vue.extend({
             font-size: 25px;
           }
 
+          &__artist,
+          &__version {
+            @media screen and (min-width: breakpoints.$desktop) {
+              bottom: 40px;
+              display: inline;
+              letter-spacing: 0;
+              position: fixed;
+              transition: letter-spacing 0.25s ease-out;
+
+              &:active,
+              &:focus,
+              &:hover {
+                letter-spacing: 1px;
+                outline: none;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+              }
+            }
+          }
+
           &__artist {
             @media screen and (min-width: breakpoints.$desktop) {
               bottom: 40px;
               display: inline;
               position: fixed;
               right: 47px;
+              text-align: right;
               z-index: z-index.$artist-text;
-            }
-
-            &::after {
-              content: "";
-              display: block;
-              transition: width 0.25s ease-out;
-              width: 0;
-            }
-
-            &:focus::after,
-            &:hover::after,
-            &:active::after {
-              @media screen and (min-width: breakpoints.$desktop) {
-                background-color: white;
-                height: 2px;
-                position: absolute;
-                right: 0;
-                width: 100%;
-                z-index: z-index.$artist-text;
-              }
             }
           }
 
@@ -278,28 +292,6 @@ export default Vue.extend({
             @media screen and (min-width: breakpoints.$desktop) {
               left: 47px;
               right: unset;
-            }
-
-            &:link::after,
-            &:visited::after {
-              content: "";
-              display: block;
-              transition: width 0.25s ease-out;
-              width: 0;
-            }
-
-            &:focus::after,
-            &:hover::after,
-            &:active::after {
-              @media screen and (min-width: breakpoints.$desktop) {
-                background-color: white;
-                height: 2px;
-                position: absolute;
-                left: 0;
-                transition: width 0.25s ease-out;
-                width: 100%;
-                z-index: z-index.$version-text;
-              }
             }
           }
         }

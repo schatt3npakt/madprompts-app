@@ -34,15 +34,17 @@
 - Device optimization/ font-and button size rework [X]
 - Tablet Landscape fixes [X]
 
-# Backlog
-- add artist link property
-- tab index cleanup
+# 0.6.0
+- add artist link property [X]
+- tab index cleanup 
 - Start working on prompt vocab
 - link styling
 - Color refactoring => Themes?
 - new pixelart buttons
 - loading screen
 - startup animations
+
+# Backlog
 - Favicon
 - visual cue if challenge mode is enabled
 - Twitter/instagran Account
@@ -55,6 +57,8 @@
 - app options -> themes?
 - PWA Features
 - sounds?
+- detect disabled js
+- detect ie
 
 ## Version end checklist
 - updated version number in frontend?
@@ -63,10 +67,12 @@
 - create PR
 - merge and create commit tag with version number
 
-## Art update update
+## Art update
 - Needed resolutions are available?
   - Mobile
   - Tablet
   - Desktop
 - store old background image files in archive
-- update artist name in store
+- update artist name in appview component
+- update artist link in appview component
+- update artist title
