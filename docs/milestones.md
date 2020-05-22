@@ -26,7 +26,7 @@
 - new prompt on "let's go" click [X]
 - small text in prompt overlay on 5 or more adjectives [X]
 - pixel art arrows [X]
-- update documentation
+- update documentation [X]
 - Auto enclose parts of prompt with google images link [X]
 - refactor item id checking mechanism in adjective-themelist [X]
 
@@ -56,3 +56,20 @@
 - Favicon
 - Structured Data
 - sounds?
+- -startup animations
+- move artist name to store
+
+## Version end checklist
+- updated version number in frontend?
+- all tasks for current version checked?
+- commit and push to remote
+- create PR
+- merge and create commit tag with version number
+
+## Art update update
+- Needed resolutions are available?
+  - Mobile
+  - Tablet
+  - Desktop
+- store old background image files in archive
+- update artist name in store
