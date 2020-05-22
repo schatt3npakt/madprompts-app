@@ -30,7 +30,7 @@
 # 0.5.0
 - BACKLOG PRIORIZATION [X]
 - move artist name to store [X]
-- only use general adjectives if challenge mode is enabled []
+- only use general adjectives if challenge mode is enabled [X]
 - Device optimization/ font-and button size rework [X]
 - Tablet Landscape fixes [X]
 
