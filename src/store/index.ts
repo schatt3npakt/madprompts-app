@@ -1,12 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// vocab libraries
+// base vocab libraries
+// challenges
 import * as challenges from '@/lib/challenges.json'
-import * as people from '@/lib/theme/people.json'
-import * as peopleSpecial from '@/lib/theme/peopleSpecial.json'
-import * as places from '@/lib/theme/places.json'
-import * as placesSpecial from '@/lib/theme/placesSpecial.json'
+
+// themes
+import * as themePeople from '@/lib/theme/base/people.json'
+import * as themePeopleSpecial from '@/lib/theme/base/peopleSpecial.json'
+import * as themePlaces from '@/lib/theme/base/places.json'
+import * as themePlacesSpecial from '@/lib/theme/base/placesSpecial.json'
+
+// adjectives
+import * as adjectivesMood from '@/lib/adjectives/mood.json'
+import * as adjectivesPeople from '@/lib/adjectives/people.json'
+import * as adjectivesPlaces from '@/lib/adjectives/places.json'
+
+// seasonal vocab libraries
+// themes
 
 Vue.use(Vuex)
 
@@ -41,7 +52,7 @@ const chanceHelper = (chance: number) => {
 
 /**
  * helper function for theme prompt determination. it takes in the state
- * of the store, the normal and special Array of the theme Category
+ * of the store, the normal and special Array of the theme Category.
  * @param themeVar: any
  * @param array: any
  * @param specialArray: any
@@ -49,25 +60,29 @@ const chanceHelper = (chance: number) => {
 */
 // eslint-disable-next-line
 const themeHelper = (state: any, array: any, specialArray: any): void => {
-  // Determine whether to show normal or special value (20% Chance to get Special)
+  // Determine whether to show normal or special value (15% Chance to get Special)
   if (chanceHelper(85)) {
     state.promptBuilder.theme =
     [
-      // Add two values to theme Array
+      // Add two values to theme Array inside the app state
       {
-        id: 0,
-        name: state.lib.theme.general[arrayRandomizer(state.lib.theme.general.length)] // Get a random entry from general array
+        id: 'theme0',
+        // Get a random entry from general array
+        name: state.lib.theme.general[arrayRandomizer(state.lib.theme.general.length)]
       },
       {
-        id: 1,
+        id: 'theme1',
+        // Get a random entry from normal theme array
         name: array[arrayRandomizer(array.length)]
       }
     ]
   } else {
+    // Add one value to theme Array
     state.promptBuilder.theme =
     [
       {
-        id: 0,
+        id: 'theme0',
+        // Get a random entry from special theme array
         name: specialArray[arrayRandomizer(specialArray.length)]
       }
     ]
@@ -82,8 +97,10 @@ export default new Vuex.Store({
      * @returns void
     */
     buildPrompt ({ commit }) {
+      commit('setAdjectivesPrompt')
       commit('setThemePrompt')
       commit('setChallengePrompt')
+      commit('setFirstPromptCreated')
     }
   },
   modules: {
@@ -140,7 +157,11 @@ export default new Vuex.Store({
      * @returns void
     */
     setThemePrompt (state): void {
-      // Determine whether to show normal or special value (Chance 50%)
+      /* Determine which theme pool should be used, by getting the index of the active item in the slider
+      * and loading a theme pool based on that number. Correspondance between slider order and loading the
+      * appropriate pool needs to be checked MANUALLY by checking the order inside appView.formElements.slider.items
+      * This could be improved.
+      */
       switch (state.appView.formElements.slider.activeItem) {
         // Case for People prompts
         case 0:
@@ -150,6 +171,24 @@ export default new Vuex.Store({
         case 1:
           themeHelper(state, state.lib.theme.places.normal, state.lib.theme.places.special)
           break
+      }
+    },
+
+    /**
+     * Set zhe adjectives for the current prompt to a number of random adjectives based on the adjectives number input value in the frontend
+     * @param state
+     * @returns void
+    */
+    setAdjectivesPrompt (state): void {
+      state.promptBuilder.adjectives = []
+
+      for (let i = 0; i < state.appView.formElements.numberInput.value; i++) {
+        state.promptBuilder.adjectives.push(
+          {
+            id: 'adjective' + i,
+            text: state.lib.adjectives.general[arrayRandomizer(state.lib.adjectives.general.length)]
+          }
+        )
       }
     },
 
@@ -164,6 +203,17 @@ export default new Vuex.Store({
       challengeButton.isActive
         ? challengeButton.isActive = false
         : challengeButton.isActive = true
+    },
+
+    /**
+       * Set first prompt created to true for valid prompt rendering
+       * @param state
+       * @returns void
+      */
+    setFirstPromptCreated (state): void {
+      if (!state.promptBuilder.firstPromptCreated) {
+        state.promptBuilder.firstPromptCreated = true
+      }
     },
 
     /**
@@ -201,22 +251,31 @@ export default new Vuex.Store({
       }
     },
     lib: {
+      adjectives: {
+        // general is used as library of applicable adje
+        general: adjectivesPeople.data.concat(
+          adjectivesMood.data,
+          adjectivesPlaces.data
+        )
+      },
       challenges: challenges.data,
       theme: {
         // general is used as library for the first part of the theme and includes all normal arrays
-        general: people.data.concat(places.data),
+        general: themePeople.data.concat(themePlaces.data),
         people: {
-          normal: people.data,
-          special: peopleSpecial.data
+          normal: themePeople.data,
+          special: themePeopleSpecial.data
         },
         places: {
-          normal: places.data,
-          special: placesSpecial.data
+          normal: themePlaces.data,
+          special: themePlacesSpecial.data
         }
       }
     },
     promptBuilder: {
+      adjectives: [{}],
       challenge: '',
+      firstPromptCreated: false,
       theme: [{}]
     }
   }

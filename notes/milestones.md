@@ -24,13 +24,14 @@
 - SCSS Refactoring [X]
 - prompt vocab architecture [X]
 - new prompt on "let's go" click [X]
-- small text in prompt overlay on 5 or more adjectives
+- small text in prompt overlay on 5 or more adjectives [X]
 - pixel art arrows [X]
 - update documentation
+- Auto enclose parts of prompt with google images link [X]
+- refactor item id checking mechanism in adjective-themelist [X]
 
 # Backlog
 
-- Auto enclose parts of prompt with google images link
 - seasonal prompt categories
 - prompt logic in seperate javascript module
 - app options -> themes?
@@ -44,3 +45,9 @@
 - tab index cleanup
 - BACKLOG PRIORIZATION
 - new pixelart buttons
+- random prompt introduction
+- hint system
+- custom search parameters for items
+- link styling
+- font-and button size rework
+- prevent adjective duplicates

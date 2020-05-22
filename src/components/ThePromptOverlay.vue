@@ -97,6 +97,16 @@ export default Vue.extend({
         font-size: 58px;
         line-height: 58.3px;
       }
+
+      &--small-text {
+          font-size: 25px;
+          line-height: 33.5px;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          font-size: 35px;
+          line-height: 40px;
+        }
+      }
     }
 
     &--hide {
