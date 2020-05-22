@@ -57,8 +57,10 @@ export default Vue.extend({
   }
 
   &:hover:not(:active) {
-    background-color: lighten(colors.$amethyst, 5%);
-    border-bottom: 5px solid lighten(colors.$wisteria, 5%);
+    @media screen and (min-width: breakpoints.$desktop) {
+      background-color: lighten(colors.$amethyst, 5%);
+      border-bottom: 5px solid lighten(colors.$wisteria, 5%);
+    }
   }
 
   &--active {

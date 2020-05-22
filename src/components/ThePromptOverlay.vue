@@ -3,16 +3,7 @@
     class="prompt-overlay"
     :class="[storeIsVisible ? activeClass : '', startHiding ? hidingClass : '']"
   >
-    <div class="prompt-overlay__text-wrapper">
-      <span>You should draw a</span><br />
-
-      <span class="prompt-overlay__text--adjective">possesed,</span><br />
-      <span class="prompt-overlay__text--adjective">ancient,</span><br />
-
-      <span class="prompt-overlay__text--theme">anime character</span><br />
-
-      <span class="prompt-overlay__text--challenge">made of bagels </span>
-    </div>
+    <ThePromptBuilder />
 
     <BaseButton
       button-id="submit"
@@ -26,10 +17,12 @@
 <script lang="ts">
 import Vue from 'vue'
 import BaseButton from '@/components/BaseButton.vue'
+import ThePromptBuilder from '@/components/ThePromptBuilder.vue'
 
 export default Vue.extend({
   components: {
-    BaseButton
+    BaseButton,
+    ThePromptBuilder
   },
   computed: {
     storeIsVisible () {
@@ -64,8 +57,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
   .prompt-overlay {
-    color: white;
     background-color: rgba(0, 0, 0, 0.85);
+    color: white;
     display: flex;
     flex-flow: column nowrap;
     height: calc(100vh - 80px);
@@ -92,20 +85,6 @@ export default Vue.extend({
       }
     }
 
-    &__text {
-      &--adjective {
-        color: colors.$emerald;
-      }
-
-      &--challenge {
-        color: colors.$wisteria;
-      }
-
-      &--theme {
-        color: colors.$peter-river;
-      }
-    }
-
     &__text-wrapper {
       font-size: 40px;
       line-height: 40px;
@@ -117,6 +96,16 @@ export default Vue.extend({
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: 58px;
         line-height: 58.3px;
+      }
+
+      &--small-text {
+          font-size: 25px;
+          line-height: 33.5px;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          font-size: 35px;
+          line-height: 40px;
+        }
       }
     }
 
@@ -131,7 +120,7 @@ export default Vue.extend({
     }
 
     &--show {
-        transform: translateY(0);
+      transform: translateY(0);
 
       .button--submit,
       .prompt-overlay__text-wrapper {

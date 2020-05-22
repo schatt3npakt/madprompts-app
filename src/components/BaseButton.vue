@@ -25,15 +25,17 @@ export default Vue.extend({
   .button {
     border: none;
     border-radius: 0;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: colors.$button-shadow;
     color: white;
-    cursor: pointer;
     display: block;
     font-size: map_get(fonts.$button-sizes, "mobile");
     font-weight: normal;
     height: map_get(dimensions.$button-height, "mobile");
     text-transform: uppercase;
-    transition: background-color 0.1s ease-out, box-shadow 0.1s ease-out,
+    transition:
+      background-color 0.1s ease-out,
+      box-shadow 0.1s ease-out,
+      border-bottom 0.1s ease-out,
       transform 0.1s ease-out;
     width: 100%;
 
@@ -43,8 +45,9 @@ export default Vue.extend({
     }
 
     @media screen and (min-width: breakpoints.$desktop) {
-      font-size: map_get(fonts.$button-sizes, "dekstop");
-      height: map_get(dimensions.$button-height, "dekstop");
+      cursor: pointer;
+      font-size: map_get(fonts.$button-sizes, "desktop");
+      height: map_get(dimensions.$button-height, "desktop");
     }
 
     &:active,

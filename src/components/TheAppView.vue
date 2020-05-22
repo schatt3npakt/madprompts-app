@@ -26,7 +26,7 @@
             button-id="submit"
             button-type="button--submit"
             button-text="Let's go!"
-            @click.native="storeTogglePromptVisibility"
+            @click.native="submitClickHandler"
           />
         </div>
 
@@ -64,6 +64,25 @@ export default Vue.extend({
     */
     storeTogglePromptVisibility (): void {
       this.$store.commit('togglePromptOverlay')
+    },
+
+    /**
+     * Set a new challenge in the app state
+     * @param state
+     * @returns void
+    */
+    storeBuildPrompt (): void {
+      this.$store.dispatch('buildPrompt')
+    },
+
+    /**
+     * Build a new Prompt and toggle layer visibility on submit click
+     * @param state
+     * @returns void
+    */
+    submitClickHandler (): void {
+      this.storeTogglePromptVisibility()
+      this.storeBuildPrompt()
     }
   },
   name: 'HelloWorld',
@@ -83,13 +102,11 @@ export default Vue.extend({
       overflow: hidden;
       width: 100%;
 
-      @media
-        screen and (min-width: breakpoints.$tablet-portrait) {
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
         background-image: url(../assets/img/bg-tablet.jpg);
       }
 
-      @media
-        screen and (min-width: breakpoints.$desktop) {
+      @media screen and (min-width: breakpoints.$desktop) {
         background-image: url(../assets/img/bg-desktop.jpg);
       }
 
@@ -144,25 +161,24 @@ export default Vue.extend({
           margin-bottom: 77px;
           text-align: center;
           text-decoration: none;
-          text-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+          text-shadow: colors.$button-shadow;
 
           @media screen and (min-width: breakpoints.$tablet-portrait) {
-            text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
             font-size: 85px;
             text-align: left;
+            text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
           }
 
           @media screen and (min-width: breakpoints.$desktop) {
             font-size: 75px;
-            transform: scale(1);
-            transform-origin: left center;
-            transition: transform 0.25s;
+            text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
+            transition: text-shadow 0.25s;
           }
 
           &:active,
           &:hover {
             @media screen and (min-width: breakpoints.$desktop) {
-              transform: scale(1.025);
+              text-shadow: 0 0 13px rgba(255, 255, 255, 0.3);
             }
           }
         }
@@ -198,7 +214,7 @@ export default Vue.extend({
               display: inline;
               position: fixed;
               right: 47px;
-              z-index: z-index.$version-text;
+              z-index: z-index.$artist-text;
             }
 
             &::after {
@@ -208,14 +224,17 @@ export default Vue.extend({
               width: 0;
             }
 
+            &:focus::after,
             &:hover::after,
             &:active::after {
+              @media screen and (min-width: breakpoints.$desktop) {
                 background-color: white;
                 height: 2px;
                 position: absolute;
                 right: 0;
                 width: 100%;
-                z-index: 500;
+                z-index: z-index.$artist-text;
+              }
             }
           }
 
@@ -243,16 +262,18 @@ export default Vue.extend({
               width: 0;
             }
 
-            &:hover::after,
             &:focus::after,
+            &:hover::after,
             &:active::after {
+              @media screen and (min-width: breakpoints.$desktop) {
                 background-color: white;
                 height: 2px;
                 position: absolute;
                 left: 0;
                 transition: width 0.25s ease-out;
                 width: 100%;
-                z-index: 500;
+                z-index: z-index.$version-text;
+              }
             }
           }
         }
