@@ -37,7 +37,7 @@
 # 0.6.0
 - add artist link property [X]
 - tab index cleanup [X]
-- Start working on prompt vocab
+- Start working on prompt vocab [X]
 - link styling [X]
 - Color refactoring => Themes?
 - new pixelart buttons
