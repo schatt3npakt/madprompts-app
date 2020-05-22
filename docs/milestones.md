@@ -35,6 +35,7 @@
 - Tablet Landscape fixes [X]
 
 # Backlog
+- add artist link property
 - tab index cleanup
 - Start working on prompt vocab
 - link styling

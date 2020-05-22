@@ -62,7 +62,7 @@ export default Vue.extend({
     return {
       footerText: {
         artist: 'Artwork by a_very_long_artist_name',
-        version: '0.4.0'
+        version: '0.5.0'
       }
     }
   },
