@@ -1,9 +1,10 @@
 {
   "data": 
     [
-      "1",
-      "2",
-      "3",
-      "4"
+      "depressed",
+      "ecstatic",
+      "gloomy",
+      "shining",
+      "triumphant"
     ]
 }
