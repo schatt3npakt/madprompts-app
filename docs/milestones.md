@@ -46,7 +46,7 @@
 
 ## 0.7.0
 - detect disabled js [X]
-- Favicon
+- Favicon [X]
 - update layout file
 - meta-data for site and references to project name update [X]
 
