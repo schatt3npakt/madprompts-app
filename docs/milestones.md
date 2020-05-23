@@ -40,7 +40,7 @@
 - Start working on prompt vocab [X]
 - link styling [X]
 - new pixelart buttons
-- loading screen
+- loading screen [X]
 - startup animations
 
 # Backlog
@@ -60,6 +60,9 @@
 - sounds?
 - detect disabled js
 - detect ie
+- fix google search results
+- add food as theme
+- open source?
 
 ## Version end checklist
 - updated version number in frontend?
