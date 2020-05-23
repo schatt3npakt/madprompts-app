@@ -63,6 +63,7 @@
 ### Must
 - Twitter/instagran Account
 - webspace and mail addresses
+- inline svg for loading screen
 
 ### Should
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)

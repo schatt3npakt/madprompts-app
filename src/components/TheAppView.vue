@@ -5,9 +5,9 @@
           <a
             class="logo"
             href="#"
-            title="Visit the Homepage of BADPROMPTS"
+            title="Visit the Homepage of MADPROMPTS"
           >
-            BADPROMPTS
+            MADPROMPTS
           </a>
 
           <div>

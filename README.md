@@ -1,4 +1,4 @@
-# BADPROMPTS
+# MADPROMPTS
 
 ## Project setup
 ```
