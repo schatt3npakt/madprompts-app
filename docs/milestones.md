@@ -48,7 +48,7 @@
 - detect disabled js [X]
 - Favicon
 - update layout file
-- meta-data for site and references to project name update
+- meta-data for site and references to project name update [X]
 
 ## Version end checklist
 - updated version number in frontend?
