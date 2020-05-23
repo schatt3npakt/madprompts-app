@@ -2,12 +2,12 @@
   <div class="app-view">
       <div class="app-view__container">
         <div class="app-view__container__inner">
-          <a
+          <h1
             class="logo"
             href="#"
           >
             BADPROMPTS
-          </a>
+          </h1>
 
           <div>
             <div class="form">
@@ -112,189 +112,190 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-  .app-view {
-      background-image: url(../assets/img/bg-mobile.jpg);
-      background-position: top 0 left 0;
-      background-size: cover;
-      height: 100%;
+.app-view {
+  background-image: url(../assets/img/bg-mobile.jpg);
+  background-position: top 0 left 0;
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+
+  @media screen and (min-width: breakpoints.$tablet-portrait) {
+    background-image: url(../assets/img/bg-tablet.jpg);
+  }
+
+  @media screen and (min-width: breakpoints.$desktop) {
+    background-image: url(../assets/img/bg-desktop.jpg);
+  }
+
+  &__container {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    justify-content: space-between;
+    margin: 25px auto 30px auto;
+    max-height: calc(100% - 55px);
+    max-width: calc(100% - 80px);
+    width: 100%;
+
+    @media screen and (min-width: breakpoints.$tablet-portrait) {
+      margin: 80px auto 40px 50px;
+      max-height: calc(100% - 120px);
+      max-width: 344px;
+      padding: 0;
+    }
+
+    @media screen and (min-width: breakpoints.$desktop) {
+      background-color: colors.$pickled-bluewood;
+      box-shadow: 20px 0 20px rgba(0, 0, 0, 0.1);
       margin: 0;
-      overflow: hidden;
-      width: 100%;
+      max-height: calc(100% - 100px);
+      max-width: 350px;
+      padding: 50px 47px;
+    }
+
+    &__inner {
+      display: flex;
+      height: 100%;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      max-height: 400px;
+      margin-bottom: 15px;
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
-        background-image: url(../assets/img/bg-tablet.jpg);
+        max-height: 480px;
       }
 
       @media screen and (min-width: breakpoints.$desktop) {
-        background-image: url(../assets/img/bg-desktop.jpg);
+        background-color: colors.$pickled-bluewood;
+      }
+    }
+
+    .form {
+      margin-bottom: 60px;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        margin-bottom: 65px;
       }
 
-      &__container {
-        display: flex;
-        flex-flow: column nowrap;
-        height: 100%;
-        justify-content: space-between;
-        margin: 25px auto 30px auto;
-        max-height: calc(100% - 55px);
-        max-width: calc(100% - 80px);
-        width: 100%;
+      > * {
+        &:not(:last-child) {
+          margin: map_get(margins.$button-margins, "mobile");
+
+          @media screen and (min-width: breakpoints.$tablet-portrait) {
+            margin: map_get(margins.$button-margins, "tablet");
+          }
+        }
+      }
+    }
+
+    .logo {
+      color: white;
+      display: block;
+      font-size: map_get(fonts.$logo-size, "mobile");
+      font-weight: 300;
+      margin-bottom: 15px;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: colors.$button-shadow;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        font-size: map_get(fonts.$logo-size, "tablet");
+        text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      @media screen and (min-width: breakpoints.$desktop) {
+        font-size: map_get(fonts.$logo-size, "desktop");
+        text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
+        transition: text-shadow 0.25s;
+      }
+
+      &:active,
+      &:hover,
+      &:focus {
+        @media screen and (min-width: breakpoints.$desktop) {
+          text-shadow: 0 0 13px rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .footer-text {
+      justify-self: flex-end;
+      font-size: 25px;
+      text-align: center;
+
+      > a {
+        &:link,
+        &:visited,
+        &:focus,
+        &:hover,
+        &:active {
+          color: white;
+          text-decoration: none;
+        }
+      }
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        font-size: 29px;
+        text-align: left;
+      }
+
+      @media screen and (min-width: breakpoints.$desktop) {
+        font-size: 25px;
+      }
+
+      &__artist,
+      &__version {
+        @media screen and (min-width: breakpoints.$desktop) {
+          bottom: 40px;
+          display: inline;
+          letter-spacing: 0;
+          position: fixed;
+          transition: letter-spacing 0.25s ease-out;
+
+          &:active,
+          &:focus,
+          &:hover {
+            letter-spacing: 1px;
+            outline: none;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+
+      &__artist {
+        @media screen and (min-width: breakpoints.$desktop) {
+          bottom: 40px;
+          display: inline;
+          position: fixed;
+          right: 47px;
+          text-align: right;
+          z-index: z-index.$artist-text;
+        }
+      }
+
+      &__version {
+        display: none;
 
         @media screen and (min-width: breakpoints.$tablet-portrait) {
-          margin: 80px auto 40px 50px;
-          max-height: calc(100% - 120px);
-          max-width: 344px;
-          padding: 0;
+          bottom: 40px;
+          display: inline;
+          position: fixed;
+          right: 50px;
+          z-index: z-index.$version-text;
         }
 
         @media screen and (min-width: breakpoints.$desktop) {
-          background-color: colors.$pickled-bluewood;
-          box-shadow: 20px 0 20px rgba(0, 0, 0, 0.1);
-          margin: 0;
-          max-height: calc(100% - 100px);
-          max-width: 350px;
-          padding: 50px 47px;
-        }
-
-        &__inner {
-          display: flex;
-          height: 100%;
-          flex-flow: column nowrap;
-          justify-content: space-between;
-          max-height: 400px;
-          margin-bottom: 15px;
-
-          @media screen and (min-width: breakpoints.$tablet-portrait) {
-            max-height: 480px;
-          }
-
-          @media screen and (min-width: breakpoints.$desktop) {
-            background-color: colors.$pickled-bluewood;
-          }
-        }
-
-        .form {
-          margin-bottom: 60px;
-
-          @media screen and (min-width: breakpoints.$tablet-portrait) {
-            margin-bottom: 65px;
-          }
-
-          > * {
-            &:not(:last-child) {
-              margin: map_get(margins.$button-margins, "mobile");
-
-              @media screen and (min-width: breakpoints.$tablet-portrait) {
-                margin: map_get(margins.$button-margins, "tablet");
-              }
-            }
-          }
-        }
-
-        .logo {
-          color: white;
-          display: block;
-          font-size: map_get(fonts.$logo-size, "mobile");
-          margin-bottom: 15px;
-          text-align: center;
-          text-decoration: none;
-          text-shadow: colors.$button-shadow;
-
-          @media screen and (min-width: breakpoints.$tablet-portrait) {
-            font-size: map_get(fonts.$logo-size, "tablet");
-            text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
-          }
-
-          @media screen and (min-width: breakpoints.$desktop) {
-            font-size: map_get(fonts.$logo-size, "desktop");
-            text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
-            transition: text-shadow 0.25s;
-          }
-
-          &:active,
-          &:hover,
-          &:focus {
-            @media screen and (min-width: breakpoints.$desktop) {
-              text-shadow: 0 0 13px rgba(255, 255, 255, 0.3);
-            }
-          }
-
-          &:focus {
-            outline: none;
-          }
-        }
-
-        .footer-text {
-          justify-self: flex-end;
-          font-size: 25px;
-          text-align: center;
-
-          > a {
-            &:link,
-            &:visited,
-            &:focus,
-            &:hover,
-            &:active {
-              color: white;
-              text-decoration: none;
-            }
-          }
-
-          @media screen and (min-width: breakpoints.$tablet-portrait) {
-            font-size: 29px;
-            text-align: left;
-          }
-
-          @media screen and (min-width: breakpoints.$desktop) {
-            font-size: 25px;
-          }
-
-          &__artist,
-          &__version {
-            @media screen and (min-width: breakpoints.$desktop) {
-              bottom: 40px;
-              display: inline;
-              letter-spacing: 0;
-              position: fixed;
-              transition: letter-spacing 0.25s ease-out;
-
-              &:active,
-              &:focus,
-              &:hover {
-                letter-spacing: 1px;
-                outline: none;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-              }
-            }
-          }
-
-          &__artist {
-            @media screen and (min-width: breakpoints.$desktop) {
-              bottom: 40px;
-              display: inline;
-              position: fixed;
-              right: 47px;
-              text-align: right;
-              z-index: z-index.$artist-text;
-            }
-          }
-
-          &__version {
-            display: none;
-
-            @media screen and (min-width: breakpoints.$tablet-portrait) {
-              bottom: 40px;
-              display: inline;
-              position: fixed;
-              right: 50px;
-              z-index: z-index.$version-text;
-            }
-
-            @media screen and (min-width: breakpoints.$desktop) {
-              left: 47px;
-              right: unset;
-            }
-          }
+          left: 47px;
+          right: unset;
         }
       }
+    }
   }
+}
 </style>

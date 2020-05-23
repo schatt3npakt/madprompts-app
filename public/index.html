@@ -7,11 +7,98 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+    }
+
+    .loading-screen {
+      background: rgb(44, 62, 80);
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .loading-screen__inner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .loading-bar {
+      height: 3px;
+      overflow: hidden;
+      position: relative;
+      width: 200px;
+    }
+
+    .loading-bar__content {
+      animation: loading-bar 3s ease-in-out  forwards infinite;
+      background-color: white;
+      height: 100%;
+      left: -100%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 500;
+    }
+
+    .loading-screen .logo {
+      color: white;
+      font-family: 'VT323';
+      font-display: swap;
+      display: block;
+      font-size: 50px;
+      margin-bottom: 15px;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    @media screen and (min-width: 768px) {
+      .loading-screen .logo {
+        font-size: 85px;
+        text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .loading-screen .logo {
+        font-size: 65px;
+        text-shadow: 0 13px 13px rgba(0, 0, 0, 0.3);
+        transition: text-shadow 0.25s;
+      }
+    }
+
+    @keyframes loading-bar {
+      from {left: -200%}
+      to {left: 200%}
+    }
+  </style>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <div class="loading-screen" id="loading">
+      <div class="loading-screen__inner">
+          <span class="logo">BADPROMPTS</span>
+          <div class="loading-bar">
+            <div class="loading-bar__content"></div>
+          </div>
+      </div>
+    </div>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      window.addEventListener('load', function(){
+        let elem = document.getElementById('loading')
+        
+        elem.parentNode.removeChild(elem);
+      })
+    </script>
   </body>
 </html>
