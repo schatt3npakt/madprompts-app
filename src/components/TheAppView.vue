@@ -5,6 +5,7 @@
           <a
             class="logo"
             href="#"
+            title="Visit the Homepage of BADPROMPTS"
           >
             BADPROMPTS
           </a>
