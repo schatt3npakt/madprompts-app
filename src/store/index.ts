@@ -12,7 +12,7 @@ import * as themePlaces from '@/lib/theme/base/places.json'
 import * as themePlacesSpecial from '@/lib/theme/base/placesSpecial.json'
 
 // adjectives
-import * as adjectivesMood from '@/lib/adjectives/mood.json'
+import * as adjectivesStyle from '@/lib/adjectives/style.json'
 import * as adjectivesPeople from '@/lib/adjectives/people.json'
 import * as adjectivesPlaces from '@/lib/adjectives/places.json'
 
@@ -95,20 +95,20 @@ const adjectivesHelper = (state: any, passedArray: any): void => {
 */
 // eslint-disable-next-line
 const themeHelper = (state: any, array: any, specialArray: any): void => {
-  // Determine whether to show normal or special value (15% Chance to get Special)
-  if (chanceHelper(85)) {
+  // Determine whether to show normal or special value (5% Chance to get Special)
+  if (chanceHelper(95)) {
     state.promptBuilder.theme =
     [
       // Add two values to theme Array inside the app state
       {
         id: 'theme0',
         // Get a random entry from general array
-        name: state.lib.theme.general[arrayRandomizer(state.lib.theme.general.length)]
+        text: state.lib.theme.general[arrayRandomizer(state.lib.theme.general.length)]
       },
       {
         id: 'theme1',
         // Get a random entry from normal theme array
-        name: array[arrayRandomizer(array.length)]
+        text: array[arrayRandomizer(array.length)]
       }
     ]
   } else {
@@ -296,14 +296,14 @@ export default new Vuex.Store({
       adjectives: {
         // general is used as library of applicable adje
         general: adjectivesPeople.data.concat(
-          adjectivesMood.data,
+          adjectivesStyle.data,
           adjectivesPlaces.data
         ),
         people: adjectivesPeople.data.concat(
-          adjectivesMood.data
+          adjectivesStyle.data
         ),
         places: adjectivesPlaces.data.concat(
-          adjectivesMood.data
+          adjectivesStyle.data
         )
       },
       challenges: challenges.data,

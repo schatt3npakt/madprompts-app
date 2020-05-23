@@ -10,9 +10,15 @@
           v-for="item in storeGetPromptAdjectives"
           :key="item.id"
         >
-          <span class="prompt-overlay__text--adjective">
-            {{item.text}}<span v-if="checkItemId(item.id, storeGetPromptAdjectives)">,</span>
-          </span><br />
+          <a
+            class="prompt-overlay__text--adjective"
+            :href="linkBuilder(item.text)"
+            target="_blank"
+            :title="linkTitleBuilder(item.text)"
+          >
+            <span v-if="checkIfItemIdIsFirst(item.id)">{{promptArticle}}&nbsp;</span>
+              {{item.text}}<span v-if="checkIfItemIdIsLast(item.id, storeGetPromptAdjectives)">,</span>
+          </a><br />
         </div>
 
         <span
@@ -21,14 +27,14 @@
         >
           <a
             class="prompt-overlay__text--theme"
-            :href="linkBuilder(item.name)"
+            :href="linkBuilder(item.text)"
             target="_blank"
-            :title="linkTitleBuilder(item.name)"
-          >{{item.name}}</a>
+            :title="linkTitleBuilder(item.text)"
+          >{{item.text}}</a>
 
           <pre
             class="prompt-overlay__text__space"
-            v-if="checkItemId(item.id, storeGetPromptTheme)">&nbsp;</pre>
+            v-if="checkIfItemIdIsLast(item.id, storeGetPromptTheme)">&nbsp;</pre>
         </span><br />
 
         <span
@@ -47,10 +53,19 @@ import Vue from 'vue'
 export default Vue.extend({
   computed: {
     /**
-     * Get the current Adjectives from the store
-     * @returns Record<string, string | number>
+     * Checks eheter the first adjective starts with a vowel and returns An if matched or A if not
+     * @returns boolean
     */
-    storeGetPromptAdjectives (): Record<string, string | number> {
+    promptArticle (): string {
+      return this.storeGetPromptAdjectives[0].text.match('^[aieouAIEOU].') ? 'An' : 'A'
+    },
+
+    /**
+     * Get the current Adjectives from the store
+     * @returns any
+    */
+    // eslint-disable-next-line
+    storeGetPromptAdjectives (): any {
       return this.$store.state.promptBuilder.adjectives
     },
 
@@ -72,9 +87,10 @@ export default Vue.extend({
 
     /**
      * Get the current Theme from the store
-     * @returns Record<string, string | number>
+     * @returns any
     */
-    storeGetPromptTheme (): Record<string, string | number> {
+    // eslint-disable-next-line
+    storeGetPromptTheme (): any {
       return this.$store.state.promptBuilder.theme
     },
 
@@ -107,8 +123,18 @@ export default Vue.extend({
      * @param storeProperty: Record<string, string | number>
      * @returns boolean
     */
-    checkItemId (itemId: string, storeProperty: Record<string, string | number>): boolean {
+    checkIfItemIdIsLast (itemId: string, storeProperty: Record<string, string | number>): boolean {
       return parseInt(itemId.slice(-1)) !== Object.keys(storeProperty).length - 1
+    },
+
+    /**
+     * Reutrn whether the sliced item id is identical to the first index of the
+     * passed Array
+     * @param itemId: string
+     * @returns boolean
+    */
+    checkIfItemIdIsFirst (itemId: string): boolean {
+      return parseInt(itemId.slice(-1)) === 0
     },
 
     /**
@@ -136,8 +162,61 @@ export default Vue.extend({
 <style lang="scss" scoped>
   .prompt-overlay {
     &__text {
+      &-wrapper {
+        a {
+          &:active,
+          &:hover,
+          &:focus,
+          &:link,
+          &:visited {
+            outline: none;
+            position: relative;
+            text-decoration: none;
+
+            &::after {
+              bottom: 0;
+              content: "";
+              display: block;
+              position: absolute;
+              height: 3px;
+              left: 50%;
+              outline: none;
+              transform: translateX(-50%);
+              transition: width 0.25s;
+              width: 0;
+              z-index: 500;
+            }
+          }
+
+          &:active,
+          &:focus,
+          &:hover {
+            text-decoration: underline;
+
+            @media screen and (min-width: breakpoints.$desktop) {
+              text-decoration: none;
+
+              &::after {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
       &--adjective {
         color: colors.$emerald;
+
+        &:active,
+        &:focus,
+        &:hover {
+
+          @media screen and (min-width: breakpoints.$desktop) {
+            &::after {
+              background-color: colors.$emerald;
+            }
+          }
+        }
       }
 
       &--challenge {
@@ -147,6 +226,16 @@ export default Vue.extend({
       &--theme {
         color: colors.$peter-river;
         display: inline;
+
+        &:active,
+        &:focus,
+        &:hover {
+          @media screen and (min-width: breakpoints.$desktop) {
+            &::after {
+              background-color: colors.$peter-river;
+            }
+          }
+        }
       }
 
       &__space {

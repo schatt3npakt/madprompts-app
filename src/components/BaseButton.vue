@@ -68,7 +68,8 @@ export default Vue.extend({
           background-color: colors.$nephritis;
       }
 
-      &:hover:not(:active) {
+      &:hover:not(:active),
+      &:focus:not(:active) {
         background-color: lighten(colors.$emerald, 5%);
         border-bottom: 5px solid lighten(colors.$nephritis, 5%);
       }

@@ -34,27 +34,36 @@
 - Device optimization/ font-and button size rework [X]
 - Tablet Landscape fixes [X]
 
+# 0.6.0
+- add artist link property [X]
+- tab index cleanup [X]
+- Start working on prompt vocab [X]
+- link styling [X]
+- new pixelart buttons [X]
+- loading screen [X]
+- startup animations [X]
+
 # Backlog
-- add artist link property
-- tab index cleanup
-- Start working on prompt vocab
-- link styling
-- Color refactoring => Themes?
-- new pixelart buttons
-- loading screen
-- startup animations
 - Favicon
 - visual cue if challenge mode is enabled
 - Twitter/instagran Account
 - webspace and mail addresses
 - homepage
 - structured data
+- Light/dark themes
 - random prompt introduction
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
 - hint system
 - app options -> themes?
+- update layout file
+- prompt links as app option
 - PWA Features
 - sounds?
+- detect disabled js
+- detect ie
+- fix google search results
+- add food as theme
+- open source?
 
 ## Version end checklist
 - updated version number in frontend?
@@ -62,11 +71,4 @@
 - commit and push to remote
 - create PR
 - merge and create commit tag with version number
-
-## Art update update
-- Needed resolutions are available?
-  - Mobile
-  - Tablet
-  - Desktop
-- store old background image files in archive
-- update artist name in store
+- priorise backlog and create next milestone

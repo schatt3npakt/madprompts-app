@@ -1,0 +1,10 @@
+$elements-delay: 0.25s;
+$sidebar-delay: 1s;
+$logo: $elements-delay + ($sidebar-delay * 2);
+$numberInput: $elements-delay * 2 + ($sidebar-delay * 2);
+$slider: $elements-delay * 3 + ($sidebar-delay * 2);
+$toggleButton: $elements-delay * 4 + ($sidebar-delay * 2);
+$buttonSubmit: $elements-delay * 5 + ($sidebar-delay * 2);
+$footerTextArtist: $elements-delay * 6 + ($sidebar-delay * 2);
+$footerTextVersion: $elements-delay * 7 + ($sidebar-delay * 2);
+$startupAnimation: 1s ease-out forwards;

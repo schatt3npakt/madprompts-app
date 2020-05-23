@@ -8,6 +8,7 @@
       class="number-input__input"
       id="adjectives"
       maxlength="1"
+      min="1"
       name="adjectives"
       onclick="javascript: this.select();"
       @input="inputHandler"
