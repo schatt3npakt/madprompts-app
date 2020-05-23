@@ -163,6 +163,11 @@ export default Vue.extend({
   .prompt-overlay {
     &__text {
       &-wrapper {
+        @media screen and (max-height: 500px) {
+          max-height: 400px;
+          overflow: auto;
+        }
+
         a {
           &:active,
           &:hover,

@@ -164,6 +164,10 @@ export default Vue.extend({
       max-height: 400px;
       margin-bottom: 15px;
 
+      @media screen and (max-height: 500px) {
+        overflow: auto;
+      }
+
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         max-height: 480px;
       }
@@ -303,6 +307,7 @@ export default Vue.extend({
 @media screen and (max-width: breakpoints.$tablet-portrait-max) {
   .app-view {
     .button--submit,
+    .footer-text__artist,
     .footer-text__version,
     .logo,
     .number-input,
@@ -315,6 +320,7 @@ export default Vue.extend({
   .loaded {
     .app-view {
       .button--submit,
+      .footer-text__artist,
       .footer-text__version,
       .logo,
       .number-input,
@@ -334,6 +340,7 @@ export default Vue.extend({
     }
 
     .button--submit,
+    .footer-text__artist,
     .footer-text__version,
     .logo,
     .number-input,
@@ -356,6 +363,7 @@ export default Vue.extend({
         animation: flyInFromLeft animations.$startupAnimation;
       }
 
+      .footer-text__artist,
       .footer-text__version {
         animation: fadeIn animations.$startupAnimation;
       }
@@ -377,6 +385,7 @@ export default Vue.extend({
       .toggle-button {animation-delay: animations.$toggleButton};
       .button--submit {animation-delay: animations.$buttonSubmit};
       .footer-text__version {animation-delay: animations.$footerTextVersion};
+      .footer-text__artist {animation-delay: animations.$footerTextArtist};
     }
   }
 }
