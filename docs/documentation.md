@@ -96,3 +96,13 @@ and the theme text into the theme property of the store.
 In the front end, inside the PromptBuilder-Component, that Array
 is iterated over by a v-for directive and the themes appear in
 the front end.
+
+## Art update
+- Needed resolutions are available?
+  - Mobile: 767x1358
+  - Tablet: 991x1323
+  - Desktop: 1399x876
+- store old background image files in archive
+- update artist name in appview component
+- update artist link in appview component
+- update artist title

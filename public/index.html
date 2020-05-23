@@ -18,11 +18,9 @@
     }
 
     .loading-screen {
-      animation: 1s ease-out 2s fadeIn forwards;
       background: rgb(44, 62, 80);
       height: 100vh;
       left: 0;
-      opacity: 0;
       position: fixed;
       top: 0;
       width: 100vw;
@@ -30,6 +28,8 @@
     }
 
     .loading-screen__inner {
+      animation: 1s ease-out 0.5s fadeIn forwards;
+      opacity: 0;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -84,7 +84,7 @@
       from {opacity: 0}
       to {opacity: 1}
     }
-    
+
   </style>
   <body>
     <noscript>
@@ -103,8 +103,10 @@
     <script>
       window.addEventListener('load', function(){
         let elem = document.getElementById('loading')
+        let app = document.getElementById('app')
         
         elem.parentNode.removeChild(elem);
+        app.classList.add("loaded");
       })
     </script>
   </body>

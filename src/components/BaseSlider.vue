@@ -209,6 +209,7 @@ export default Vue.extend({
       text-transform: uppercase;
       top: 50%;
       transform: translate(-50%, -50%);
+      transition: opacity 0.25s;
       width: 100%;
 
       &--active {

@@ -39,9 +39,9 @@
 - tab index cleanup [X]
 - Start working on prompt vocab [X]
 - link styling [X]
-- new pixelart buttons
+- new pixelart buttons [X]
 - loading screen [X]
-- startup animations
+- startup animations [X]
 
 # Backlog
 - Favicon
@@ -55,6 +55,7 @@
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
 - hint system
 - app options -> themes?
+- update layout file
 - prompt links as app option
 - PWA Features
 - sounds?
@@ -70,13 +71,4 @@
 - commit and push to remote
 - create PR
 - merge and create commit tag with version number
-
-## Art update
-- Needed resolutions are available?
-  - Mobile
-  - Tablet
-  - Desktop
-- store old background image files in archive
-- update artist name in appview component
-- update artist link in appview component
-- update artist title
+- priorise backlog and create next milestone

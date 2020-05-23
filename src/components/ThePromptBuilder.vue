@@ -171,13 +171,14 @@ export default Vue.extend({
           &:visited {
             outline: none;
             position: relative;
+            text-decoration: none;
 
             &::after {
               bottom: 0;
               content: "";
               display: block;
               position: absolute;
-              height: 2px;
+              height: 3px;
               left: 50%;
               outline: none;
               transform: translateX(-50%);
@@ -196,7 +197,6 @@ export default Vue.extend({
               text-decoration: none;
 
               &::after {
-                background-color: colors.$peter-river;
                 width: 100%;
               }
             }
@@ -206,6 +206,17 @@ export default Vue.extend({
 
       &--adjective {
         color: colors.$emerald;
+
+        &:active,
+        &:focus,
+        &:hover {
+
+          @media screen and (min-width: breakpoints.$desktop) {
+            &::after {
+              background-color: colors.$emerald;
+            }
+          }
+        }
       }
 
       &--challenge {
@@ -215,6 +226,16 @@ export default Vue.extend({
       &--theme {
         color: colors.$peter-river;
         display: inline;
+
+        &:active,
+        &:focus,
+        &:hover {
+          @media screen and (min-width: breakpoints.$desktop) {
+            &::after {
+              background-color: colors.$peter-river;
+            }
+          }
+        }
       }
 
       &__space {

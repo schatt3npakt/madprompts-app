@@ -2,12 +2,12 @@
   <div class="app-view">
       <div class="app-view__container">
         <div class="app-view__container__inner">
-          <h1
+          <a
             class="logo"
             href="#"
           >
             BADPROMPTS
-          </h1>
+          </a>
 
           <div>
             <div class="form">
@@ -71,7 +71,7 @@ export default Vue.extend({
         artist: 'Artwork by a_very_long_artist_name',
         artistTitle: 'Visit a_very_long_artist_name on Instagram!',
         artistLink: '#',
-        version: '0.5.0'
+        version: '0.6.0'
       }
     }
   },
@@ -297,5 +297,112 @@ export default Vue.extend({
       }
     }
   }
+}
+
+@media screen and (max-width: breakpoints.$tablet-portrait-max) {
+  .app-view {
+    .button--submit,
+    .footer-text__version,
+    .logo,
+    .number-input,
+    .slider,
+    .toggle-button {
+      opacity: 0;
+    }
+  }
+
+  .loaded {
+    .app-view {
+      .button--submit,
+      .footer-text__version,
+      .logo,
+      .number-input,
+      .slider,
+      .toggle-button {
+        animation: fadeIn animations.$startupAnimation;
+        animation-delay: animations.$sidebar-delay;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: breakpoints.$desktop) {
+  .app-view {
+    .app-view__container {
+      transform: translateX(-100%);
+    }
+
+    .button--submit,
+    .footer-text__version,
+    .logo,
+    .number-input,
+    .slider,
+    .toggle-button {
+      opacity: 0;
+    }
+  }
+
+  .loaded {
+    .app-view {
+      .app-view__container {
+        animation: slideInFromLeft animations.$startupAnimation;
+      }
+
+      .button--submit,
+      .number-input,
+      .slider,
+      .toggle-button {
+        animation: flyInFromLeft animations.$startupAnimation;
+      }
+
+      .footer-text__version {
+        animation: fadeIn animations.$startupAnimation;
+      }
+
+      .logo {
+        animation: fadeIn animations.$startupAnimation;
+      }
+    }
+  }
+
+  //Animation order
+
+  .loaded {
+    .app-view {
+      .app-view__container {animation-delay: animations.$sidebar-delay};
+      .logo {animation-delay: animations.$logo};
+      .number-input {animation-delay: animations.$numberInput};
+      .slider {animation-delay: animations.$slider};
+      .toggle-button {animation-delay: animations.$toggleButton};
+      .button--submit {animation-delay: animations.$buttonSubmit};
+      .footer-text__version {animation-delay: animations.$footerTextVersion};
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes flyInFromBottom {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes flyInFromLeft {
+  from {opacity: 0; transform: translateX(-20px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+@keyframes flyInFromTop {
+  from {opacity: 0; transform: translateY(-20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideInFromLeft {
+  0% {transform: translateX(-100%);}
+  99% {transform: translateX(0);}
+  100% {transform: none;}
 }
 </style>
