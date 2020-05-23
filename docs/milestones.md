@@ -45,9 +45,8 @@
 - startup animations [X]
 
 ## 0.7.0
-- detect disabled js
+- detect disabled js [X]
 - Favicon
-- structured data
 - update layout file
 - meta-data for site and references to project name update
 
@@ -92,3 +91,4 @@
 - FAQ
 - Link to app (app as subdomain?)
 - footer
+- structured data

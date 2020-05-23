@@ -1,4 +1,4 @@
-# drawing-prompts
+# BADPROMPTS
 
 ## Project setup
 ```
