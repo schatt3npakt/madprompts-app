@@ -17,6 +17,46 @@
       width: 100%;
     }
 
+    #js-error {
+      animation: fadeIn 0.5s ease-out forwards;
+      background: rgba(23, 35, 48, 0.8);
+      height: 100vh;
+      left: 0;
+      opacity: 0;
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      z-index: 21;
+    }
+
+    .js-error__inner {
+      background-color: rgb(44, 62, 80);
+      border-bottom: 5px solid rgb(14, 21, 29);
+      color: white;
+      font-family: 'VT323', 'Arial', sans-serif;
+      font-display: swap;
+      height: 100%;
+      left: 50%;
+      max-height: 350px;
+      max-width: 600px;
+      padding: 20px;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 80px);
+    }
+
+    .js-error__title {
+      font-size: 35px;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .js-error__body-test {
+      font-size: 25px;
+      margin-top: 0;
+    }
+
     .loading-screen {
       background: rgb(44, 62, 80);
       height: 100vh;
@@ -24,7 +64,7 @@
       position: fixed;
       top: 0;
       width: 100vw;
-      z-index: 500;
+      z-index: 20;
     }
 
     .loading-screen__inner {
@@ -75,21 +115,33 @@
       }
     }
 
-    @keyframes loading-bar {
-      from {left: -200%}
-      to {left: 200%}
-    }
-
     @keyframes fadeIn {
       from {opacity: 0}
       to {opacity: 1}
     }
 
+    @keyframes loading-bar {
+      from {left: -200%}
+      to {left: 200%}
+    }
   </style>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <div id="js-error">
+        <div class="js-error__inner">
+          <p class="js-error__title">
+            You seem to have disabled JavaScript
+          </p>
+
+          <p class="js-error__body-test">
+            However, this web application needs to run JavaScript in order to work.<br /><br />
+            If you wish to use BADPROMPTS, please enable JavaScript and reload the page!
+          </p>
+        </div>
+    </div>
+
     <div class="loading-screen" id="loading">
       <div class="loading-screen__inner">
           <span class="logo"></span>
@@ -101,11 +153,16 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script>
+      var jsError = document.getElementById('js-error')
+
+      jsError.parentNode.removeChild(jsError);
+
       window.addEventListener('load', function(){
-        let elem = document.getElementById('loading')
-        let app = document.getElementById('app')
+        var loadingScreen = document.getElementById('loading')
+        var jsError = document.getElementById('js-error')
+        var app = document.getElementById('app')
         
-        elem.parentNode.removeChild(elem);
+        loadingScreen.parentNode.removeChild(loadingScreen);
         app.classList.add("loaded");
       })
     </script>
