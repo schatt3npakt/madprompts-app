@@ -10,10 +10,15 @@
           v-for="item in storeGetPromptAdjectives"
           :key="item.id"
         >
-          <span class="prompt-overlay__text--adjective">
+          <a
+            class="prompt-overlay__text--adjective"
+            :href="linkBuilder(item.text)"
+            target="_blank"
+            :title="linkTitleBuilder(item.text)"
+          >
             <span v-if="checkIfItemIdIsFirst(item.id)">{{promptArticle}}&nbsp;</span>
               {{item.text}}<span v-if="checkIfItemIdIsLast(item.id, storeGetPromptAdjectives)">,</span>
-          </span><br />
+          </a><br />
         </div>
 
         <span
@@ -22,10 +27,10 @@
         >
           <a
             class="prompt-overlay__text--theme"
-            :href="linkBuilder(item.name)"
+            :href="linkBuilder(item.text)"
             target="_blank"
-            :title="linkTitleBuilder(item.name)"
-          >{{item.name}}</a>
+            :title="linkTitleBuilder(item.text)"
+          >{{item.text}}</a>
 
           <pre
             class="prompt-overlay__text__space"
@@ -57,8 +62,9 @@ export default Vue.extend({
 
     /**
      * Get the current Adjectives from the store
-     * @returns Record<string, string | number>
+     * @returns any
     */
+    // eslint-disable-next-line
     storeGetPromptAdjectives (): any {
       return this.$store.state.promptBuilder.adjectives
     },
@@ -81,8 +87,9 @@ export default Vue.extend({
 
     /**
      * Get the current Theme from the store
-     * @returns Record<string, string | number>
+     * @returns any
     */
+    // eslint-disable-next-line
     storeGetPromptTheme (): any {
       return this.$store.state.promptBuilder.theme
     },
@@ -162,7 +169,6 @@ export default Vue.extend({
           &:focus,
           &:link,
           &:visited {
-            text-decoration: none;
             outline: none;
             position: relative;
 
@@ -173,6 +179,7 @@ export default Vue.extend({
               position: absolute;
               height: 2px;
               left: 50%;
+              outline: none;
               transform: translateX(-50%);
               transition: width 0.25s;
               width: 0;
@@ -183,9 +190,15 @@ export default Vue.extend({
           &:active,
           &:focus,
           &:hover {
-            &::after {
-              background-color: colors.$peter-river;
-              width: 100%;
+            text-decoration: underline;
+
+            @media screen and (min-width: breakpoints.$desktop) {
+              text-decoration: none;
+
+              &::after {
+                background-color: colors.$peter-river;
+                width: 100%;
+              }
             }
           }
         }

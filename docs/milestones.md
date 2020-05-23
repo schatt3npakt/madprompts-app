@@ -55,6 +55,7 @@
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
 - hint system
 - app options -> themes?
+- prompt links as app option
 - PWA Features
 - sounds?
 - detect disabled js
