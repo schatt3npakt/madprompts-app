@@ -72,7 +72,7 @@ export default Vue.extend({
         artist: 'Artwork by a_very_long_artist_name',
         artistTitle: 'Visit a_very_long_artist_name on Instagram!',
         artistLink: '#',
-        version: '0.6.0'
+        version: '0.7.0'
       }
     }
   },
