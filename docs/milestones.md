@@ -63,7 +63,7 @@
 ### Must
 - Twitter/instagran Account
 - webspace and mail addresses
-- inline svg for loading screen
+- bigger vocab
 
 ### Should
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
@@ -80,6 +80,7 @@
 - sounds?
 - open source?
 - Light/dark themes
+- inline svg for loading screen
 
 ## Backlog
 - PWA Features
