@@ -47,7 +47,7 @@
 ## 0.7.0
 - detect disabled js [X]
 - Favicon [X]
-- update layout file
+- update layout file [X]
 - meta-data for site and references to project name update [X]
 
 ## Version end checklist
@@ -64,6 +64,8 @@
 - Twitter/instagran Account
 - webspace and mail addresses
 - bigger vocab
+- get new art
+- highdpi background image
 
 ### Should
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
@@ -84,6 +86,8 @@
 
 ## Backlog
 - PWA Features
+- Challenge Levels based on prompt configuration
+- Music based on prompt configuration
 
 # Homepage
 ## Backlog
