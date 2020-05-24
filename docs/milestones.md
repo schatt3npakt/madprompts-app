@@ -50,6 +50,16 @@
 - update layout file [X]
 - meta-data for site and references to project name update [X]
 
+## 1.0.0
+- Homepage
+- Twitter/instagran Account
+- webspace and mail addresses
+- bigger vocab
+- get new art
+- highdpi background image
+- run and deploy production build
+- new arrows
+
 ## Version end checklist
 - updated version number in frontend?
 - all tasks for current version checked?
@@ -61,11 +71,6 @@
 # Tasks
 ## Categories
 ### Must
-- Twitter/instagran Account
-- webspace and mail addresses
-- bigger vocab
-- get new art
-- highdpi background image
 
 ### Should
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
