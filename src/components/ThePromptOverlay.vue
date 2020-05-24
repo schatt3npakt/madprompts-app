@@ -74,6 +74,7 @@ export default Vue.extend({
     z-index: z-index.$prompt-layer;
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
+      height: calc(100vh - 80px);
       padding: 40px;
     }
 

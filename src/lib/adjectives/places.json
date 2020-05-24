@@ -1,7 +1,20 @@
 {
   "data": 
     [
+      "blooming",
+      "bright-lit",
+      "burning",
+      "cold",
       "crumbling",
-      "gothic"
+      "deserted",
+      "destroyed",
+      "forsaken",
+      "gothic",
+      "haunted",
+      "hidden",
+      "mist-covered",
+      "overgrown",
+      "quaint",
+      "spider-ridden"    
     ]
 }

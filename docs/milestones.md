@@ -51,14 +51,17 @@
 - meta-data for site and references to project name update [X]
 
 ## 1.0.0
-- Homepage
-- Twitter/instagran Account
-- webspace and mail addresses
+- rework logo files for loading screen [X]
+- new arrows [X]
 - bigger vocab
 - get new art
-- highdpi background image
-- run and deploy production build
-- new arrows
+- highdpi background image [X]
+- run and deploy production build [X]
+- force portrait on mobile [X]
+- number input behaviour [X]
+- webspace and mail addresses
+- Homepage
+- Twitter/instagran Account
 
 ## Version end checklist
 - updated version number in frontend?
@@ -79,6 +82,8 @@
 ### Nice to have
 - visual cue if challenge mode is enabled
 - random prompt introduction
+- Custom Install
+- rework PWA
 - hint system
 - app options -> themes?
 - prompt links as app option

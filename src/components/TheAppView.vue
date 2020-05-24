@@ -130,6 +130,10 @@ export default Vue.extend({
     background-image: url(../assets/img/bg-desktop.jpg);
   }
 
+  @media screen and (min-width: breakpoints.$desktop-large) {
+    background-image: url(../assets/img/bg-desktop-large.jpg);
+  }
+
   &__container {
     display: flex;
     flex-flow: column nowrap;
@@ -360,7 +364,7 @@ export default Vue.extend({
       .number-input,
       .slider,
       .toggle-button {
-        animation: flyInFromLeft animations.$startupAnimation;
+        animation: fadeIn animations.$startupAnimation;
       }
 
       .footer-text__artist,
@@ -398,11 +402,6 @@ export default Vue.extend({
 @keyframes flyInFromBottom {
   from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes flyInFromLeft {
-  from {opacity: 0; transform: translateX(-20px);}
-  to {opacity: 1; transform: translateX(0);}
 }
 
 @keyframes flyInFromTop {

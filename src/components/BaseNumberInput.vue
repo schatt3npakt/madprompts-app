@@ -1,7 +1,7 @@
 <template>
   <div class="number-input">
     <div class="number-input__label">
-      <label class="number-input__label__text">Adjectives</label>
+      <p class="number-input__label__text">Adjectives</p>
     </div>
 
     <input
