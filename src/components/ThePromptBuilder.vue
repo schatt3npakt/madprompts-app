@@ -163,6 +163,11 @@ export default Vue.extend({
   .prompt-overlay {
     &__text {
       &-wrapper {
+        @media screen and (max-height: 500px) {
+          max-height: 400px;
+          overflow: auto;
+        }
+
         a {
           &:active,
           &:hover,
@@ -205,7 +210,7 @@ export default Vue.extend({
       }
 
       &--adjective {
-        color: colors.$emerald;
+        color: colors.$turqouise;
 
         &:active,
         &:focus,
@@ -213,7 +218,7 @@ export default Vue.extend({
 
           @media screen and (min-width: breakpoints.$desktop) {
             &::after {
-              background-color: colors.$emerald;
+              background-color: colors.$turqouise;
             }
           }
         }

@@ -61,17 +61,21 @@ export default Vue.extend({
     color: white;
     display: flex;
     flex-flow: column nowrap;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 70px);
     justify-content: space-between;
     left: 0;
     overflow: hidden;
-    padding: 40px;
+    padding: 40px 40px 30px 40px;
     position: fixed;
     top: 0;
     transform: translateY(-100%);
     transition: transform 0.85s ease-out;
     width: calc(100vw - 80px);
     z-index: z-index.$prompt-layer;
+
+    @media screen and (min-width: breakpoints.$tablet-portrait) {
+      padding: 40px;
+    }
 
     .button--submit {
       opacity: 0;

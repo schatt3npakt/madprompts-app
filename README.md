@@ -1,4 +1,4 @@
-# drawing-prompts
+# MADPROMPTS
 
 ## Project setup
 ```
