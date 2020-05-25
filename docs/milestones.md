@@ -53,8 +53,8 @@
 ## 1.0.0
 - rework logo files for loading screen [X]
 - new arrows [X]
-- bigger vocab
-- get new art
+- bigger vocab [X]
+- get new art [X]
 - highdpi background image [X]
 - run and deploy production build [X]
 - force portrait on mobile [X]
