@@ -67,7 +67,6 @@
 - add food as theme [X]
 - add beasts as theme [X]
 - outline firefox [X]
-- add condition to enable or disable links 
 
 ## Version end checklist
 - updated version number in frontend?
@@ -82,7 +81,6 @@
 ### Must
 
 ### Should
-- custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
 - number input behaviour on mobile chrome
 
 ### Nice to have
