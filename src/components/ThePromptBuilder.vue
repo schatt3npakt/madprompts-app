@@ -3,7 +3,7 @@
       class="prompt-overlay__text-wrapper"
       :class="[storeDisplaySmallPromptText? smallTextClass: '']"
     >
-      <span>Here's your prompt:</span><br />
+      <span>{{storeGetPromptHeadline}}</span><br /><br />
 
       <div v-if="storeGetFirstPromptCreated">
         <div
@@ -75,6 +75,14 @@ export default Vue.extend({
     */
     storeGetFirstPromptCreated (): boolean {
       return this.$store.state.promptBuilder.firstPromptCreated
+    },
+
+    /**
+     * Returns the random headline for the prompt
+     * @returns boolean
+    */
+    storeGetPromptHeadline (): boolean {
+      return this.$store.state.promptBuilder.headline
     },
 
     /**

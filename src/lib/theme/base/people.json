@@ -1,17 +1,16 @@
 {
   "data": 
     [
+      "archer",
       "artist",
-      "abomination",
       "baker",
       "cook",
       "deity",
+      "dwarf",
       "demon-slayer",
       "drummer",
-      "elder god",
       "gangster",
       "gardener",
-      "ghost",
       "gatekeeper",
       "grave-robber",
       "guitar-player",
@@ -23,21 +22,20 @@
       "jester",
       "judge",
       "killer",
+      "king",
       "knight",
       "librarian",
-      "lich",
       "metalhead",
       "nurse",
       "poet",
       "police officer",
       "pope",
+      "queen",
       "shoemaker",
       "soldier",
       "treasure hunter",
       "warrior",
-      "werewolf",
       "writer",
-      "witch",
-      "zombie"
+      "witch"
     ]
 }

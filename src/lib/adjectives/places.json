@@ -1,20 +1,26 @@
 {
   "data": 
     [
-      "blooming",
+      "asian",
+      "blood-stained",
       "bright-lit",
       "burning",
-      "cold",
       "crumbling",
       "deserted",
       "destroyed",
+      "dusty",
       "forsaken",
+      "frozen",
       "gothic",
       "haunted",
       "hidden",
       "mist-covered",
       "overgrown",
       "quaint",
-      "spider-ridden"    
+      "spider-ridden",
+      "sunlit",
+      "unsettling",
+      "well-protected",
+      "wild-west-style"
     ]
 }

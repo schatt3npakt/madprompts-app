@@ -63,8 +63,11 @@
 - Homepage [X]
 - Twitter/instagran Account
 - New Prompt Button on mobile [X]
-- Label fix
-  outline firefox []
+- Label fix [X]
+- add food as theme
+- add beasts as theme
+- outline firefox [X]
+- add condition to enable or disable links
 
 ## Version end checklist
 - updated version number in frontend?
@@ -80,6 +83,7 @@
 
 ### Should
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
+- number input behaviour on mobile chrome
 
 ### Nice to have
 - visual cue if challenge mode is enabled
@@ -89,7 +93,6 @@
 - hint system
 - app options -> themes?
 - prompt links as app option
-- add food as theme
 - detect ie
 - sounds?
 - open source?

@@ -5,16 +5,25 @@ import Vuex from 'vuex'
 // challenges
 import * as challenges from '@/lib/challenges.json'
 
+// challenges
+import * as headlines from '@/lib/headlines.json'
+
 // themes
+import * as themeBeasts from '@/lib/theme/base/beasts.json'
+import * as themeBeastsSpecial from '@/lib/theme/base/beastsSpecial.json'
+import * as themeFood from '@/lib/theme/base/food.json'
+import * as themeFoodSpecial from '@/lib/theme/base/foodSpecial.json'
 import * as themePeople from '@/lib/theme/base/people.json'
 import * as themePeopleSpecial from '@/lib/theme/base/peopleSpecial.json'
 import * as themePlaces from '@/lib/theme/base/places.json'
 import * as themePlacesSpecial from '@/lib/theme/base/placesSpecial.json'
 
 // adjectives
-import * as adjectivesStyle from '@/lib/adjectives/style.json'
+import * as adjectivesBeasts from '@/lib/adjectives/beasts.json'
+import * as adjectivesFood from '@/lib/adjectives/food.json'
 import * as adjectivesPeople from '@/lib/adjectives/people.json'
 import * as adjectivesPlaces from '@/lib/adjectives/places.json'
+import * as adjectivesStyle from '@/lib/adjectives/style.json'
 
 // seasonal vocab libraries
 // themes
@@ -132,6 +141,7 @@ export default new Vuex.Store({
      * @returns void
     */
     buildPrompt ({ commit }) {
+      commit('setPromptHeadline')
       commit('setAdjectivesPrompt')
       commit('setThemePrompt')
       commit('setChallengePrompt')
@@ -168,6 +178,40 @@ export default new Vuex.Store({
     },
 
     /**
+       * Set zhe adjectives for the current prompt from the general array if challenge is enabled or
+       * themed adjective array if challenge is disabled
+       * @param state
+       * @returns void
+      */
+    setAdjectivesPrompt (state): void {
+      if (state.appView.formElements.challengeButton.isActive) {
+        adjectivesHelper(state, state.lib.adjectives.general)
+      } else {
+        switch (state.appView.formElements.slider.activeItem) {
+          // Case for People prompts
+          case 0:
+            adjectivesHelper(state, state.lib.adjectives.people)
+            break
+
+          // Case for Places prompts
+          case 1:
+            adjectivesHelper(state, state.lib.adjectives.places)
+            break
+
+          // Case for Beasts prompts
+          case 2:
+            adjectivesHelper(state, state.lib.adjectives.beasts)
+            break
+
+          // Case for Food prompts
+          case 3:
+            adjectivesHelper(state, state.lib.adjectives.food)
+            break
+        }
+      }
+    },
+
+    /**
      * Set the number of adjectives for prompt to the passed user input value.
      * @param state
      * @param value: number
@@ -184,6 +228,15 @@ export default new Vuex.Store({
     */
     setChallengePrompt (state): void {
       state.promptBuilder.challenge = state.lib.challenges[arrayRandomizer(state.lib.challenges.length)]
+    },
+
+    /**
+     * Set zhe headline for the current prompt to a random item in the headlines array
+     * @param state
+     * @returns void
+    */
+    setPromptHeadline (state): void {
+      state.promptBuilder.headline = state.lib.headlines[arrayRandomizer(state.lib.headlines.length)]
     },
 
     /**
@@ -207,30 +260,16 @@ export default new Vuex.Store({
         case 1:
           themeHelper(state, state.lib.theme.places.normal, state.lib.theme.places.special)
           break
-      }
-    },
 
-    /**
-     * Set zhe adjectives for the current prompt from the general array if challenge is enabled or
-     * themed adjective array if challenge is disabled
-     * @param state
-     * @returns void
-    */
-    setAdjectivesPrompt (state): void {
-      if (state.appView.formElements.challengeButton.isActive) {
-        adjectivesHelper(state, state.lib.adjectives.general)
-      } else {
-        switch (state.appView.formElements.slider.activeItem) {
-          // Case for People prompts
-          case 0:
-            adjectivesHelper(state, state.lib.adjectives.people)
-            break
+        // Case for Beasts prompts
+        case 2:
+          themeHelper(state, state.lib.theme.beasts.normal, state.lib.theme.beasts.special)
+          break
 
-          // Case for Places prompts
-          case 1:
-            adjectivesHelper(state, state.lib.adjectives.places)
-            break
-        }
+        // Case for Food prompts
+        case 3:
+          themeHelper(state, state.lib.theme.food.normal, state.lib.theme.food.special)
+          break
       }
     },
 
@@ -284,7 +323,9 @@ export default new Vuex.Store({
           activeItem: 0,
           items: [
             { id: 0, name: 'People' },
-            { id: 1, name: 'Places' }
+            { id: 1, name: 'Places' },
+            { id: 2, name: 'Beasts' },
+            { id: 3, name: 'Food' }
           ]
         }
       },
@@ -296,8 +337,16 @@ export default new Vuex.Store({
       adjectives: {
         // general is used as library of applicable adje
         general: adjectivesPeople.data.concat(
+          adjectivesBeasts.data,
+          adjectivesFood.data,
           adjectivesStyle.data,
           adjectivesPlaces.data
+        ),
+        beasts: adjectivesBeasts.data.concat(
+          adjectivesStyle.data
+        ),
+        food: adjectivesFood.data.concat(
+          adjectivesStyle.data
         ),
         people: adjectivesPeople.data.concat(
           adjectivesStyle.data
@@ -307,9 +356,21 @@ export default new Vuex.Store({
         )
       },
       challenges: challenges.data,
+      headlines: headlines.data,
       theme: {
         // general is used as library for the first part of the theme and includes all normal arrays
-        general: themePeople.data.concat(themePlaces.data),
+        general: themePeople.data.concat(
+          themeBeasts.data,
+          themePlaces.data
+        ),
+        beasts: {
+          normal: themeBeasts.data,
+          special: themeBeastsSpecial.data
+        },
+        food: {
+          normal: themeFood.data,
+          special: themeFoodSpecial.data
+        },
         people: {
           normal: themePeople.data,
           special: themePeopleSpecial.data
@@ -324,6 +385,7 @@ export default new Vuex.Store({
       adjectives: [{}],
       challenge: '',
       firstPromptCreated: false,
+      headline: '',
       theme: [{}]
     }
   }
