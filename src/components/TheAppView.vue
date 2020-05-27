@@ -113,6 +113,12 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+  button::-moz-focus-inner,
+  input::-moz-focus-inner,
+  a::-moz-focus-inner {
+    border: 0;
+  }
+
 .app-view {
   background-image: url(../assets/img/bg-mobile.jpg);
   background-position: top 0 left 0;

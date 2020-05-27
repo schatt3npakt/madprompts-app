@@ -61,7 +61,7 @@ export default Vue.extend({
     color: white;
     display: flex;
     flex-flow: column nowrap;
-    height: calc(100vh - 70px);
+    height: calc(100% - 70px);
     justify-content: space-between;
     left: 0;
     overflow: hidden;
@@ -74,7 +74,7 @@ export default Vue.extend({
     z-index: z-index.$prompt-layer;
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
-      height: calc(100vh - 80px);
+      height: calc(100% - 80px);
       padding: 40px;
     }
 

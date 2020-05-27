@@ -47,6 +47,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+a::-moz-focus-inner {
+  border: 0;
+}
+
 .toggle-button {
   background-color: colors.$concrete;
   border-bottom: 5px solid colors.$asbestos;

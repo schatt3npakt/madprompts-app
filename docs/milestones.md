@@ -62,9 +62,9 @@
 - webspace and mail addresses [X]
 - Homepage [X]
 - Twitter/instagran Account
-- New Prompt Button on mobile
+- New Prompt Button on mobile [X]
 - Label fix
-- -outline firefox
+  outline firefox []
 
 ## Version end checklist
 - updated version number in frontend?

@@ -10,7 +10,7 @@
       maxlength="1"
       min="1"
       name="adjectives"
-      onclick="javascript: this.select();"
+      onclick="javascript: this.value = '';"
       @input="inputHandler"
       type="number"
       :value="storeNumberInputValue"
@@ -56,6 +56,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+  button::-moz-focus-inner,
+  input::-moz-focus-inner,
+  a::-moz-focus-inner {
+    border: 0;
+  }
+
   .number-input {
     display: flex;
     border-radius: 0;
