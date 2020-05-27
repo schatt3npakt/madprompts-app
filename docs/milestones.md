@@ -60,7 +60,7 @@
 - force portrait on mobile [X]
 - number input behaviour [X]
 - webspace and mail addresses
-- Homepage
+- Homepage [X]
 - Twitter/instagran Account
 
 ## Version end checklist
@@ -77,7 +77,6 @@
 
 ### Should
 - custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
-- fix google search results (enchanted -> Not the movie!)
 
 ### Nice to have
 - visual cue if challenge mode is enabled

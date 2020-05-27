@@ -102,6 +102,7 @@ the front end.
   - Mobile: 767x1358
   - Tablet: 991x1323
   - Desktop: 1399x876
+  - Desktop-Large: 1920x1080
 - store old background image files in archive
 - update artist name in appview component
 - update artist link in appview component
