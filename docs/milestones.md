@@ -67,6 +67,8 @@
 - add food as theme [X]
 - add beasts as theme [X]
 - outline firefox [X]
+- PWA Features [X]
+- random prompt introduction [X]
 
 ## Version end checklist
 - updated version number in frontend?
@@ -85,7 +87,6 @@
 
 ### Nice to have
 - visual cue if challenge mode is enabled
-- random prompt introduction
 - Custom Install
 - rework PWA
 - hint system
@@ -95,19 +96,17 @@
 - sounds?
 - open source?
 - Light/dark themes
-- inline svg for loading screen
 
 ## Backlog
-- PWA Features
 - Challenge Levels based on prompt configuration
 - Music based on prompt configuration
 
 # Homepage
 ## Backlog
-- Concept
-- Design
-- layout
-- FAQ
-- Link to app (app as subdomain?)
-- footer
-- structured data
+- Concept [X]
+- Design [X]
+- layout [X]
+- FAQ [X]
+- Link to app (app as subdomain?) [X]
+- footer [X]
+- structured data [X]
