@@ -64,10 +64,10 @@
 - Twitter/instagran Account
 - New Prompt Button on mobile [X]
 - Label fix [X]
-- add food as theme
-- add beasts as theme
+- add food as theme [X]
+- add beasts as theme [X]
 - outline firefox [X]
-- add condition to enable or disable links
+- add condition to enable or disable links 
 
 ## Version end checklist
 - updated version number in frontend?
