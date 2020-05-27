@@ -59,9 +59,12 @@
 - run and deploy production build [X]
 - force portrait on mobile [X]
 - number input behaviour [X]
-- webspace and mail addresses
+- webspace and mail addresses [X]
 - Homepage [X]
 - Twitter/instagran Account
+- New Prompt Button on mobile
+- Label fix
+- -outline firefox
 
 ## Version end checklist
 - updated version number in frontend?

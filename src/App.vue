@@ -33,6 +33,12 @@ export default Vue.extend({
     font-family: fonts.$base-font;
   }
 
+  button::-moz-focus-inner,
+  input::-moz-focus-inner,
+  a::-moz-focus-inner {
+    border: 0;
+  }
+
   body,
   html,
   #app {
