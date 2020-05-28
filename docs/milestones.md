@@ -81,6 +81,7 @@
 # Tasks
 ## Categories
 ### Must
+- Twitter page cover
 
 ### Should
 - number input behaviour on mobile chrome
