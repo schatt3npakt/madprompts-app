@@ -61,7 +61,7 @@
 - number input behaviour [X]
 - webspace and mail addresses [X]
 - Homepage [X]
-- Twitter/instagran Account
+- Twitter/instagran Account [X]
 - New Prompt Button on mobile [X]
 - Label fix [X]
 - add food as theme [X]
@@ -69,6 +69,9 @@
 - outline firefox [X]
 - PWA Features [X]
 - random prompt introduction [X]
+- Prevent empty number input 
+- mobile input fix?
+- check spaces everywhere
 
 ## Version end checklist
 - updated version number in frontend?
