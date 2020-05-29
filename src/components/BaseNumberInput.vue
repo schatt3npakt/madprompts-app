@@ -8,7 +8,7 @@
       class="number-input__input"
       id="adjectives"
       maxlength="1"
-      min="1"
+      min="0"
       name="adjectives"
       @blur="blurHandler"
       onclick="javascript: this.value = '';"
@@ -38,30 +38,19 @@ export default Vue.extend({
       const target = event.target
       let targetValue = target.value
 
-      console.log(targetValue)
-
-      if (!targetValue || targetValue < 1) {
-        targetValue = 1
-        this.storeSetNumberInputValue(1)
-      } else {
-        targetValue = targetValue.slice(0, target.maxLength)
-        target.select()
-        this.storeSetNumberInputValue(targetValue)
-      }
+      targetValue = targetValue.slice(0, target.maxLength)
+      target.select()
+      this.storeSetNumberInputValue(targetValue)
     },
 
     /**
-     * Handle user focusing out of the input without providing valid input value
+     * Keep user input to one digit and pass value to commit-function
      * @param event: any
      * @returns void
     */
     blurHandler (event: any): void { // eslint-disable-line
-      let targetValue = event.target.value
-
-      if (targetValue < 1) {
-        targetValue = 1
-        this.storeSetNumberInputValue(1)
-      }
+      const target = event.target
+      target.value = this.storeNumberInputValue
     },
 
     /**
