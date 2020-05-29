@@ -4,7 +4,7 @@
         <div class="app-view__container__inner">
           <a
             class="logo"
-            href="#"
+            href="https://madprompts.com"
             title="Visit the Homepage of MADPROMPTS"
           >
             MADPROMPTS
@@ -171,7 +171,7 @@ export default Vue.extend({
       height: 100%;
       flex-flow: column nowrap;
       justify-content: space-between;
-      max-height: 400px;
+      max-height: 450px;
       margin-bottom: 15px;
 
       @media screen and (max-height: 500px) {
@@ -214,6 +214,11 @@ export default Vue.extend({
       text-align: center;
       text-decoration: none;
       text-shadow: colors.$button-shadow;
+
+      @media screen and (min-width: 360px) {
+        font-size: map_get(fonts.$logo-size, "mobile-large");
+        text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+      }
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: map_get(fonts.$logo-size, "tablet");

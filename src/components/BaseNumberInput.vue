@@ -10,6 +10,7 @@
       maxlength="1"
       min="1"
       name="adjectives"
+      @blur="blurHandler"
       onclick="javascript: this.value = '';"
       @input="inputHandler"
       type="number"
@@ -40,6 +41,20 @@ export default Vue.extend({
       targetValue = targetValue.slice(0, target.maxLength)
       target.select()
       this.storeSetNumberInputValue(targetValue)
+    },
+
+    /**
+     * Handle user focusing out of the input without providing valid input value
+     * @param event: any
+     * @returns void
+    */
+    blurHandler (event: any): void { // eslint-disable-line
+      let targetValue = event.target.value
+
+      if (targetValue < 1) {
+        targetValue = 1
+        this.storeSetNumberInputValue(1)
+      }
     },
 
     /**

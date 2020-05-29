@@ -8,12 +8,11 @@
       "den",
       "desert",
       "dungeon",
-      "exotic",
       "forge",
       "fortress",
+      "forrest",
       "garden",
       "graveyard",
-      "guild",
       "hell",
       "house",
       "island",
@@ -40,7 +39,6 @@
       "university",
       "temple",
       "village",
-      "wall",
-      "woods"
+      "wall"
     ]
 }
