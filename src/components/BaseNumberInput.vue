@@ -38,9 +38,16 @@ export default Vue.extend({
       const target = event.target
       let targetValue = target.value
 
-      targetValue = targetValue.slice(0, target.maxLength)
-      target.select()
-      this.storeSetNumberInputValue(targetValue)
+      console.log(targetValue)
+
+      if (!targetValue || targetValue < 1) {
+        targetValue = 1
+        this.storeSetNumberInputValue(1)
+      } else {
+        targetValue = targetValue.slice(0, target.maxLength)
+        target.select()
+        this.storeSetNumberInputValue(targetValue)
+      }
     },
 
     /**
