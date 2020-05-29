@@ -60,37 +60,62 @@ const chanceHelper = (chance: number) => {
 }
 
 /**
-* helper function to get a random item from the passed Array, that ensures Adjectives are unique per
-* prompt
+* helper function to get either:
+* if the user has selected 1 adjective: a random item from the style Array
+* OR first, a random item from the style Array, then the remaining random items from the passed Array,
+* that ensures Adjectives are unique per prompt,
 * @param state: any
 * @param passedArray: any
 * @returns void
 */
 // eslint-disable-next-line
 const adjectivesHelper = (state: any, passedArray: any): void => {
-  // Empty Array and define Array for adjective Ids in use
+  /**
+   * Empty Array and define Array for adjective Ids in use
+  * This will be used to determine if an adjective id has already been added to the prompt,
+  * preventing duplicates
+  */
   state.promptBuilder.adjectives = []
   const exsistingAdjectiveIds = [{}]
 
-  // Run Loop for number of times based on user input
-  for (let i = 0; i < state.appView.formElements.numberInput.value; i++) {
-    let currentAdjectiveKey
-
-    // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
-    do {
-      currentAdjectiveKey = arrayRandomizer(passedArray.length)
-    } while (exsistingAdjectiveIds.indexOf(currentAdjectiveKey) >= 1)
-
+  // Check if the user has selected one adjective
+  if (parseInt(state.appView.formElements.numberInput.value) === 1) {
     // push adjective and index into state array
     state.promptBuilder.adjectives.push(
       {
-        id: 'adjective' + i,
-        text: passedArray[currentAdjectiveKey]
+        id: 'adjective0',
+        text: state.lib.adjectives.style[arrayRandomizer(state.lib.adjectives.style.length)]
+      }
+    )
+  } else {
+    // first, push style adjective and index into state array
+    state.promptBuilder.adjectives.push(
+      {
+        id: 'adjective0',
+        text: state.lib.adjectives.style[arrayRandomizer(state.lib.adjectives.style.length)]
       }
     )
 
-    // Update exsisting Ids with the currntly passed Id
-    exsistingAdjectiveIds.push(currentAdjectiveKey)
+    // Run Loop for number of times based on user input, minus 1, because we already added the style adjective
+    for (let i = 0; i < (state.appView.formElements.numberInput.value - 1); i++) {
+      let currentAdjectiveKey
+
+      // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
+      do {
+        currentAdjectiveKey = arrayRandomizer(passedArray.length)
+      } while (exsistingAdjectiveIds.indexOf(currentAdjectiveKey) >= 1)
+
+      // push adjective and index into state array
+      state.promptBuilder.adjectives.push(
+        {
+          id: 'adjective' + (i + 1),
+          text: passedArray[currentAdjectiveKey]
+        }
+      )
+
+      // Update exsisting Ids with the currntly passed Id
+      exsistingAdjectiveIds.push(currentAdjectiveKey)
+    }
   }
 }
 
@@ -342,18 +367,11 @@ export default new Vuex.Store({
           adjectivesStyle.data,
           adjectivesPlaces.data
         ),
-        beasts: adjectivesBeasts.data.concat(
-          adjectivesStyle.data
-        ),
-        food: adjectivesFood.data.concat(
-          adjectivesStyle.data
-        ),
-        people: adjectivesPeople.data.concat(
-          adjectivesStyle.data
-        ),
-        places: adjectivesPlaces.data.concat(
-          adjectivesStyle.data
-        )
+        beasts: adjectivesBeasts.data,
+        food: adjectivesFood.data,
+        people: adjectivesPeople.data,
+        places: adjectivesPlaces.data,
+        style: adjectivesStyle.data
       },
       challenges: challenges.data,
       headlines: headlines.data,

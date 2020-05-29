@@ -69,9 +69,9 @@
 - outline firefox [X]
 - PWA Features [X]
 - random prompt introduction [X]
-- Prevent empty number input 
+- Prevent empty number input [X]
 - mobile input fix?
-- check spaces everywhere
+- check spaces everywhere [X]
 
 ## Version end checklist
 - updated version number in frontend?
@@ -85,6 +85,7 @@
 ## Categories
 ### Must
 - Twitter page cover
+- Max 1 style adjective?
 
 ### Should
 - number input behaviour on mobile chrome
