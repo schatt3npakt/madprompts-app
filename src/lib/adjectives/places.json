@@ -1,8 +1,12 @@
 {
   "data": 
     [
+      "ancient",
       "asian",
+      "besieged",
+      "badly decoyed",
       "blood-stained",
+      "bustling",
       "bright-lit",
       "burning",
       "crumbling",
@@ -15,11 +19,14 @@
       "haunted",
       "hidden",
       "mist-covered",
+      "neon",
+      "ornamented",
       "overgrown",
       "quaint",
+      "scenic",
+      "secluded",
       "spider-ridden",
       "sunlit",
-      "unsettling",
       "well-protected",
       "wild-west-style"
     ]

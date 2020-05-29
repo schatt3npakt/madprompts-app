@@ -2,8 +2,8 @@
   "data": 
     [
       "angry",
-      "anime",
-      "beautiful",
+      "buff",
+      "clumsy",
       "completely drunk",
       "conflicted",
       "crazy",
@@ -11,17 +11,24 @@
       "depressed",
       "dual-wielding",
       "eccentric",
-      "ecstatic",
       "embarrassed",
+      "happy",
       "love-stricken",
       "noble",
       "overweight",
       "psychotic",
+      "sad",
+      "sassy",
       "sexy",
       "shady",
       "shy",
       "shotgun-wielding",
+      "skinny",
+      "sunglasses-wearing",
+      "superpowered",
       "stubby",
-      "wealthy"
+      "wealthy",
+      "wounded",
+      "whiny"
     ]
 }
