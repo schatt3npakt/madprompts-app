@@ -1,17 +1,35 @@
 {
   "data": 
     [
+      "apple",
+      "avocado",
       "broccoli",
       "burger",
       "burrito",
+      "candy bar",
+      "chocolate",
+      "coffee",
       "cookie",
       "fortune cookie",
-      "ice cream",
+      "fries",
       "instant ramen",
+      "lollipop",
       "onigiri",
+      "orange",
       "pasta",
       "pizza",
       "rice",
-      "taco"
+      "sausage",
+      "soup",
+      "steak",
+      "stew",
+      "soda",
+      "sushi",
+      "sundae",
+      "syrup",
+      "taco",
+      "tea",
+      "tomato",
+      "waffle"
     ]
 }
