@@ -52,7 +52,7 @@ module.exports = {
         }
       ]
     },
-    name: 'MADPROMPTS',
+    name: 'Madprompts',
     themeColor: '#2c3e50'
   }
 }

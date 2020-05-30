@@ -105,6 +105,7 @@
 ## Backlog
 - Challenge Levels based on prompt configuration
 - Music based on prompt configuration
+  Decide by chance if first adjective is a style adjective or theme adjective
 
 # Homepage
 ## Backlog

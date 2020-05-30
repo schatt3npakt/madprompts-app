@@ -400,6 +400,7 @@ export default new Vuex.Store({
       }
     },
     promptBuilder: {
+      activateAdjectiveLinks: false,
       adjectives: [{}],
       challenge: '',
       firstPromptCreated: false,
