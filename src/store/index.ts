@@ -176,7 +176,7 @@ const themeHelper = (state: any, array: any, specialArray: any): void => {
       {
         id: 'theme0',
         // Get a random entry from special theme array
-        name: specialArray[arrayRandomizer(specialArray.length)]
+        text: specialArray[arrayRandomizer(specialArray.length)]
       }
     ]
   }
@@ -424,7 +424,6 @@ export default new Vuex.Store({
       }
     },
     promptBuilder: {
-      activateAdjectiveLinks: false,
       adjectives: [{}],
       challenge: '',
       firstPromptCreated: false,

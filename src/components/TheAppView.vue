@@ -43,7 +43,12 @@
           >
             {{footerText.artist}}
           </a>
-          <a class="footer-text__version" href="#">{{footerText.version}}</a>
+          <a
+            class="footer-text__imprint"
+            href="https://madprompts.com/#imprint"
+          >
+            Imprint
+          </a>
         </div>
 
         <ThePromptOverlay />
@@ -106,8 +111,7 @@ export default Vue.extend({
       footerText: {
         artist: 'Artwork by a_very_long_artist_name',
         artistTitle: 'Visit a_very_long_artist_name on Instagram!',
-        artistLink: '#',
-        version: '0.7.0'
+        artistLink: '#'
       },
       hardModeClasses: {
         button: 'button--hard-mode'
@@ -283,6 +287,8 @@ export default Vue.extend({
     }
 
     .footer-text {
+      display: flex;
+      flex-direction: column-reverse;
       justify-self: flex-end;
       font-size: 25px;
       text-align: center;
@@ -299,6 +305,7 @@ export default Vue.extend({
       }
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
+        flex-direction: column;
         font-size: 29px;
         text-align: left;
       }
@@ -308,12 +315,15 @@ export default Vue.extend({
       }
 
       &__artist,
-      &__version {
+      &__imprint {
+        text-shadow: 0 0 15px rgba(0, 0, 0, 1);
+
         @media screen and (min-width: breakpoints.$desktop) {
           bottom: 40px;
           display: inline;
           letter-spacing: 0;
           position: fixed;
+          text-shadow: none;
           transition: letter-spacing 0.25s ease-out;
 
           &:active,
@@ -327,6 +337,8 @@ export default Vue.extend({
       }
 
       &__artist {
+        display: block;
+
         @media screen and (min-width: breakpoints.$desktop) {
           bottom: 40px;
           display: inline;
@@ -337,12 +349,14 @@ export default Vue.extend({
         }
       }
 
-      &__version {
-        display: none;
+      &__imprint {
+        display: block;
+        margin-bottom: 20px;
 
         @media screen and (min-width: breakpoints.$tablet-portrait) {
           bottom: 40px;
           display: inline;
+          margin-bottom: 0;
           position: fixed;
           right: 50px;
           z-index: z-index.$version-text;
@@ -361,7 +375,7 @@ export default Vue.extend({
   .app-view {
     .button--submit,
     .footer-text__artist,
-    .footer-text__version,
+    .footer-text__imprint,
     .logo,
     .number-input,
     .slider,
@@ -374,7 +388,7 @@ export default Vue.extend({
     .app-view {
       .button--submit,
       .footer-text__artist,
-      .footer-text__version,
+      .footer-text__imprint,
       .logo,
       .number-input,
       .slider,
@@ -394,7 +408,7 @@ export default Vue.extend({
 
     .button--submit,
     .footer-text__artist,
-    .footer-text__version,
+    .footer-text__imprint,
     .logo,
     .number-input,
     .slider,
@@ -417,7 +431,7 @@ export default Vue.extend({
       }
 
       .footer-text__artist,
-      .footer-text__version {
+      .footer-text__imprint {
         animation: fadeIn animations.$startupAnimation;
       }
 
@@ -437,7 +451,7 @@ export default Vue.extend({
       .slider {animation-delay: animations.$slider};
       .toggle-button {animation-delay: animations.$toggleButton};
       .button--submit {animation-delay: animations.$buttonSubmit};
-      .footer-text__version {animation-delay: animations.$footerTextVersion};
+      .footer-text__imprint {animation-delay: animations.$footerTextVersion};
       .footer-text__artist {animation-delay: animations.$footerTextArtist};
     }
   }

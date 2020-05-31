@@ -70,13 +70,16 @@
 - PWA Features [X]
 - random prompt introduction [X]
 - Prevent empty number input [X]
-- Imprint inside app -.- []
-- MadpromptAccepted beneath prompt []
+- Imprint inside app -.- [X]
+- Max 1 style adjective? [X]
+- MadpromptAccepted beneath prompt [X]
+- visual cue if challenge mode is enabled [X]
 - Adjective fix [X]
 - check spaces everywhere [X]
+- rework PWA [X]
+- Decide by chance if first adjective is a style adjective or theme adjective [X]
 
 ## Version end checklist
-- updated version number in frontend?
 - all tasks for current version checked?
 - commit and push to remote
 - create PR
@@ -87,15 +90,12 @@
 ## Categories
 ### Must
 - Twitter page cover
-- Max 1 style adjective?
 
 ### Should
 - number input behaviour on mobile chrome
 
 ### Nice to have
-- visual cue if challenge mode is enabled
 - Custom Install
-- rework PWA
 - hint system
 - app options -> themes?
 - prompt links as app option
@@ -107,7 +107,6 @@
 ## Backlog
 - Challenge Levels based on prompt configuration
 - Music based on prompt configuration
-- Decide by chance if first adjective is a style adjective or theme adjective
 - Custom install experience 
 
 # Homepage

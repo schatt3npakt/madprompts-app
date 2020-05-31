@@ -6,32 +6,19 @@
       <span>{{storeGetPromptHeadline}}</span><br /><br />
 
       <div v-if="storeGetFirstPromptCreated">
-        <div v-if="storeGetActivateAdjectiveLinks">
-          <div
-            v-for="item in storeGetPromptAdjectives"
-            :key="item.id"
+        <div
+          v-for="item in storeGetPromptAdjectives"
+          :key="item.id"
+        >
+          <a
+            class="prompt-overlay__text--adjective"
+            :href="linkBuilder(item.text)"
+            target="_blank"
+            :title="linkTitleBuilder(item.text)"
           >
-            <a
-              class="prompt-overlay__text--adjective"
-              :href="linkBuilder(item.text)"
-              target="_blank"
-              :title="linkTitleBuilder(item.text)"
-            >
-              <span v-if="checkIfItemIdIsFirst(item.id)">{{promptArticle}}&nbsp;</span>
-                {{item.text}}<span v-if="checkIfItemIdIsLast(item.id, storeGetPromptAdjectives)">,</span>
-            </a><br />
-          </div>
-        </div>
-        <div v-else>
-          <div
-            v-for="item in storeGetPromptAdjectives"
-            :key="item.id"
-          >
-            <span class="prompt-overlay__text--adjective">
-              <span v-if="checkIfItemIdIsFirst(item.id)">{{promptArticle}}&nbsp;</span>
-                {{item.text}}<span v-if="checkIfItemIdIsLast(item.id, storeGetPromptAdjectives)">,</span>
-            </span><br />
-          </div>
+            <span v-if="checkIfItemIdIsFirst(item.id)">{{promptArticle}}&nbsp;</span>
+              {{item.text}}<span v-if="checkIfItemIdIsLast(item.id, storeGetPromptAdjectives)">,</span>
+          </a><br />
         </div>
 
         <span
@@ -57,7 +44,7 @@
           {{storeGetPromptChallenge}}
         </span>
 
-        <p class="hashtag">#MADPROMPTaccepted</p>
+        <p class="hashtag">#madprompt_accepted</p>
       </div>
   </div>
 </template>
@@ -73,15 +60,6 @@ export default Vue.extend({
     */
     promptArticle (): string {
       return this.storeGetPromptAdjectives[0].text.match('^[aieouAIEOU].') ? 'An' : 'A'
-    },
-
-    /**
-     * Returns whether adjective links should be adtivated
-     * @returns boolean
-    */
-    // eslint-disable-next-line
-    storeGetActivateAdjectiveLinks (): any {
-      return this.$store.state.promptBuilder.activateAdjectiveLinks
     },
 
     /**
@@ -194,7 +172,6 @@ export default Vue.extend({
 <style lang="scss" scoped>
   .prompt-overlay {
     .hashtag {
-      font-style: italic;
       font-size: 30px;
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
