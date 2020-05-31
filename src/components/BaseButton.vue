@@ -37,6 +37,7 @@ export default Vue.extend({
     font-size: map_get(fonts.$button-sizes, "mobile");
     font-weight: normal;
     height: map_get(dimensions.$button-height, "mobile");
+    position: relative;
     text-transform: uppercase;
     transition:
       background-color 0.1s ease-out,
@@ -54,6 +55,12 @@ export default Vue.extend({
       cursor: pointer;
       font-size: map_get(fonts.$button-sizes, "desktop");
       height: map_get(dimensions.$button-height, "desktop");
+    }
+
+    &::after,
+    &::before {
+      opacity: 0;
+      transition: opacity 0.25s ease-out;
     }
 
     &:active,
@@ -78,6 +85,44 @@ export default Vue.extend({
       &:focus:not(:active) {
         background-color: lighten(colors.$emerald, 5%);
         border-bottom: 5px solid lighten(colors.$nephritis, 5%);
+      }
+    }
+
+    &--hard-mode {
+      background-color: colors.$alizarin;
+      border-bottom: 5px solid colors.$pomegremade;
+
+      &:active {
+          background-color: colors.$pomegremade;
+      }
+
+      &:hover:not(:active),
+      &:focus:not(:active) {
+        background-color: lighten(colors.$alizarin, 5%);
+        border-bottom: 5px solid lighten(colors.$pomegremade, 5%);
+      }
+
+      &::after,
+      &::before {
+        background-image: icons.$skull;
+        background-position: top left;
+        background-size: cover;
+        content: '';
+        display: block;
+        height: 25px;
+        opacity: 1;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+      }
+
+      &::after {
+        right: 20px;
+      }
+
+      &::before {
+        left: 20px;
       }
     }
 

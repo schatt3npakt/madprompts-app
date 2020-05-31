@@ -56,6 +56,8 @@
         >
           {{storeGetPromptChallenge}}
         </span>
+
+        <p class="hashtag">#MADPROMPTaccepted</p>
       </div>
   </div>
 </template>
@@ -137,7 +139,7 @@ export default Vue.extend({
      * @returns boolean
     */
     storeDisplaySmallPromptText (): boolean {
-      return Object.keys(this.storeGetPromptAdjectives).length > 4
+      return Object.keys(this.storeGetPromptAdjectives).length > 3
     }
   },
   data () {
@@ -191,6 +193,15 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
   .prompt-overlay {
+    .hashtag {
+      font-style: italic;
+      font-size: 30px;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        font-size: 40px;
+      }
+    }
+
     &__text {
       &-wrapper {
         @media screen and (max-height: 500px) {

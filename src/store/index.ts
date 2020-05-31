@@ -78,26 +78,50 @@ const adjectivesHelper = (state: any, passedArray: any): void => {
   state.promptBuilder.adjectives = []
   const exsistingAdjectiveIds = [{}]
 
-  // Check if the user has selected one adjective
-  if (parseInt(state.appView.formElements.numberInput.value) === 1) {
-    // push adjective and index into state array
-    state.promptBuilder.adjectives.push(
-      {
-        id: 'adjective0',
-        text: state.lib.adjectives.style[arrayRandomizer(state.lib.adjectives.style.length)]
-      }
-    )
-  } else {
-    // first, push style adjective and index into state array
-    state.promptBuilder.adjectives.push(
-      {
-        id: 'adjective0',
-        text: state.lib.adjectives.style[arrayRandomizer(state.lib.adjectives.style.length)]
-      }
-    )
+  // Detect if Challenge is active to determine whether to use style adjectives
+  if (state.appView.formElements.challengeButton.isActive) {
+    // Check if the user has selected one adjective
+    if (parseInt(state.appView.formElements.numberInput.value) === 1) {
+      // push adjective and index into state array
+      state.promptBuilder.adjectives.push(
+        {
+          id: 'adjective0',
+          text: state.lib.adjectives.style[arrayRandomizer(state.lib.adjectives.style.length)]
+        }
+      )
+    } else {
+      // first, push style adjective and index into state array
+      state.promptBuilder.adjectives.push(
+        {
+          id: 'adjective0',
+          text: state.lib.adjectives.style[arrayRandomizer(state.lib.adjectives.style.length)]
+        }
+      )
 
-    // Run Loop for number of times based on user input, minus 1, because we already added the style adjective
-    for (let i = 0; i < (state.appView.formElements.numberInput.value - 1); i++) {
+      // Run Loop for number of times based on user input, minus 1, because we already added the style adjective
+      for (let i = 0; i < (state.appView.formElements.numberInput.value - 1); i++) {
+        let currentAdjectiveKey
+
+        // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
+        do {
+          currentAdjectiveKey = arrayRandomizer(passedArray.length)
+        } while (exsistingAdjectiveIds.indexOf(currentAdjectiveKey) >= 1)
+
+        // push adjective and index into state array
+        state.promptBuilder.adjectives.push(
+          {
+            id: 'adjective' + (i + 1),
+            text: passedArray[currentAdjectiveKey]
+          }
+        )
+
+        // Update exsisting Ids with the currntly passed Id
+        exsistingAdjectiveIds.push(currentAdjectiveKey)
+      }
+    }
+  } else {
+    // Run Loop for number of times based on user input
+    for (let i = 0; i < state.appView.formElements.numberInput.value; i++) {
       let currentAdjectiveKey
 
       // If the generated adjective Id already exists inside exsistingAdjectiveIds Array, reassign it
@@ -108,7 +132,7 @@ const adjectivesHelper = (state: any, passedArray: any): void => {
       // push adjective and index into state array
       state.promptBuilder.adjectives.push(
         {
-          id: 'adjective' + (i + 1),
+          id: 'adjective' + i,
           text: passedArray[currentAdjectiveKey]
         }
       )

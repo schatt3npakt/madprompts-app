@@ -70,7 +70,9 @@
 - PWA Features [X]
 - random prompt introduction [X]
 - Prevent empty number input [X]
-- mobile input fix?
+- Imprint inside app -.- []
+- MadpromptAccepted beneath prompt []
+- Adjective fix [X]
 - check spaces everywhere [X]
 
 ## Version end checklist
@@ -105,7 +107,8 @@
 ## Backlog
 - Challenge Levels based on prompt configuration
 - Music based on prompt configuration
-  Decide by chance if first adjective is a style adjective or theme adjective
+- Decide by chance if first adjective is a style adjective or theme adjective
+- Custom install experience 
 
 # Homepage
 ## Backlog

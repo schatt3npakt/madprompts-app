@@ -28,6 +28,7 @@
               button-id="submit"
               button-type="button--submit"
               button-text="Let's go!"
+              :class="[storeGetDisplayHardMode? hardModeClasses.button: '']"
               @click.native="submitClickHandler"
             />
           </div>
@@ -66,6 +67,40 @@ export default Vue.extend({
     ThePromptOverlay,
     ToggleButton
   },
+  computed: {
+    /**
+     * Returns whether the current prompt configuration enables the hard mode (More than 5 adjectives or challenge enabled and more than 3)
+     * @returns boolean
+    */
+    storeGetDisplayHardMode (): boolean {
+      return (this.storeGetChallengeValidation && this.storeGetNumberInputValue >= 3) || this.storeGetNumberInputValue >= 5
+    },
+
+    /**
+     * Get whether the user disabled challenges in the Ui
+     * @returns boolean
+    */
+    storeGetChallengeValidation (): boolean {
+      return this.$store.state.appView.formElements.challengeButton.isActive
+    },
+
+    /**
+     * Get the number input value from the store
+     * @returns number
+    */
+    storeGetNumberInputValue (): number {
+      return this.$store.state.appView.formElements.numberInput.value
+    },
+
+    /**
+     * Get the current Adjectives from the store
+     * @returns any
+    */
+    // eslint-disable-next-line
+    storeGetPromptAdjectives (): any {
+      return this.$store.state.promptBuilder.adjectives
+    }
+  },
   data () {
     return {
       footerText: {
@@ -73,6 +108,9 @@ export default Vue.extend({
         artistTitle: 'Visit a_very_long_artist_name on Instagram!',
         artistLink: '#',
         version: '0.7.0'
+      },
+      hardModeClasses: {
+        button: 'button--hard-mode'
       }
     }
   },

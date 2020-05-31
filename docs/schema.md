@@ -8,7 +8,7 @@
   5. made out of bagels
 
 **Schema:**
-  1. Adjective from style
+  1. Adjective from theme pool / from style if challenge is enabled
   
   2. Different Adjectives from theme pool
   
