@@ -403,6 +403,7 @@ export default new Vuex.Store({
         // general is used as library for the first part of the theme and includes all normal arrays
         general: themePeople.data.concat(
           themeBeasts.data,
+          themeFood.data,
           themePlaces.data
         ),
         beasts: {

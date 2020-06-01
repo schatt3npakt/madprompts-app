@@ -2,6 +2,7 @@
   "data": 
     [
       "ancient",
+      "ashen",
       "asian",
       "besieged",
       "badly decoyed",
@@ -9,9 +10,11 @@
       "bustling",
       "bright-lit",
       "burning",
+      "cozy",
       "crumbling",
       "deserted",
       "destroyed",
+      "dew-covered",
       "dusty",
       "forsaken",
       "frozen",
@@ -19,15 +22,21 @@
       "haunted",
       "hidden",
       "mist-covered",
+      "mountaintop",
       "neon",
       "ornamented",
       "overgrown",
-      "quaint",
+      "plague-ridden",
+      "polluted",
       "scenic",
       "secluded",
       "spider-ridden",
       "sunlit",
+      "underground",
+      "volcanic",
+      "war-torn",
       "well-protected",
-      "wild-west-style"
+      "wild-west-style",
+      "windy"
     ]
 }

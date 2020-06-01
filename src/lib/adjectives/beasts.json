@@ -2,24 +2,33 @@
   "data": 
     [
       "acid-dripping",
-      "bententacled",
+      "armored",
+      "betentacled",
       "buff",
       "brutal",
       "chubby",
       "combat-ready",
+      "curled up",
+      "defeated",
       "domesticated",
       "flamethrowing",
       "fluffy",
-      "flying",
       "glowing",
       "gem-covered",
       "hostile",
       "hulking",
+      "hungry",
       "magical",
       "playful",
+      "sweater-wearing",
       "puppy-eyed",
       "red-hot",
+      "skeletal",
       "skipping",
-      "terrifiying"
+      "sleeping",
+      "terrifiying",
+      "twin-headed",
+      "undead",
+      "winged"
     ]
 }

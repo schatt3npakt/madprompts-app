@@ -1,7 +1,9 @@
 {
   "data": 
     [
+      "burnt",
       "cheese-covered",
+      "chunky",
       "day-old",
       "delicious",
       "dry",
@@ -13,11 +15,14 @@
       "juicy",
       "oozing",
       "rich",
+      "roasted",
       "stuffed",
       "unappetizing",
       "sentient",
+      "slimy",
       "sophisticated",
       "somehow healthy",
+      "sickeningly sweet",
       "yummy"
     ]
 }
