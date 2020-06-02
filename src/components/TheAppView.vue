@@ -109,9 +109,9 @@ export default Vue.extend({
   data () {
     return {
       footerText: {
-        artist: 'Artwork by a_very_long_artist_name',
-        artistTitle: 'Visit a_very_long_artist_name on Instagram!',
-        artistLink: '#'
+        artist: 'Artwork by lenapixels',
+        artistTitle: 'Visit lenapixels on Instagram!',
+        artistLink: 'https://www.instagram.com/lenapixels/'
       },
       hardModeClasses: {
         button: 'button--hard-mode'

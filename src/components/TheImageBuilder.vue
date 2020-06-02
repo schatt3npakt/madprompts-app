@@ -14,6 +14,7 @@
       <img
         alt="Your Prompt"
         :class="[showImage? 'show' : '']"
+        @click="imageClickHandler"
         id="imageBuilderImage"
         src=""
       />
@@ -37,9 +38,23 @@ export default Vue.extend({
     }
   },
   methods: {
-    toggleImageVisibility () {
+    /*
+    * Toggle the visibility of the Downloadable image
+    * @returns void
+    */
+    imageClickHandler (): void {
+      window.setTimeout(this.toggleImageVisibility, 150)
+    },
+
+    /*
+    * Toggle the visibility of the Downloadable image
+    * @returns void
+    */
+    toggleImageVisibility (): void {
       if (this.showImage === false) {
         this.showImage = true
+      } else {
+        this.showImage = false
       }
     }
   },
@@ -68,10 +83,12 @@ export default Vue.extend({
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
+      transition: opacity 1s ease-out;
       z-index: 500;
 
       &.show {
         display: block;
+        transition: opacity 1s ease-out;
         opacity: 1;
       }
     }
