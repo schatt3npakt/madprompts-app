@@ -46,13 +46,19 @@
 
         <p class="hashtag">#madprompt_accepted</p>
       </div>
+
+      <theImageBuilder />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import TheImageBuilder from '@/components/TheImageBuilder.vue'
 
 export default Vue.extend({
+  components: {
+    TheImageBuilder
+  },
   computed: {
     /**
      * Checks eheter the first adjective starts with a vowel and returns An if matched or A if not
@@ -195,6 +201,10 @@ export default Vue.extend({
             outline: none;
             position: relative;
             text-decoration: none;
+
+            @media screen and (max-width: breakpoints.$tablet-portrait-max) {
+              text-decoration: underline;
+            }
 
             &::after {
               bottom: 0;

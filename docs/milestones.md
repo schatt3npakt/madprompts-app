@@ -90,9 +90,14 @@
 ## Categories
 ### Must
 - Twitter page cover
+- -style show image link
+- close image on image click or outside
+- refactor show image code inside the image builder
+- add new art
 
 ### Should
 - number input behaviour on mobile chrome
+- Add Edge support for download
 
 ### Nice to have
 - Custom Install

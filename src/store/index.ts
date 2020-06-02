@@ -195,11 +195,103 @@ export default new Vuex.Store({
       commit('setThemePrompt')
       commit('setChallengePrompt')
       commit('setFirstPromptCreated')
+      commit('constructPromptString')
     }
   },
   modules: {
   },
   mutations: {
+    /**
+     * Construct the prompt String for the downloadable image, render image and set download link
+     * @param state
+     * @returns void
+    */
+    constructPromptString (state): void {
+      /* eslint-disable */
+      //empty prompt array
+      state.promptBuilder.promptString = []
+
+      state.promptBuilder.promptString.push(state.promptBuilder.headline)
+
+      // push adjectives into prompt array
+      for (let i = 0; i < state.promptBuilder.adjectives.length; i++) {
+        if (i === 0) {
+          // set edjective for first article and push
+          let promptArticle = state.promptBuilder.adjectives[i].text.match('^[aieouAIEOU].') ? 'An' : 'A'
+
+          state.promptBuilder.promptString.push(promptArticle + ' ' + state.promptBuilder.adjectives[i].text + ',')
+        } else {
+          state.promptBuilder.promptString.push(state.promptBuilder.adjectives[i].text + ',')
+        }
+      }
+
+      // combine theme strings and push theme into prompt array
+      let themeString
+      if (state.promptBuilder.theme.length > 1) {
+        themeString = state.promptBuilder.theme[0].text + " " + state.promptBuilder.theme[1].text
+      } else {
+        themeString = state.promptBuilder.theme[0].text
+      }
+      state.promptBuilder.promptString.push(themeString)
+
+      // push challenge into prompt array
+      if (state.appView.formElements.challengeButton.isActive) {
+        state.promptBuilder.promptString.push(state.promptBuilder.challenge)
+      }
+
+      // start drawing canvas
+      const canvas: any = document.querySelector('#imageBuilderCanvas')
+      const imageElement: any = document.querySelector('#imageBuilderImage')
+      const imageDownload: any = document.querySelector('#imageDownload')
+      const ctx = canvas.getContext('2d')
+      const logo = new Image();
+      
+      //Image style
+      const borderWidth = 25
+      const promptFont = (state.promptBuilder.promptString.length <= 6) ? '50px VT323' : '40px VT323'
+      const fontColor = "rgb(255, 255, 255)"
+      const promptLineheight = (state.promptBuilder.promptString.length <= 6) ? 60 : 50
+
+      //draw blue background
+      ctx.fillStyle = "rgb(44, 62, 80)"
+      ctx.fillRect(0, 0, 1080, 1080)
+
+      //draw image, then generate Logo and download link
+      logo.onload = function() {
+        ctx.drawImage(logo, 310, 944, 460, 85.5);
+
+        // generate download link and set canvas to image
+        const dataURI = canvas.toDataURL()
+        imageElement.src = dataURI
+        imageDownload.href = dataURI
+        imageDownload.download = "madprompt.png"
+      }
+      logo.src = "/img/logo-desktop.svg";
+
+      //draw border
+      ctx.strokeStyle = fontColor
+      ctx.lineWidth = borderWidth
+      ctx.strokeRect(0, 0, 1080, 1080)
+
+      // Drwa prompt to image
+      let x = 540;
+      let y = 100;
+      ctx.fillStyle = fontColor
+      ctx.font = promptFont
+      ctx.textAlign = 'center'
+
+      //loop through items in prompt array
+      for (let i = 0; i < state.promptBuilder.promptString.length; i++) {
+        if (i === 1) {
+          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*(promptLineheight*2)) );
+        } else if (i > 1) {
+          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight) + promptLineheight);
+        } else {
+          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight));
+        }
+      }
+    },
+
     /**
      * Decrease the index of the currenlty active slider item by one.
      * @param state
@@ -429,6 +521,7 @@ export default new Vuex.Store({
       challenge: '',
       firstPromptCreated: false,
       headline: '',
+      promptString: [''],
       theme: [{}]
     }
   }
