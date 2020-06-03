@@ -94,7 +94,7 @@
 - close image on image click or outside
 - refactor show image code inside the image builder
 - add new art
-- 
+- optimize images
 
 ### Should
 - number input behaviour on mobile chrome
