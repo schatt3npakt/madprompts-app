@@ -1,11 +1,12 @@
 <template>
   <div class="image-builder">
-    <button
-      class="image-builder__"
-      @click="toggleImageVisibility"
-    >
-      show image
-    </button>
+    <BaseButton
+      button-id="submit"
+      button-type="button--image-button"
+      button-text="Download image"
+      class="image-builder__button"
+      @click.native="toggleImageVisibility"
+    />
 
     <div
       class="image-builder__background"
@@ -43,8 +44,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import BaseButton from '@/components/BaseButton.vue'
 
 export default Vue.extend({
+  components: {
+    BaseButton
+  },
   data () {
     return {
       showImage: false
@@ -111,6 +116,12 @@ export default Vue.extend({
       }
     }
 
+    &__button {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 341px;
+    }
+
     &__download-link {
       display: block;
       height: 0;
@@ -130,6 +141,22 @@ export default Vue.extend({
         height: 100%;
         opacity: 1;
         width: 100%;
+
+        .image-builder__download-hint {
+          &,
+          &:link,
+          &:visited,
+          &:focus,
+          &:hover,
+          &:active {
+            color: white;
+            display: block;
+            font-size: 35px;
+            height: auto;
+            opacity: 1;
+            text-decoration: none;
+          }
+        }
       }
     }
 
@@ -140,9 +167,7 @@ export default Vue.extend({
       &:focus,
       &:hover,
       &:active {
-        color: white;
-        font-size: 35px;
-        text-decoration: none;
+        display: none;
       }
     }
   }

@@ -258,7 +258,7 @@ export default new Vuex.Store({
 
       //draw image, then generate Logo and download link
       logo.onload = function() {
-        ctx.drawImage(logo, 310, 944, 460, 85.5);
+        ctx.drawImage(logo, 40, 944, 460, 85.5);
 
         // generate download link and set canvas to image
         const dataURI = canvas.toDataURL()
@@ -290,6 +290,10 @@ export default new Vuex.Store({
           ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight));
         }
       }
+
+      ctx.textAlign = 'right'
+      // SoMe Handle
+      ctx.fillText('@madprompts', 1020 , 1000);
     },
 
     /**

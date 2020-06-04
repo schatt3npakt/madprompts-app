@@ -88,6 +88,21 @@ export default Vue.extend({
       }
     }
 
+    &--image-button {
+      background-color: colors.$peter-river;
+      border-bottom: 5px solid colors.$belize-hole;
+
+      &:active {
+          background-color: colors.$belize-hole;
+      }
+
+      &:hover:not(:active),
+      &:focus:not(:active) {
+        background-color: lighten(colors.$peter-river, 5%);
+        border-bottom: 5px solid lighten(colors.$belize-hole, 5%);
+      }
+    }
+
     &--hard-mode {
       background-color: colors.$alizarin;
       border-bottom: 5px solid colors.$pomegremade;
