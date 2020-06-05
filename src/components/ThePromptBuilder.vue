@@ -5,7 +5,7 @@
     >
       <span>{{storeGetPromptHeadline}}</span><br /><br />
 
-      <div v-if="storeGetFirstPromptCreated">
+      <div class="prompt-overlay__prompt-wrapper" v-if="storeGetFirstPromptCreated">
         <div
           v-for="item in storeGetPromptAdjectives"
           :key="item.id"
@@ -43,8 +43,6 @@
         >
           {{storeGetPromptChallenge}}
         </span>
-
-        <p class="hashtag">#madprompt_accepted</p>
       </div>
 
       <theImageBuilder />
@@ -183,6 +181,10 @@ export default Vue.extend({
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: 40px;
       }
+    }
+
+    &__prompt-wrapper {
+      margin-bottom: 40px;
     }
 
     &__text {

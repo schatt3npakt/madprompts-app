@@ -244,7 +244,17 @@ export default new Vuex.Store({
       const imageElement: any = document.querySelector('#imageBuilderImage')
       const imageDownload: any = document.querySelector('#imageDownload')
       const ctx = canvas.getContext('2d')
-      const logo = new Image();
+      const logo = new Image()
+      const hardmodeIcon = new Image()
+      const themeIcon = new Image()
+
+      const icons = {
+        beasts: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAWZJREFUeJzt201Kw2AURuFGilpqoJBZN+EyHLkhh27A9RV/wEkEf1uSJtZJ3MILJ21FzjO+XMrhm1xCJxNJkiRJOrQiHRyGIZprtrtorpyfRQvvn9+ifXsQtTnZ96/47wwIGRAyIGRAyICQASEDQgaEpungx3obzVWL+V+/MCJN00dzvkDIgJABIQNCBoQMCBkQMiBkQKhIv3Wkl8jnpssWhlarlzHXxarqwm8ih2BAyICQASEDQgaEDAgZEDIgVLx/tdHg2N860gtjNjuNLoK+/4n2jc0XCBkQMiBkQMiAkAEhA0IGhAwIFfXrJhpsu110iaQXRlmeRxdG03xH+66vLqO5sfkCIQNCBoQMCBkQMiBkQMiAkAGhadtl/zBPLZeL6MKo63W071gXRsoXCBkQMiBkQMiAkAEhA0IGhAwIFTe3d9Fgu83+J5J6eHwadd+x+AIhA0IGhAwIGRAyIGRAyICQAaFfbKFHBqA75a4AAAAASUVORK5CYII=',
+        food: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAARRJREFUeJzt27FNAzEYgNELugGoMxIdqzAIq9AxBn2o0hCkFBFSCkpYwdFnIgTv1adfd5/cWGcvCwAAwLVtXvfH2TO/Zg+cbDNz2M3MYf+RgJGAkYCRgJGAkYCRgJGA0XrBs799hzFq9DuGdixWYCRgJGAkYCRgJGAkYCRgJGAkYCRgJGAkYCRgJGAkYCRgJGAkYLQuf+dfx2xDXazASMBIwEjASMBIwEjASMBIwOiS01lD7h7uZ4+c6vnxaeo8KzASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjBaz+fPoZvZh8PH0Gml08tbe6Mfttu9Dz233d66sX4NAkYCRgJGAkYCRgJGAkYCRt8WRhdNmVylTAAAAABJRU5ErkJggg==',
+        people: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAARlJREFUeJzt2yFOA1EUQNGWNA0WBIYgSCVrQzWsgqBYH4pgEGBJDWzhDbc0iHP0y/w/N1/MiL9aAQAAnNp6Onj/8DQd/f7dVk5m9M7Pj/vRw87SVhCwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjBaL7j/MXI4fI3mXt9ejnqf5OZ6N7r/sd2eH3NZJ7ASMBIwEjASMBIwEjASMBIw2iyYHf05TL/0d7d3C5YeOfZN+dGfjRMYCRgJGAkYCRgJGAkYCRgJGG0+Pt9Hg5cXV3+8lf9l2sUJjASMBIwEjASMBIwEjASMBIx+AL6MFUd9JvdPAAAAAElFTkSuQmCC',
+        places: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAUFJREFUeJzt3DEOAVEUQNE/Mp1eS6Ibpd7EAnSsQmsXdJZBoqKwD1pLYQtP7ssg7qlffiY3v5m8oXrMxiXZM/vAZFXmYb3Mw/6RASEDQgaEDAgZEDIgZEDIgFD9xmz2G0bqG0GJP190LvR83kDIgJABIQNCBoQMCBkQMiBkQMiAkAEhA0IGhAwIGRAyIGRAyICQAaF3diLRHUb2biKbX2d9EwNCBoQMCBkQMiBkQMiAkAGh+rjahQab2zU2d4/Nfcq5PwzNXfqj0Jw3EDIgZEDIgJABIQNCBoQMCBkQqrb7U3Q2dYexPGwyjyvrQZt63qSZ+juRLhgQMiBkQMiAkAEhA0IGhAwI1eX7/+sq1bxdREdDXbyBkAEhA0IGhAwIGRAyIGRAyIDQx3YiP8CdSBcMCBkQMiBkQMiAkAEhA0IGhF6fjxnFy0MgqAAAAABJRU5ErkJggg==',
+        skull: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAThJREFUeJzt2zESwUAYQOGNSamioMZwgTSUDq6kyQUY1BRU+nUAzW9ekJH31TsrefMX2TFb5JxTUHjhnygii3qffop/Z0DIgJABIQNCBoQMCBkQMiBUpu6dMKJCXZxAyICQASEDQgaEDAgZEDIgZECojC6sVutGf7jebhrd71fP5wRCBoQMCBkQMiBkQMiAkAEhA0IGhAwIGRAyIGRAyICQASEDQgaEDAgV+Y2LInrlBEIGhAwIGRAyIGRAyICQASEDQmUK3sxO3btP4o31bzAgZEDIgJABIQNCBoQMCBkQCt8Tud0foS/zXX1u9YllWU1C7zEc9EP7OYGQASEDQgaEDAgZEDIgZEDIgFD0/5C0P15C6+bTUatPIofTNfTOi9k4tJ8TCBkQMiBkQMiAkAEhA0IGhAwIPQEKHx+fFWrmBAAAAABJRU5ErkJggg=='
+      }
       
       //Image style
       const borderWidth = 25
@@ -258,6 +268,11 @@ export default new Vuex.Store({
 
       //draw image, then generate Logo and download link
       logo.onload = function() {
+        //draw hardmodeIcon
+        if ( state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
+          ctx.drawImage(hardmodeIcon, 540, 540, 64, 64);
+        }
+        
         ctx.drawImage(logo, 40, 944, 460, 85.5);
 
         // generate download link and set canvas to image
@@ -266,6 +281,8 @@ export default new Vuex.Store({
         imageDownload.href = dataURI
         imageDownload.download = "madprompt.png"
       }
+
+      hardmodeIcon.src = icons.skull
       logo.src = "/img/logo-desktop.svg";
 
       //draw border
