@@ -78,6 +78,11 @@
 - check spaces everywhere [X]
 - rework PWA [X]
 - Decide by chance if first adjective is a style adjective or theme adjective [X]
+- style show image link [X]
+- close image on image click or outside [X]
+- refactor show image code inside the image builder [X]
+- add new art [X]
+- optimize images [X]
 
 ## Version end checklist
 - all tasks for current version checked?
@@ -90,11 +95,7 @@
 ## Categories
 ### Must
 - Twitter page cover
-- -style show image link
-- close image on image click or outside
-- refactor show image code inside the image builder
-- add new art
-- optimize images
+- REFACTOR IMAGE BUILDER IN STORE
 
 ### Should
 - number input behaviour on mobile chrome

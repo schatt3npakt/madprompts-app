@@ -1,7 +1,7 @@
 <template>
     <div
       class="prompt-overlay__text-wrapper"
-      :class="[storeDisplaySmallPromptText? smallTextClass: '']"
+      :class="[storeDisplaySmallPromptText? smallTextClass: '', storeDisplayVerySmallPromptText? verySmallTextClass: '']"
     >
       <span>{{storeGetPromptHeadline}}</span><br /><br />
 
@@ -122,11 +122,20 @@ export default Vue.extend({
     */
     storeDisplaySmallPromptText (): boolean {
       return Object.keys(this.storeGetPromptAdjectives).length > 3
+    },
+
+    /**
+     * Check the number of prompt adjectives and return true if it's above 6
+     * @returns boolean
+    */
+    storeDisplayVerySmallPromptText (): boolean {
+      return Object.keys(this.storeGetPromptAdjectives).length > 6
     }
   },
   data () {
     return {
-      smallTextClass: 'prompt-overlay__text-wrapper--small-text'
+      smallTextClass: 'prompt-overlay__text-wrapper--small-text',
+      verySmallTextClass: 'prompt-overlay__text-wrapper--very-small-text'
     }
   },
   methods: {

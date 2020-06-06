@@ -247,6 +247,7 @@ export default new Vuex.Store({
       const logo = new Image()
       const hardmodeIcon = new Image()
       const themeIcon = new Image()
+      let iconYPosition 
 
       const icons = {
         beasts: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAWZJREFUeJzt201Kw2AURuFGilpqoJBZN+EyHLkhh27A9RV/wEkEf1uSJtZJ3MILJ21FzjO+XMrhm1xCJxNJkiRJOrQiHRyGIZprtrtorpyfRQvvn9+ifXsQtTnZ96/47wwIGRAyIGRAyICQASEDQgaEpungx3obzVWL+V+/MCJN00dzvkDIgJABIQNCBoQMCBkQMiBkQKhIv3Wkl8jnpssWhlarlzHXxarqwm8ih2BAyICQASEDQgaEDAgZEDIgVLx/tdHg2N860gtjNjuNLoK+/4n2jc0XCBkQMiBkQMiAkAEhA0IGhAwIFfXrJhpsu110iaQXRlmeRxdG03xH+66vLqO5sfkCIQNCBoQMCBkQMiBkQMiAkAGhadtl/zBPLZeL6MKo63W071gXRsoXCBkQMiBkQMiAkAEhA0IGhAwIFTe3d9Fgu83+J5J6eHwadd+x+AIhA0IGhAwIGRAyIGRAyICQAaFfbKFHBqA75a4AAAAASUVORK5CYII=',
@@ -270,7 +271,8 @@ export default new Vuex.Store({
       logo.onload = function() {
         //draw hardmodeIcon
         if ( state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
-          ctx.drawImage(hardmodeIcon, 540, 540, 64, 64);
+          ctx.drawImage(hardmodeIcon, 540, iconYPosition, 64, 64);
+          console.log(iconYPosition)
         }
         
         ctx.drawImage(logo, 40, 944, 460, 85.5);
@@ -305,6 +307,10 @@ export default new Vuex.Store({
           ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight) + promptLineheight);
         } else {
           ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight));
+        }
+
+        if (i < state.promptBuilder.promptString.length - 1) {
+          iconYPosition =  y + (i*promptLineheight) + promptLineheight + 100
         }
       }
 

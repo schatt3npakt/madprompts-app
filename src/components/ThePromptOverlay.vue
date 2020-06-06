@@ -91,16 +91,16 @@ export default Vue.extend({
     }
 
     &__text-wrapper {
-      font-size: 40px;
-      line-height: 40px;
+      font-size: 33px;
+      line-height: 35px;
       text-align: center;
       opacity: 0;
       transition: opacity 0.5s;
       transition-delay: 1s;
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
-        font-size: 58px;
-        line-height: 58.3px;
+        font-size: 43px;
+        line-height: 45.3px;
       }
 
       &--small-text {
@@ -110,6 +110,16 @@ export default Vue.extend({
         @media screen and (min-width: breakpoints.$tablet-portrait) {
           font-size: 35px;
           line-height: 40px;
+        }
+      }
+
+      &--very-small-text {
+          font-size: 25px;
+          line-height: 30px;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          font-size: 30px;
+          line-height: 33px;
         }
       }
     }
