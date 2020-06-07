@@ -211,7 +211,7 @@ export default new Vuex.Store({
       //empty prompt array
       state.promptBuilder.promptString = []
 
-      state.promptBuilder.promptString.push(state.promptBuilder.headline)
+      state.promptBuilder.promptString.push('Draw this:')
 
       // push adjectives into prompt array
       for (let i = 0; i < state.promptBuilder.adjectives.length; i++) {
@@ -247,7 +247,7 @@ export default new Vuex.Store({
       const logo = new Image()
       const hardmodeIcon = new Image()
       const themeIcon = new Image()
-      let iconYPosition 
+      let iconYPosition: Number
 
       const icons = {
         beasts: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAWZJREFUeJzt201Kw2AURuFGilpqoJBZN+EyHLkhh27A9RV/wEkEf1uSJtZJ3MILJ21FzjO+XMrhm1xCJxNJkiRJOrQiHRyGIZprtrtorpyfRQvvn9+ifXsQtTnZ96/47wwIGRAyIGRAyICQASEDQgaEpungx3obzVWL+V+/MCJN00dzvkDIgJABIQNCBoQMCBkQMiBkQKhIv3Wkl8jnpssWhlarlzHXxarqwm8ih2BAyICQASEDQgaEDAgZEDIgVLx/tdHg2N860gtjNjuNLoK+/4n2jc0XCBkQMiBkQMiAkAEhA0IGhAwIFfXrJhpsu110iaQXRlmeRxdG03xH+66vLqO5sfkCIQNCBoQMCBkQMiBkQMiAkAGhadtl/zBPLZeL6MKo63W071gXRsoXCBkQMiBkQMiAkAEhA0IGhAwIFTe3d9Fgu83+J5J6eHwadd+x+AIhA0IGhAwIGRAyIGRAyICQAaFfbKFHBqA75a4AAAAASUVORK5CYII=',
@@ -269,10 +269,16 @@ export default new Vuex.Store({
 
       //draw image, then generate Logo and download link
       logo.onload = function() {
-        //draw hardmodeIcon
+        // draw hardmodeIcon
         if ( state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
-          ctx.drawImage(hardmodeIcon, 540, iconYPosition, 64, 64);
-          console.log(iconYPosition)
+          ctx.drawImage(hardmodeIcon, 570, iconYPosition, 64, 64);
+        }
+
+        // draw challengeicon centered if hardmode is enabled and left of skull if it is not
+        if ( state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
+          ctx.drawImage(themeIcon, 437, iconYPosition, 64, 64);
+        } else {
+          ctx.drawImage(themeIcon, 508, iconYPosition, 64, 64);
         }
         
         ctx.drawImage(logo, 40, 944, 460, 85.5);
@@ -282,6 +288,28 @@ export default new Vuex.Store({
         imageElement.src = dataURI
         imageDownload.href = dataURI
         imageDownload.download = "madprompt.png"
+      }
+
+      // set theme icon sources based on theme slider
+      switch (state.appView.formElements.slider.activeItem) {
+        case 0:
+          themeIcon.src = icons.people
+          break
+
+        // Case for Places prompts
+        case 1:
+          themeIcon.src = icons.places
+          break
+
+        // Case for Beasts prompts
+        case 2:
+          themeIcon.src = icons.beasts
+          break
+
+        // Case for Food prompts
+        case 3:
+          themeIcon.src = icons.food
+          break
       }
 
       hardmodeIcon.src = icons.skull
@@ -310,13 +338,13 @@ export default new Vuex.Store({
         }
 
         if (i < state.promptBuilder.promptString.length - 1) {
-          iconYPosition =  y + (i*promptLineheight) + promptLineheight + 100
+          iconYPosition =  y + (i*promptLineheight) + promptLineheight + 150
         }
       }
 
       ctx.textAlign = 'right'
       // SoMe Handle
-      ctx.fillText('@madprompts', 1020 , 1000);
+      ctx.fillText('@madprompts', 1020 , 1010);
     },
 
     /**
@@ -544,12 +572,12 @@ export default new Vuex.Store({
       }
     },
     promptBuilder: {
-      adjectives: [{}],
+      adjectives: Array,
       challenge: '',
       firstPromptCreated: false,
       headline: '',
       promptString: [''],
-      theme: [{}]
+      theme: Array
     }
   }
 })

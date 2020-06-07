@@ -126,8 +126,8 @@ export default Vue.extend({
       display: block;
       height: 0;
       left: 50%;
-      max-height: 500px;
-      max-width: 500px;
+      max-height: 300px;
+      max-width: 300px;
       opacity: 0;
       position: absolute;
       text-decoration: none;
@@ -136,6 +136,11 @@ export default Vue.extend({
       transition: opacity 0.25s ease-out;
       width: 0;
       z-index: 500;
+
+      @media (min-width: breakpoints.$tablet-portrait) {
+        max-height: 500px;
+        max-width: 500px;
+      }
 
       &.show {
         height: 100%;
@@ -153,6 +158,7 @@ export default Vue.extend({
             display: block;
             font-size: 35px;
             height: auto;
+            margin-top: 20px;
             opacity: 1;
             text-decoration: none;
           }

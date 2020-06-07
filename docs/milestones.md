@@ -110,11 +110,11 @@
 - sounds?
 - open source?
 - Light/dark themes
-
-## Backlog
-- Challenge Levels based on prompt configuration
 - Music based on prompt configuration
 - Custom install experience 
+
+## Backlog
+
 
 # Homepage
 ## Backlog
