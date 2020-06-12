@@ -34,8 +34,8 @@ module.exports = {
           type: 'image/png'
         },
         {
-          src: 'android-chrome-512x512.png',
-          sizes: '512x512',
+          src: 'android-chrome-384x384.png',
+          sizes: '384x384',
           type: 'image/png'
         },
         {
@@ -45,8 +45,8 @@ module.exports = {
           purpose: 'maskable'
         },
         {
-          src: 'android-chrome-maskable-512x512.png',
-          sizes: '512x512',
+          src: 'android-chrome-maskable-384x384.png',
+          sizes: '384x384',
           type: 'image/png',
           purpose: 'maskable'
         }
