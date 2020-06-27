@@ -3,7 +3,7 @@
     <BaseButton
       button-id="submit"
       button-type="button--image-button"
-      button-text="Download image"
+      button-text="Download prompt"
       class="image-builder__button"
       @click.native="toggleImageVisibility"
     />

@@ -344,7 +344,8 @@ export default new Vuex.Store({
 
       ctx.textAlign = 'right'
       // SoMe Handle
-      ctx.fillText('@madprompts', 1020 , 1010);
+      ctx.fillText('@madprompts', 1020 , 950);
+      ctx.fillText('#madpromptAccepted', 1020 , 1010);
     },
 
     /**

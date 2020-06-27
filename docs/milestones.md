@@ -125,3 +125,12 @@
 - Link to app (app as subdomain?) [X]
 - footer [X]
 - structured data [X]
+
+### Release
+
+- Lisa Bescheid geben
+- Posts Instagram vorbereiten
+- Post Twitter vorbereiten
+- Generalcheck App
+- Code hochladen und Indizierung sicher stellen
+- Mailkonten checken
