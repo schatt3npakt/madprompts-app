@@ -1,11 +1,11 @@
 <template>
     <div
       class="prompt-overlay__text-wrapper"
-      :class="[storeDisplaySmallPromptText? smallTextClass: '']"
+      :class="[storeDisplaySmallPromptText? smallTextClass: '', storeDisplayVerySmallPromptText? verySmallTextClass: '']"
     >
-      <span>Here's your prompt:</span><br />
+      <span>{{storeGetPromptHeadline}}</span><br /><br />
 
-      <div v-if="storeGetFirstPromptCreated">
+      <div class="prompt-overlay__prompt-wrapper" v-if="storeGetFirstPromptCreated">
         <div
           v-for="item in storeGetPromptAdjectives"
           :key="item.id"
@@ -44,13 +44,19 @@
           {{storeGetPromptChallenge}}
         </span>
       </div>
+
+      <theImageBuilder />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import TheImageBuilder from '@/components/TheImageBuilder.vue'
 
 export default Vue.extend({
+  components: {
+    TheImageBuilder
+  },
   computed: {
     /**
      * Checks eheter the first adjective starts with a vowel and returns An if matched or A if not
@@ -75,6 +81,14 @@ export default Vue.extend({
     */
     storeGetFirstPromptCreated (): boolean {
       return this.$store.state.promptBuilder.firstPromptCreated
+    },
+
+    /**
+     * Returns the random headline for the prompt
+     * @returns boolean
+    */
+    storeGetPromptHeadline (): boolean {
+      return this.$store.state.promptBuilder.headline
     },
 
     /**
@@ -107,12 +121,21 @@ export default Vue.extend({
      * @returns boolean
     */
     storeDisplaySmallPromptText (): boolean {
-      return Object.keys(this.storeGetPromptAdjectives).length > 4
+      return Object.keys(this.storeGetPromptAdjectives).length > 3
+    },
+
+    /**
+     * Check the number of prompt adjectives and return true if it's above 6
+     * @returns boolean
+    */
+    storeDisplayVerySmallPromptText (): boolean {
+      return Object.keys(this.storeGetPromptAdjectives).length > 6
     }
   },
   data () {
     return {
-      smallTextClass: 'prompt-overlay__text-wrapper--small-text'
+      smallTextClass: 'prompt-overlay__text-wrapper--small-text',
+      verySmallTextClass: 'prompt-overlay__text-wrapper--very-small-text'
     }
   },
   methods: {
@@ -161,6 +184,18 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
   .prompt-overlay {
+    .hashtag {
+      font-size: 30px;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        font-size: 40px;
+      }
+    }
+
+    &__prompt-wrapper {
+      margin-bottom: 40px;
+    }
+
     &__text {
       &-wrapper {
         @media screen and (max-height: 500px) {
@@ -177,6 +212,10 @@ export default Vue.extend({
             outline: none;
             position: relative;
             text-decoration: none;
+
+            @media screen and (max-width: breakpoints.$tablet-portrait-max) {
+              text-decoration: underline;
+            }
 
             &::after {
               bottom: 0;

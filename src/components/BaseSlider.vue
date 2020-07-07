@@ -74,6 +74,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+  button::-moz-focus-inner,
+  input::-moz-focus-inner,
+  a::-moz-focus-inner {
+    border: 0;
+  }
+
 .slider {
   border: none;
   border-radius: 0;
@@ -209,7 +215,6 @@ export default Vue.extend({
       text-transform: uppercase;
       top: 50%;
       transform: translate(-50%, -50%);
-      transition: opacity 0.25s;
       width: 100%;
 
       &--active {

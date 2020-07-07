@@ -4,7 +4,7 @@
         <div class="app-view__container__inner">
           <a
             class="logo"
-            href="#"
+            href="https://madprompts.com"
             title="Visit the Homepage of MADPROMPTS"
           >
             MADPROMPTS
@@ -28,6 +28,7 @@
               button-id="submit"
               button-type="button--submit"
               button-text="Let's go!"
+              :class="[storeGetDisplayHardMode? hardModeClasses.button: '']"
               @click.native="submitClickHandler"
             />
           </div>
@@ -42,7 +43,12 @@
           >
             {{footerText.artist}}
           </a>
-          <a class="footer-text__version" href="#">{{footerText.version}}</a>
+          <a
+            class="footer-text__imprint"
+            href="https://madprompts.com/#imprint"
+          >
+            Imprint
+          </a>
         </div>
 
         <ThePromptOverlay />
@@ -66,13 +72,49 @@ export default Vue.extend({
     ThePromptOverlay,
     ToggleButton
   },
+  computed: {
+    /**
+     * Returns whether the current prompt configuration enables the hard mode (More than 5 adjectives or challenge enabled and more than 3)
+     * @returns boolean
+    */
+    storeGetDisplayHardMode (): boolean {
+      return (this.storeGetChallengeValidation && this.storeGetNumberInputValue >= 3) || this.storeGetNumberInputValue >= 5
+    },
+
+    /**
+     * Get whether the user disabled challenges in the Ui
+     * @returns boolean
+    */
+    storeGetChallengeValidation (): boolean {
+      return this.$store.state.appView.formElements.challengeButton.isActive
+    },
+
+    /**
+     * Get the number input value from the store
+     * @returns number
+    */
+    storeGetNumberInputValue (): number {
+      return this.$store.state.appView.formElements.numberInput.value
+    },
+
+    /**
+     * Get the current Adjectives from the store
+     * @returns any
+    */
+    // eslint-disable-next-line
+    storeGetPromptAdjectives (): any {
+      return this.$store.state.promptBuilder.adjectives
+    }
+  },
   data () {
     return {
       footerText: {
-        artist: 'Artwork by a_very_long_artist_name',
-        artistTitle: 'Visit a_very_long_artist_name on Instagram!',
-        artistLink: '#',
-        version: '0.7.0'
+        artist: 'Artwork by lenapixels',
+        artistTitle: 'Visit lenapixels on Instagram!',
+        artistLink: 'https://www.instagram.com/lenapixels/'
+      },
+      hardModeClasses: {
+        button: 'button--hard-mode'
       }
     }
   },
@@ -113,9 +155,15 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+  button::-moz-focus-inner,
+  input::-moz-focus-inner,
+  a::-moz-focus-inner {
+    border: 0;
+  }
+
 .app-view {
   background-image: url(../assets/img/bg-mobile.jpg);
-  background-position: top 0 left 0;
+  background-position: center bottom;
   background-size: cover;
   height: 100%;
   margin: 0;
@@ -124,10 +172,15 @@ export default Vue.extend({
 
   @media screen and (min-width: breakpoints.$tablet-portrait) {
     background-image: url(../assets/img/bg-tablet.jpg);
+    background-position: top 0 left 0;
   }
 
   @media screen and (min-width: breakpoints.$desktop) {
     background-image: url(../assets/img/bg-desktop.jpg);
+  }
+
+  @media screen and (min-width: breakpoints.$desktop-large) {
+    background-image: url(../assets/img/bg-desktop-large.jpg);
   }
 
   &__container {
@@ -161,7 +214,7 @@ export default Vue.extend({
       height: 100%;
       flex-flow: column nowrap;
       justify-content: space-between;
-      max-height: 400px;
+      max-height: 450px;
       margin-bottom: 15px;
 
       @media screen and (max-height: 500px) {
@@ -205,6 +258,11 @@ export default Vue.extend({
       text-decoration: none;
       text-shadow: colors.$button-shadow;
 
+      @media screen and (min-width: 360px) {
+        font-size: map_get(fonts.$logo-size, "mobile-large");
+        text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+      }
+
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: map_get(fonts.$logo-size, "tablet");
         text-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
@@ -230,6 +288,8 @@ export default Vue.extend({
     }
 
     .footer-text {
+      display: flex;
+      flex-direction: column-reverse;
       justify-self: flex-end;
       font-size: 25px;
       text-align: center;
@@ -246,6 +306,7 @@ export default Vue.extend({
       }
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
+        flex-direction: column;
         font-size: 29px;
         text-align: left;
       }
@@ -255,12 +316,15 @@ export default Vue.extend({
       }
 
       &__artist,
-      &__version {
+      &__imprint {
+        text-shadow: 0 0 15px rgba(0, 0, 0, 1);
+
         @media screen and (min-width: breakpoints.$desktop) {
           bottom: 40px;
           display: inline;
           letter-spacing: 0;
           position: fixed;
+          text-shadow: none;
           transition: letter-spacing 0.25s ease-out;
 
           &:active,
@@ -274,6 +338,8 @@ export default Vue.extend({
       }
 
       &__artist {
+        display: block;
+
         @media screen and (min-width: breakpoints.$desktop) {
           bottom: 40px;
           display: inline;
@@ -284,12 +350,14 @@ export default Vue.extend({
         }
       }
 
-      &__version {
-        display: none;
+      &__imprint {
+        display: block;
+        margin-bottom: 20px;
 
         @media screen and (min-width: breakpoints.$tablet-portrait) {
           bottom: 40px;
           display: inline;
+          margin-bottom: 0;
           position: fixed;
           right: 50px;
           z-index: z-index.$version-text;
@@ -308,7 +376,7 @@ export default Vue.extend({
   .app-view {
     .button--submit,
     .footer-text__artist,
-    .footer-text__version,
+    .footer-text__imprint,
     .logo,
     .number-input,
     .slider,
@@ -321,7 +389,7 @@ export default Vue.extend({
     .app-view {
       .button--submit,
       .footer-text__artist,
-      .footer-text__version,
+      .footer-text__imprint,
       .logo,
       .number-input,
       .slider,
@@ -341,7 +409,7 @@ export default Vue.extend({
 
     .button--submit,
     .footer-text__artist,
-    .footer-text__version,
+    .footer-text__imprint,
     .logo,
     .number-input,
     .slider,
@@ -360,11 +428,11 @@ export default Vue.extend({
       .number-input,
       .slider,
       .toggle-button {
-        animation: flyInFromLeft animations.$startupAnimation;
+        animation: fadeIn animations.$startupAnimation;
       }
 
       .footer-text__artist,
-      .footer-text__version {
+      .footer-text__imprint {
         animation: fadeIn animations.$startupAnimation;
       }
 
@@ -384,7 +452,7 @@ export default Vue.extend({
       .slider {animation-delay: animations.$slider};
       .toggle-button {animation-delay: animations.$toggleButton};
       .button--submit {animation-delay: animations.$buttonSubmit};
-      .footer-text__version {animation-delay: animations.$footerTextVersion};
+      .footer-text__imprint {animation-delay: animations.$footerTextVersion};
       .footer-text__artist {animation-delay: animations.$footerTextArtist};
     }
   }
@@ -398,11 +466,6 @@ export default Vue.extend({
 @keyframes flyInFromBottom {
   from {opacity: 0; transform: translateY(20px);}
   to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes flyInFromLeft {
-  from {opacity: 0; transform: translateX(-20px);}
-  to {opacity: 1; transform: translateX(0);}
 }
 
 @keyframes flyInFromTop {

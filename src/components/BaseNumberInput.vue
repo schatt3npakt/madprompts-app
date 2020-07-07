@@ -1,16 +1,17 @@
 <template>
   <div class="number-input">
     <div class="number-input__label">
-      <label class="number-input__label__text">Adjectives</label>
+      <p class="number-input__label__text">Adjectives</p>
     </div>
 
     <input
       class="number-input__input"
       id="adjectives"
       maxlength="1"
-      min="1"
+      min="0"
       name="adjectives"
-      onclick="javascript: this.select();"
+      @blur="blurHandler"
+      onclick="javascript: this.value = '';"
       @input="inputHandler"
       type="number"
       :value="storeNumberInputValue"
@@ -43,6 +44,16 @@ export default Vue.extend({
     },
 
     /**
+     * Keep user input to one digit and pass value to commit-function
+     * @param event: any
+     * @returns void
+    */
+    blurHandler (event: any): void { // eslint-disable-line
+      const target = event.target
+      target.value = this.storeNumberInputValue
+    },
+
+    /**
      * Take in user input value and commit store mutation
      * @param value: number
      * @returns void
@@ -56,6 +67,12 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+  button::-moz-focus-inner,
+  input::-moz-focus-inner,
+  a::-moz-focus-inner {
+    border: 0;
+  }
+
   .number-input {
     display: flex;
     border-radius: 0;

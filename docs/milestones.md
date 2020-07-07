@@ -50,8 +50,41 @@
 - update layout file [X]
 - meta-data for site and references to project name update [X]
 
+## 1.0.0
+- rework logo files for loading screen [X]
+- new arrows [X]
+- bigger vocab [X]
+- get new art [X]
+- highdpi background image [X]
+- run and deploy production build [X]
+- force portrait on mobile [X]
+- number input behaviour [X]
+- webspace and mail addresses [X]
+- Homepage [X]
+- Twitter/instagran Account [X]
+- New Prompt Button on mobile [X]
+- Label fix [X]
+- add food as theme [X]
+- add beasts as theme [X]
+- outline firefox [X]
+- PWA Features [X]
+- random prompt introduction [X]
+- Prevent empty number input [X]
+- Imprint inside app -.- [X]
+- Max 1 style adjective? [X]
+- MadpromptAccepted beneath prompt [X]
+- visual cue if challenge mode is enabled [X]
+- Adjective fix [X]
+- check spaces everywhere [X]
+- rework PWA [X]
+- Decide by chance if first adjective is a style adjective or theme adjective [X]
+- style show image link [X]
+- close image on image click or outside [X]
+- refactor show image code inside the image builder [X]
+- add new art [X]
+- optimize images [X]
+
 ## Version end checklist
-- updated version number in frontend?
 - all tasks for current version checked?
 - commit and push to remote
 - create PR
@@ -61,40 +94,39 @@
 # Tasks
 ## Categories
 ### Must
-- Twitter/instagran Account
-- webspace and mail addresses
-- bigger vocab
-- get new art
-- highdpi background image
+- REFACTOR IMAGE BUILDER IN STORE
 
 ### Should
-- custom search parameters for items (if name doesn't get desired results or context is needed, for example attack on titan prompts)
-- fix google search results (enchanted -> Not the movie!)
+- number input behaviour on mobile chrome
+- Add Edge support for download
 
 ### Nice to have
-- visual cue if challenge mode is enabled
-- random prompt introduction
+- Custom Install
 - hint system
 - app options -> themes?
-- prompt links as app option
-- add food as theme
 - detect ie
 - sounds?
 - open source?
 - Light/dark themes
-- inline svg for loading screen
 
 ## Backlog
-- PWA Features
-- Challenge Levels based on prompt configuration
-- Music based on prompt configuration
+
 
 # Homepage
 ## Backlog
-- Concept
-- Design
-- layout
-- FAQ
-- Link to app (app as subdomain?)
-- footer
-- structured data
+- Concept [X]
+- Design [X]
+- layout [X]
+- FAQ [X]
+- Link to app (app as subdomain?) [X]
+- footer [X]
+- structured data [X]
+
+### Release
+
+- Lisa Bescheid geben
+- Posts Instagram vorbereiten
+- Post Twitter vorbereiten
+- Generalcheck App X
+- Code hochladen und Indizierung sicher stellen X
+- Mailkonten checken X

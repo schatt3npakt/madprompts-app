@@ -48,15 +48,16 @@ All Options are found under the state.appView-property.
 3. Add desired terms to the Arrays under data-Property
 4. Import them inside the store/index.ts under //vocab libraries
 5. add the arrays to the state.lib.theme property of the state
-6. Update general theme Array with the new Arrays under state.lib.theme.general
+6. Update general theme Array with the new normal Arrays under state.lib.theme.general
 7. Add a switch case to the setThemePrompt Mutation
+8. Add Adjective Files for theme, see below
 
 ### Adding adjectives
 1. Add JSON-File under lib/adjectives
 2. Add desired adjectives to the Array in the data property of the file
 3. Import the file inside the store/index.ts under //vocab libraries
 4. create a new property under state.lib.adjectives or add to an exsisting property if the adjectives
-   should also describe other themes, like person or place and refernce your import there
+   should also describe other themes, like person or place and reference your import there
 5. Add a reference import to the general adjective pool under state.lib.adjectives.general
 6. Add a Case to the setAdjectivePrompt Mutation
 
@@ -102,6 +103,7 @@ the front end.
   - Mobile: 767x1358
   - Tablet: 991x1323
   - Desktop: 1399x876
+  - Desktop-Large: 1920x1080
 - store old background image files in archive
 - update artist name in appview component
 - update artist link in appview component

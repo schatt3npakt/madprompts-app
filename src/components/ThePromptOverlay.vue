@@ -61,7 +61,7 @@ export default Vue.extend({
     color: white;
     display: flex;
     flex-flow: column nowrap;
-    height: calc(100vh - 70px);
+    height: calc(100% - 70px);
     justify-content: space-between;
     left: 0;
     overflow: hidden;
@@ -74,6 +74,7 @@ export default Vue.extend({
     z-index: z-index.$prompt-layer;
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
+      height: calc(100% - 80px);
       padding: 40px;
     }
 
@@ -90,25 +91,35 @@ export default Vue.extend({
     }
 
     &__text-wrapper {
-      font-size: 40px;
-      line-height: 40px;
+      font-size: 33px;
+      line-height: 35px;
       text-align: center;
       opacity: 0;
       transition: opacity 0.5s;
       transition-delay: 1s;
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
-        font-size: 58px;
-        line-height: 58.3px;
+        font-size: 43px;
+        line-height: 45.3px;
       }
 
       &--small-text {
           font-size: 25px;
-          line-height: 33.5px;
+          line-height: 30px;
 
         @media screen and (min-width: breakpoints.$tablet-portrait) {
           font-size: 35px;
           line-height: 40px;
+        }
+      }
+
+      &--very-small-text {
+          font-size: 25px;
+          line-height: 30px;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          font-size: 30px;
+          line-height: 33px;
         }
       }
     }
