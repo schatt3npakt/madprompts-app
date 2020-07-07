@@ -94,7 +94,6 @@
 # Tasks
 ## Categories
 ### Must
-- Twitter page cover
 - REFACTOR IMAGE BUILDER IN STORE
 
 ### Should
@@ -105,13 +104,10 @@
 - Custom Install
 - hint system
 - app options -> themes?
-- prompt links as app option
 - detect ie
 - sounds?
 - open source?
 - Light/dark themes
-- Music based on prompt configuration
-- Custom install experience 
 
 ## Backlog
 
@@ -131,6 +127,6 @@
 - Lisa Bescheid geben
 - Posts Instagram vorbereiten
 - Post Twitter vorbereiten
-- Generalcheck App
-- Code hochladen und Indizierung sicher stellen
-- Mailkonten checken
+- Generalcheck App X
+- Code hochladen und Indizierung sicher stellen X
+- Mailkonten checken X
