@@ -163,7 +163,7 @@ export default Vue.extend({
 
 .app-view {
   background-image: url(../assets/img/bg-mobile.jpg);
-  background-position: top 0 left 0;
+  background-position: center bottom;
   background-size: cover;
   height: 100%;
   margin: 0;
@@ -172,6 +172,7 @@ export default Vue.extend({
 
   @media screen and (min-width: breakpoints.$tablet-portrait) {
     background-image: url(../assets/img/bg-tablet.jpg);
+    background-position: top 0 left 0;
   }
 
   @media screen and (min-width: breakpoints.$desktop) {
