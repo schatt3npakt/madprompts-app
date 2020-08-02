@@ -158,7 +158,7 @@ export default Vue.extend({
       display: flex;
       justify-content: center;
       margin: 0;
-      padding: 0;
+      padding: 0 0 0 map_get(margins.$number-input-left-padding, "mobile");
       text-align: center;
       text-transform: uppercase;
       transform: none;

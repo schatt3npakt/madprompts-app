@@ -1,6 +1,7 @@
 {
   "data": 
     [
+      "arctic",
       "ancient",
       "ashen",
       "asian",
@@ -16,8 +17,8 @@
       "destroyed",
       "dew-covered",
       "dusty",
+      "floating",
       "forsaken",
-      "frozen",
       "gothic",
       "haunted",
       "hidden",
@@ -32,8 +33,9 @@
       "secluded",
       "spider-ridden",
       "sunlit",
+      "sunken",
+      "tall",
       "underground",
-      "volcanic",
       "war-torn",
       "well-protected",
       "wild-west-style",

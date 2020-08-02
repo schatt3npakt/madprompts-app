@@ -532,11 +532,10 @@ export default new Vuex.Store({
     },
     lib: {
       adjectives: {
-        // general is used as library of applicable adje
+        // general is used as library of applicable adjectives
         general: adjectivesPeople.data.concat(
           adjectivesBeasts.data,
           adjectivesFood.data,
-          adjectivesStyle.data,
           adjectivesPlaces.data
         ),
         beasts: adjectivesBeasts.data,
