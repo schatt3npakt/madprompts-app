@@ -115,5 +115,6 @@
 - open source?
 - Light/dark themes
 - hint bar at the top
+- easy mode (toggle just one word with adjectives)
 
 ## Backlog
