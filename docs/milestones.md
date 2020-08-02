@@ -86,6 +86,7 @@
 
 # 1.0.1
 - Add new vocab
+- remove chibi bug
 
 ## Version end checklist
 - all tasks for current version checked?
