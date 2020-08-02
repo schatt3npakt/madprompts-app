@@ -84,6 +84,9 @@
 - add new art [X]
 - optimize images [X]
 
+# 1.0.1
+- Add new vocab
+
 ## Version end checklist
 - all tasks for current version checked?
 - commit and push to remote
@@ -94,11 +97,13 @@
 # Tasks
 ## Categories
 ### Must
-- REFACTOR IMAGE BUILDER IN STORE
 
 ### Should
 - number input behaviour on mobile chrome
 - Add Edge support for download
+- Environment Category
+- weapon category
+- lock terms
 
 ### Nice to have
 - Custom Install
@@ -108,25 +113,6 @@
 - sounds?
 - open source?
 - Light/dark themes
+- hint bar at the top
 
 ## Backlog
-
-
-# Homepage
-## Backlog
-- Concept [X]
-- Design [X]
-- layout [X]
-- FAQ [X]
-- Link to app (app as subdomain?) [X]
-- footer [X]
-- structured data [X]
-
-### Release
-
-- Lisa Bescheid geben
-- Posts Instagram vorbereiten
-- Post Twitter vorbereiten
-- Generalcheck App X
-- Code hochladen und Indizierung sicher stellen X
-- Mailkonten checken X
