@@ -1,6 +1,7 @@
 {
   "data": 
     [
+      "anubis",
       "bald eagle",
       "combat dolphin",
       "cthulhu",
@@ -12,6 +13,8 @@
       "phoenix",
       "queen of the fairies",
       "T-Rex",
-      "yeti"
+      "yeti",
+      "wolpertinger",
+      "white deer"
     ]
 }

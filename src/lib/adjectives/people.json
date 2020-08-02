@@ -5,7 +5,6 @@
       "axe-wielding",
       "bathing-suit-wearing",
       "beautiful", 
-      "bespectaled",
       "buff",
       "chubby",
       "clumsy",
@@ -18,15 +17,20 @@
       "embarrassed",
       "evil",
       "flabbergasted",
+      "flamboyant",
+      "glasses-wearing",
+      "goth",
       "greedy",
+      "grieving",
       "grunge",
       "happy",
       "hungry",
-      "kawaii",
+      "intimidating",
       "kilt-wearing",
       "love-stricken",
       "magical",
       "noble",
+      "old",
       "pissed",
       "poor",
       "psychotic",
@@ -47,6 +51,7 @@
       "wealthy",
       "whiny",
       "wise",
-      "wounded"
+      "wounded",
+      "young"
     ]
 }
