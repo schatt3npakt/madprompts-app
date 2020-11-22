@@ -86,7 +86,6 @@
 
 # 1.0.1
 - Add new vocab
-- remove chibi bug
 
 ## Version end checklist
 - all tasks for current version checked?
@@ -118,3 +117,5 @@
 - easy mode (toggle just one word with adjectives)
 
 ## Backlog
+- small info icon next to theme, to give info about theme
+- notification for new category on slider

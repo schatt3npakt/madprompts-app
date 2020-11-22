@@ -51,6 +51,7 @@ All Options are found under the state.appView-property.
 6. Update general theme Array with the new normal Arrays under state.lib.theme.general
 7. Add a switch case to the setThemePrompt Mutation
 8. Add Adjective Files for theme, see below
+9. Add an icon to the theme icon picker inside the construct prompt string mutation
 
 ### Adding adjectives
 1. Add JSON-File under lib/adjectives
