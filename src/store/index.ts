@@ -17,12 +17,15 @@ import * as themePeople from '@/lib/theme/base/people.json'
 import * as themePeopleSpecial from '@/lib/theme/base/peopleSpecial.json'
 import * as themePlaces from '@/lib/theme/base/places.json'
 import * as themePlacesSpecial from '@/lib/theme/base/placesSpecial.json'
+import * as themeSetting from '@/lib/theme/base/setting.json'
+import * as themeSettingSpecial from '@/lib/theme/base/settingSpecial.json'
 
 // adjectives
 import * as adjectivesBeasts from '@/lib/adjectives/beasts.json'
 import * as adjectivesFood from '@/lib/adjectives/food.json'
 import * as adjectivesPeople from '@/lib/adjectives/people.json'
 import * as adjectivesPlaces from '@/lib/adjectives/places.json'
+import * as adjectivesSetting from '@/lib/adjectives/setting.json'
 import * as adjectivesStyle from '@/lib/adjectives/style.json'
 
 // seasonal vocab libraries
@@ -70,6 +73,14 @@ const chanceHelper = (chance: number) => {
 */
 // eslint-disable-next-line
 const adjectivesHelper = (state: any, passedArray: any): void => {
+  // Too few terms in passed array exception
+  try {
+    if (state.appView.formElements.numberInput.value > passedArray.length) throw new Error('adjectivesHelper: Adjectives input exceeds passed array items.')
+  } catch (err) {
+    console.log(err)
+    return
+  }
+
   /**
    * Empty Array and define Array for adjective Ids in use
   * This will be used to determine if an adjective id has already been added to the prompt,
@@ -153,6 +164,14 @@ const adjectivesHelper = (state: any, passedArray: any): void => {
 */
 // eslint-disable-next-line
 const themeHelper = (state: any, array: any, specialArray: any): void => {
+  // Too few items in passed array exception
+  try {
+    if (array.length < 1 || specialArray.length < 1) throw new Error('themeHelper: Too few items in passed array for prompt contstruction.')
+  } catch (err) {
+    console.log(err)
+    return
+  }
+
   // Determine whether to show normal or special value (5% Chance to get Special)
   if (chanceHelper(95)) {
     state.promptBuilder.theme =
@@ -247,10 +266,12 @@ export default new Vuex.Store({
       const logo = new Image()
       const hardmodeIcon = new Image()
       const themeIcon = new Image()
-      let iconYPosition: Number
+      const fileName = "madprompt_" + themeString.replace(' ', '_').toLowerCase()
+      let iconYPosition : Number
 
       const icons = {
         beasts: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAWZJREFUeJzt201Kw2AURuFGilpqoJBZN+EyHLkhh27A9RV/wEkEf1uSJtZJ3MILJ21FzjO+XMrhm1xCJxNJkiRJOrQiHRyGIZprtrtorpyfRQvvn9+ifXsQtTnZ96/47wwIGRAyIGRAyICQASEDQgaEpungx3obzVWL+V+/MCJN00dzvkDIgJABIQNCBoQMCBkQMiBkQKhIv3Wkl8jnpssWhlarlzHXxarqwm8ih2BAyICQASEDQgaEDAgZEDIgVLx/tdHg2N860gtjNjuNLoK+/4n2jc0XCBkQMiBkQMiAkAEhA0IGhAwIFfXrJhpsu110iaQXRlmeRxdG03xH+66vLqO5sfkCIQNCBoQMCBkQMiBkQMiAkAGhadtl/zBPLZeL6MKo63W071gXRsoXCBkQMiBkQMiAkAEhA0IGhAwIFTe3d9Fgu83+J5J6eHwadd+x+AIhA0IGhAwIGRAyIGRAyICQAaFfbKFHBqA75a4AAAAASUVORK5CYII=',
+        setting: 'data:image/png;base64,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',
         food: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAARRJREFUeJzt27FNAzEYgNELugGoMxIdqzAIq9AxBn2o0hCkFBFSCkpYwdFnIgTv1adfd5/cWGcvCwAAwLVtXvfH2TO/Zg+cbDNz2M3MYf+RgJGAkYCRgJGAkYCRgJGA0XrBs799hzFq9DuGdixWYCRgJGAkYCRgJGAkYCRgJGAkYCRgJGAkYCRgJGAkYCRgJGAkYLQuf+dfx2xDXazASMBIwEjASMBIwEjASMBIwOiS01lD7h7uZ4+c6vnxaeo8KzASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjBaz+fPoZvZh8PH0Gml08tbe6Mfttu9Dz233d66sX4NAkYCRgJGAkYCRgJGAkYCRt8WRhdNmVylTAAAAABJRU5ErkJggg==',
         people: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAARlJREFUeJzt2yFOA1EUQNGWNA0WBIYgSCVrQzWsgqBYH4pgEGBJDWzhDbc0iHP0y/w/N1/MiL9aAQAAnNp6Onj/8DQd/f7dVk5m9M7Pj/vRw87SVhCwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjASMBIwEjBaL7j/MXI4fI3mXt9ejnqf5OZ6N7r/sd2eH3NZJ7ASMBIwEjASMBIwEjASMBIw2iyYHf05TL/0d7d3C5YeOfZN+dGfjRMYCRgJGAkYCRgJGAkYCRgJGG0+Pt9Hg5cXV3+8lf9l2sUJjASMBIwEjASMBIwEjASMBIx+AL6MFUd9JvdPAAAAAElFTkSuQmCC',
         places: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAUFJREFUeJzt3DEOAVEUQNE/Mp1eS6Ibpd7EAnSsQmsXdJZBoqKwD1pLYQtP7ssg7qlffiY3v5m8oXrMxiXZM/vAZFXmYb3Mw/6RASEDQgaEDAgZEDIgZEDIgFD9xmz2G0bqG0GJP190LvR83kDIgJABIQNCBoQMCBkQMiBkQMiAkAEhA0IGhAwIGRAyIGRAyICQAaF3diLRHUb2biKbX2d9EwNCBoQMCBkQMiBkQMiAkAGh+rjahQab2zU2d4/Nfcq5PwzNXfqj0Jw3EDIgZEDIgJABIQNCBoQMCBkQqrb7U3Q2dYexPGwyjyvrQZt63qSZ+juRLhgQMiBkQMiAkAEhA0IGhAwI1eX7/+sq1bxdREdDXbyBkAEhA0IGhAwIGRAyIGRAyIDQx3YiP8CdSBcMCBkQMiBkQMiAkAEhA0IGhF6fjxnFy0MgqAAAAABJRU5ErkJggg==',
@@ -287,7 +308,7 @@ export default new Vuex.Store({
         const dataURI = canvas.toDataURL()
         imageElement.src = dataURI
         imageDownload.href = dataURI
-        imageDownload.download = "madprompt.png"
+        imageDownload.download = fileName
       }
 
       // set theme icon sources based on theme slider
@@ -309,6 +330,11 @@ export default new Vuex.Store({
         // Case for Food prompts
         case 3:
           themeIcon.src = icons.food
+          break
+
+        // Case for Setting prompts
+        case 4:
+          themeIcon.src = icons.setting
           break
       }
 
@@ -404,6 +430,11 @@ export default new Vuex.Store({
           case 3:
             adjectivesHelper(state, state.lib.adjectives.food)
             break
+
+          // Case for setting prompts
+          case 4:
+            adjectivesHelper(state, state.lib.adjectives.setting)
+            break
         }
       }
     },
@@ -467,6 +498,11 @@ export default new Vuex.Store({
         case 3:
           themeHelper(state, state.lib.theme.food.normal, state.lib.theme.food.special)
           break
+
+        // Case for setting prompts
+        case 4:
+          themeHelper(state, state.lib.theme.setting.normal, state.lib.theme.setting.special)
+          break
       }
     },
 
@@ -514,7 +550,7 @@ export default new Vuex.Store({
           isActive: false
         },
         numberInput: {
-          value: 2
+          value: 1
         },
         slider: {
           activeItem: 0,
@@ -522,7 +558,8 @@ export default new Vuex.Store({
             { id: 0, name: 'People' },
             { id: 1, name: 'Places' },
             { id: 2, name: 'Beasts' },
-            { id: 3, name: 'Food' }
+            { id: 3, name: 'Food' },
+            { id: 4, name: 'Setting' }
           ]
         }
       },
@@ -542,6 +579,7 @@ export default new Vuex.Store({
         food: adjectivesFood.data,
         people: adjectivesPeople.data,
         places: adjectivesPlaces.data,
+        setting: adjectivesSetting.data,
         style: adjectivesStyle.data
       },
       challenges: challenges.data,
@@ -568,6 +606,10 @@ export default new Vuex.Store({
         places: {
           normal: themePlaces.data,
           special: themePlacesSpecial.data
+        },
+        setting: {
+          normal: themeSetting.data,
+          special: themeSettingSpecial.data
         }
       }
     },

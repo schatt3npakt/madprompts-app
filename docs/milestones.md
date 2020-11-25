@@ -86,7 +86,7 @@
 
 # 1.0.1
 - Add new vocab
-- remove chibi bug
+- Edit Image File Name
 
 ## Version end checklist
 - all tasks for current version checked?
@@ -98,6 +98,7 @@
 # Tasks
 ## Categories
 ### Must
+- Zero Adjective Bug if Challenge is enabled
 
 ### Should
 - number input behaviour on mobile chrome
@@ -118,3 +119,5 @@
 - easy mode (toggle just one word with adjectives)
 
 ## Backlog
+- small info icon next to theme, to give info about theme
+- notification for new category on slider
