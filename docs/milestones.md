@@ -86,6 +86,7 @@
 
 # 1.0.1
 - Add new vocab
+- Edit Image File Name
 
 ## Version end checklist
 - all tasks for current version checked?
@@ -97,6 +98,7 @@
 # Tasks
 ## Categories
 ### Must
+- Zero Adjective Bug if Challenge is enabled
 
 ### Should
 - number input behaviour on mobile chrome

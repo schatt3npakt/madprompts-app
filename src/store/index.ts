@@ -266,7 +266,8 @@ export default new Vuex.Store({
       const logo = new Image()
       const hardmodeIcon = new Image()
       const themeIcon = new Image()
-      let iconYPosition: Number
+      const fileName = "madprompt_" + themeString.replace(' ', '_').toLowerCase()
+      let iconYPosition : Number
 
       const icons = {
         beasts: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAWZJREFUeJzt201Kw2AURuFGilpqoJBZN+EyHLkhh27A9RV/wEkEf1uSJtZJ3MILJ21FzjO+XMrhm1xCJxNJkiRJOrQiHRyGIZprtrtorpyfRQvvn9+ifXsQtTnZ96/47wwIGRAyIGRAyICQASEDQgaEpungx3obzVWL+V+/MCJN00dzvkDIgJABIQNCBoQMCBkQMiBkQKhIv3Wkl8jnpssWhlarlzHXxarqwm8ih2BAyICQASEDQgaEDAgZEDIgVLx/tdHg2N860gtjNjuNLoK+/4n2jc0XCBkQMiBkQMiAkAEhA0IGhAwIFfXrJhpsu110iaQXRlmeRxdG03xH+66vLqO5sfkCIQNCBoQMCBkQMiBkQMiAkAGhadtl/zBPLZeL6MKo63W071gXRsoXCBkQMiBkQMiAkAEhA0IGhAwIFTe3d9Fgu83+J5J6eHwadd+x+AIhA0IGhAwIGRAyIGRAyICQAaFfbKFHBqA75a4AAAAASUVORK5CYII=',
@@ -307,7 +308,7 @@ export default new Vuex.Store({
         const dataURI = canvas.toDataURL()
         imageElement.src = dataURI
         imageDownload.href = dataURI
-        imageDownload.download = "madprompt.png"
+        imageDownload.download = fileName
       }
 
       // set theme icon sources based on theme slider
@@ -549,7 +550,7 @@ export default new Vuex.Store({
           isActive: false
         },
         numberInput: {
-          value: 2
+          value: 1
         },
         slider: {
           activeItem: 0,
