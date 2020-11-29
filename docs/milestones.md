@@ -85,8 +85,12 @@
 - optimize images [X]
 
 # 1.0.1
-- Add new vocab
-- Edit Image File Name
+- Add new vocab [X]
+- Edit Image File Name [X]
+
+# 1.0.2
+- speed up animation times and delays [X]
+- Zero Adjective Bug if Challenge is enabled
 
 ## Version end checklist
 - all tasks for current version checked?
@@ -98,7 +102,6 @@
 # Tasks
 ## Categories
 ### Must
-- Zero Adjective Bug if Challenge is enabled
 - PWA Check for updates
 
 ### Should
