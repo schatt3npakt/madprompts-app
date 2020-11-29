@@ -91,9 +91,11 @@ const adjectivesHelper = (state: any, passedArray: any): void => {
 
   // Detect if Challenge is active to determine whether to use style adjectives
   if (state.appView.formElements.challengeButton.isActive) {
-    // Check if the user has selected one adjective
-    if (parseInt(state.appView.formElements.numberInput.value) === 1) {
-      // push adjective and index into state array
+    // Check if the user has selected one adjective and return if zero are given
+    if (parseInt(state.appView.formElements.numberInput.value) === 0) {
+      // Do nothing
+    } else if (parseInt(state.appView.formElements.numberInput.value) === 1) {
+      // push style adjective and index into state array
       state.promptBuilder.adjectives.push(
         {
           id: 'adjective0',

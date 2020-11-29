@@ -90,7 +90,8 @@
 
 # 1.0.2
 - speed up animation times and delays [X]
-- Zero Adjective Bug if Challenge is enabled
+- Zero Adjective Bug if Challenge is enabled [X]
+- refactor index.ts
 
 ## Version end checklist
 - all tasks for current version checked?
