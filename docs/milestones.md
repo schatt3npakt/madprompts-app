@@ -99,6 +99,7 @@
 ## Categories
 ### Must
 - Zero Adjective Bug if Challenge is enabled
+- PWA Check for updates
 
 ### Should
 - number input behaviour on mobile chrome
