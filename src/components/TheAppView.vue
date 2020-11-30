@@ -147,7 +147,7 @@ export default Vue.extend({
       this.storeBuildPrompt()
     }
   },
-  name: 'HelloWorld',
+  name: 'TheAppView',
   props: {
     msg: String
   }

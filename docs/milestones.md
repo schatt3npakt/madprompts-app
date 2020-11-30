@@ -84,9 +84,14 @@
 - add new art [X]
 - optimize images [X]
 
-# 1.0.1
-- Add new vocab
-- Edit Image File Name
+## 1.0.1
+- Add new vocab [X]
+- Edit Image File Name [X]
+
+## 1.0.2
+- speed up animation times and delays [X]
+- Zero Adjective Bug if Challenge is enabled [X]
+- refactor index.ts [X]
 
 ## Version end checklist
 - all tasks for current version checked?
@@ -96,22 +101,18 @@
 - priorise backlog and create next milestone
 
 # Tasks
-## Categories
 ### Must
-- Zero Adjective Bug if Challenge is enabled
+- PWA Check for updates
 
 ### Should
-- number input behaviour on mobile chrome
-- Add Edge support for download
-- Environment Category
-- weapon category
 - lock terms
+- Refactor prompt build action in store
+- weapon category
 
 ### Nice to have
 - Custom Install
 - hint system
 - app options -> themes?
-- detect ie
 - sounds?
 - open source?
 - Light/dark themes

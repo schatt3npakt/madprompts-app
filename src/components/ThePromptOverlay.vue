@@ -48,7 +48,7 @@ export default Vue.extend({
 
       window.setTimeout(() => {
         this.startHiding = false
-      }, 1000)
+      }, 500)
     }
   },
   name: 'ThePromptOverlay'
@@ -69,7 +69,7 @@ export default Vue.extend({
     position: fixed;
     top: 0;
     transform: translateY(-100%);
-    transition: transform 0.85s ease-out;
+    transition: transform 0.7s ease-out;
     width: calc(100vw - 80px);
     z-index: z-index.$prompt-layer;
 
@@ -81,7 +81,7 @@ export default Vue.extend({
     .button--submit {
       opacity: 0;
       transition: opacity 0.5s;
-      transition-delay: 1.5s;
+      transition-delay: 0.55s;
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         margin-left: auto;
@@ -96,7 +96,7 @@ export default Vue.extend({
       text-align: center;
       opacity: 0;
       transition: opacity 0.5s;
-      transition-delay: 1s;
+      transition-delay: 0.55s;
 
       @media screen and (min-width: breakpoints.$tablet-portrait) {
         font-size: 43px;
