@@ -93,6 +93,11 @@
 - Zero Adjective Bug if Challenge is enabled [X]
 - refactor index.ts [X]
 
+## 1.0.3
+- Add Nature
+- Add GA
+- Add a Cookie Layer
+
 ## Version end checklist
 - all tasks for current version checked?
 - commit and push to remote

@@ -88,6 +88,11 @@ export default Vue.extend({
       }
     }
 
+    &--neutral {
+        background-color: colors.$concrete;
+        border-bottom: 5px solid colors.$asbestos;
+    }
+
     &--image-button {
       background-color: colors.$peter-river;
       border-bottom: 5px solid colors.$belize-hole;
