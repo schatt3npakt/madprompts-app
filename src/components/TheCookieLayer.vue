@@ -81,44 +81,84 @@ export default Vue.extend({
   .cookie-layer {
     &__body {
       background-color: colors.$pickled-bluewood;
-      width: 100%;
-      height: 100%;
-      max-width: 500px;
-      max-height: 500px;
+      height: calc(100vh - 80px);
+      left: 50%;
+      padding: 20px 20px;
       position: absolute;
       top: 50%;
-      left: 50%;
       transform: translate(-50%, -50%);
-      padding: 20px 40px;
+      width: calc(100vw - 80px);
+
+      @media screen and (min-width: breakpoints.$desktop) {
+        height: 100vh;
+        width: 100vw;
+        max-height: 500px;
+        max-width: 500px;
+      }
     }
 
     &__bg {
+      background-color: rgba(0,0,0,0.5);
+      height: 100vh;
+      left: 0;
       position: fixed;
       top: 0;
-      left: 0;
-      background-color: rgba(0,0,0,0.5);
       width: 100vw;
-      height: 100vh;
       z-index: z-index.$cookie-layer;
     }
 
     &__headline {
-      text-align: center;
-      font-size: 60px;
       color: white;
-      margin: 0 0 30px 0;
+      font-size: 60px;
+      margin: 0 0 20px 0;
+      text-align: center;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          font-size: 55px;
+          margin: 0 0 30px 0;
+        }
+
+        @media screen and (min-width: breakpoints.$desktop) {
+          font-size: 60px;
+        }
+
+        @media screen and (min-width: breakpoints.$desktop-large) {
+          font-size: 65px;
+        }
     }
 
     &__paragraph {
       color: white;
-      font-size: 20px;
+      font-size: 25px;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          font-size: 20px;
+        }
+
+        @media screen and (min-width: breakpoints.$desktop) {
+          font-size: 18px;
+        }
+
+        @media screen and (min-width: breakpoints.$desktop-large) {
+          font-size: 20px;
+        }
     }
 
     &__save-buttons {
       display: flex;
+      flex-flow: column nowrap;
+
+      @media screen and (min-width: breakpoints.$tablet-portrait) {
+        flex-flow: row wrap;
+      }
 
       *:first-child {
-        margin-right: 20px;
+        margin-bottom: 15px;
+
+        @media screen and (min-width: breakpoints.$tablet-portrait) {
+          margin-bottom: 0;
+          margin-right: 20px;
+        }
       }
     }
   }
