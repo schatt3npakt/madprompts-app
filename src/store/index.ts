@@ -43,7 +43,7 @@ export default new Vuex.Store({
      * Build a new Prompt and commit it to the app state.
      * @param context
      * @returns void
-    */
+     */
     buildPrompt ({ commit }) {
       commit('setPromptHeadline')
       commit('setAdjectivesPrompt')
@@ -53,14 +53,13 @@ export default new Vuex.Store({
       commit('constructPromptString')
     }
   },
-  modules: {
-  },
+  modules: {},
   mutations: {
     /**
      * Construct the prompt String for the downloadable image, render image and set download link
      * @param state
      * @returns void
-    */
+     */
     constructPromptString (state): void {
       /* eslint-disable */
       //empty prompt array
@@ -83,7 +82,7 @@ export default new Vuex.Store({
       // combine theme strings and push theme into prompt array
       let themeString
       if (state.promptBuilder.theme.length > 1) {
-        themeString = state.promptBuilder.theme[0].text + " " + state.promptBuilder.theme[1].text
+        themeString = state.promptBuilder.theme[0].text + ' ' + state.promptBuilder.theme[1].text
       } else {
         themeString = state.promptBuilder.theme[0].text
       }
@@ -102,8 +101,8 @@ export default new Vuex.Store({
       const logo = new Image()
       const hardmodeIcon = new Image()
       const themeIcon = new Image()
-      const fileName = "madprompt_" + themeString.replace(' ', '_').toLowerCase()
-      let iconYPosition : Number
+      const fileName = 'madprompt_' + themeString.replace(' ', '_').toLowerCase()
+      let iconYPosition: Number
 
       const icons = {
         beasts: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAWZJREFUeJzt201Kw2AURuFGilpqoJBZN+EyHLkhh27A9RV/wEkEf1uSJtZJ3MILJ21FzjO+XMrhm1xCJxNJkiRJOrQiHRyGIZprtrtorpyfRQvvn9+ifXsQtTnZ96/47wwIGRAyIGRAyICQASEDQgaEpungx3obzVWL+V+/MCJN00dzvkDIgJABIQNCBoQMCBkQMiBkQKhIv3Wkl8jnpssWhlarlzHXxarqwm8ih2BAyICQASEDQgaEDAgZEDIgVLx/tdHg2N860gtjNjuNLoK+/4n2jc0XCBkQMiBkQMiAkAEhA0IGhAwIFfXrJhpsu110iaQXRlmeRxdG03xH+66vLqO5sfkCIQNCBoQMCBkQMiBkQMiAkAGhadtl/zBPLZeL6MKo63W071gXRsoXCBkQMiBkQMiAkAEhA0IGhAwIFTe3d9Fgu83+J5J6eHwadd+x+AIhA0IGhAwIGRAyIGRAyICQAaFfbKFHBqA75a4AAAAASUVORK5CYII=',
@@ -113,32 +112,32 @@ export default new Vuex.Store({
         places: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAUFJREFUeJzt3DEOAVEUQNE/Mp1eS6Ibpd7EAnSsQmsXdJZBoqKwD1pLYQtP7ssg7qlffiY3v5m8oXrMxiXZM/vAZFXmYb3Mw/6RASEDQgaEDAgZEDIgZEDIgFD9xmz2G0bqG0GJP190LvR83kDIgJABIQNCBoQMCBkQMiBkQMiAkAEhA0IGhAwIGRAyIGRAyICQAaF3diLRHUb2biKbX2d9EwNCBoQMCBkQMiBkQMiAkAGh+rjahQab2zU2d4/Nfcq5PwzNXfqj0Jw3EDIgZEDIgJABIQNCBoQMCBkQqrb7U3Q2dYexPGwyjyvrQZt63qSZ+juRLhgQMiBkQMiAkAEhA0IGhAwI1eX7/+sq1bxdREdDXbyBkAEhA0IGhAwIGRAyIGRAyIDQx3YiP8CdSBcMCBkQMiBkQMiAkAEhA0IGhF6fjxnFy0MgqAAAAABJRU5ErkJggg==',
         skull: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAAThJREFUeJzt2zESwUAYQOGNSamioMZwgTSUDq6kyQUY1BRU+nUAzW9ekJH31TsrefMX2TFb5JxTUHjhnygii3qffop/Z0DIgJABIQNCBoQMCBkQMiBUpu6dMKJCXZxAyICQASEDQgaEDAgZEDIgZECojC6sVutGf7jebhrd71fP5wRCBoQMCBkQMiBkQMiAkAEhA0IGhAwIGRAyIGRAyICQASEDQgaEDAgV+Y2LInrlBEIGhAwIGRAyIGRAyICQASEDQmUK3sxO3btP4o31bzAgZEDIgJABIQNCBoQMCBkQCt8Tud0foS/zXX1u9YllWU1C7zEc9EP7OYGQASEDQgaEDAgZEDIgZEDIgFD0/5C0P15C6+bTUatPIofTNfTOi9k4tJ8TCBkQMiBkQMiAkAEhA0IGhAwIPQEKHx+fFWrmBAAAAABJRU5ErkJggg=='
       }
-      
+
       //Image style
       const borderWidth = 25
       const promptFont = (state.promptBuilder.promptString.length <= 6) ? '50px VT323' : '40px VT323'
-      const fontColor = "rgb(255, 255, 255)"
+      const fontColor = 'rgb(255, 255, 255)'
       const promptLineheight = (state.promptBuilder.promptString.length <= 6) ? 60 : 50
 
       //draw blue background
-      ctx.fillStyle = "rgb(44, 62, 80)"
+      ctx.fillStyle = 'rgb(44, 62, 80)'
       ctx.fillRect(0, 0, 1080, 1080)
 
       //draw image, then generate Logo and download link
-      logo.onload = function() {
+      logo.onload = function () {
         // draw hardmodeIcon
-        if ( state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
-          ctx.drawImage(hardmodeIcon, 570, iconYPosition, 64, 64);
+        if (state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
+          ctx.drawImage(hardmodeIcon, 570, iconYPosition, 64, 64)
         }
 
         // draw challengeicon centered if hardmode is enabled and left of skull if it is not
-        if ( state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
-          ctx.drawImage(themeIcon, 437, iconYPosition, 64, 64);
+        if (state.appView.formElements.challengeButton.isActive && state.appView.formElements.numberInput.value >= 3 || state.appView.formElements.numberInput.value >= 5) {
+          ctx.drawImage(themeIcon, 437, iconYPosition, 64, 64)
         } else {
-          ctx.drawImage(themeIcon, 508, iconYPosition, 64, 64);
+          ctx.drawImage(themeIcon, 508, iconYPosition, 64, 64)
         }
-        
-        ctx.drawImage(logo, 40, 944, 460, 85.5);
+
+        ctx.drawImage(logo, 40, 944, 460, 85.5)
 
         // generate download link and set canvas to image
         const dataURI = canvas.toDataURL()
@@ -175,7 +174,7 @@ export default new Vuex.Store({
       }
 
       hardmodeIcon.src = icons.skull
-      logo.src = "/img/logo-desktop.svg";
+      logo.src = '/img/logo-desktop.svg'
 
       //draw border
       ctx.strokeStyle = fontColor
@@ -183,8 +182,8 @@ export default new Vuex.Store({
       ctx.strokeRect(0, 0, 1080, 1080)
 
       // Drwa prompt to image
-      let x = 540;
-      let y = 100;
+      let x = 540
+      let y = 100
       ctx.fillStyle = fontColor
       ctx.font = promptFont
       ctx.textAlign = 'center'
@@ -192,29 +191,29 @@ export default new Vuex.Store({
       //loop through items in prompt array
       for (let i = 0; i < state.promptBuilder.promptString.length; i++) {
         if (i === 1) {
-          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*(promptLineheight*2)) );
+          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i * (promptLineheight * 2)))
         } else if (i > 1) {
-          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight) + promptLineheight);
+          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i * promptLineheight) + promptLineheight)
         } else {
-          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i*promptLineheight));
+          ctx.fillText(state.promptBuilder.promptString[i], x, y + (i * promptLineheight))
         }
 
         if (i < state.promptBuilder.promptString.length - 1) {
-          iconYPosition =  y + (i*promptLineheight) + promptLineheight + 150
+          iconYPosition = y + (i * promptLineheight) + promptLineheight + 150
         }
       }
 
       ctx.textAlign = 'right'
       // SoMe Handle
-      ctx.fillText('@madprompts', 1020 , 950);
-      ctx.fillText('#madpromptAccepted', 1020 , 1010);
+      ctx.fillText('@madprompts', 1020, 950)
+      ctx.fillText('#madpromptAccepted', 1020, 1010)
     },
 
     /**
      * Decrease the index of the currenlty active slider item by one.
      * @param state
      * @returns void
-    */
+     */
     decreaseActiveItem (state): void {
       const slider = state.appView.formElements.slider
 
@@ -227,7 +226,7 @@ export default new Vuex.Store({
      * Increase the index of the currenlty active slider item by one.
      * @param state
      * @returns void
-    */
+     */
     increaseActiveItem (state): void {
       const slider = state.appView.formElements.slider
 
@@ -237,11 +236,11 @@ export default new Vuex.Store({
     },
 
     /**
-       * Set zhe adjectives for the current prompt from the general array if challenge is enabled or
-       * themed adjective array if challenge is disabled
-       * @param state
-       * @returns void
-      */
+     * Set zhe adjectives for the current prompt from the general array if challenge is enabled or
+     * themed adjective array if challenge is disabled
+     * @param state
+     * @returns void
+     */
     setAdjectivesPrompt (state): void {
       if (state.appView.formElements.challengeButton.isActive) {
         helpers.adjectivesHelper(state, state.lib.adjectives.general)
@@ -280,7 +279,7 @@ export default new Vuex.Store({
      * @param state
      * @param value: number
      * @returns void
-    */
+     */
     setNumberInputValue (state, value: number): void {
       state.appView.formElements.numberInput.value = value
     },
@@ -289,7 +288,7 @@ export default new Vuex.Store({
      * Set zhe challenge for the current prompt to a random item in the challenge array
      * @param state
      * @returns void
-    */
+     */
     setChallengePrompt (state): void {
       state.promptBuilder.challenge = state.lib.challenges[helpers.arrayRandomizer(state.lib.challenges.length)]
     },
@@ -298,7 +297,7 @@ export default new Vuex.Store({
      * Set zhe headline for the current prompt to a random item in the headlines array
      * @param state
      * @returns void
-    */
+     */
     setPromptHeadline (state): void {
       state.promptBuilder.headline = state.lib.headlines[helpers.arrayRandomizer(state.lib.headlines.length)]
     },
@@ -307,7 +306,7 @@ export default new Vuex.Store({
      * Set zhe theme for the current prompt to a random item in the theme array
      * @param state
      * @returns void
-    */
+     */
     setThemePrompt (state): void {
       /* Determine which theme pool should be used, by getting the index of the active item in the slider
       * and loading a theme pool based on that number. Correspondance between slider order and loading the
@@ -346,7 +345,7 @@ export default new Vuex.Store({
      * Toggle the challenge state for the next prompt
      * @param state
      * @returns void
-    */
+     */
     toggleChallenge (state): void {
       const challengeButton = state.appView.formElements.challengeButton
 
@@ -359,7 +358,7 @@ export default new Vuex.Store({
      * Set first prompt created to true for valid prompt rendering
      * @param state
      * @returns void
-    */
+     */
     setFirstPromptCreated (state): void {
       if (!state.promptBuilder.firstPromptCreated) {
         state.promptBuilder.firstPromptCreated = true
@@ -370,7 +369,7 @@ export default new Vuex.Store({
      * Toggle visibility of the prompt overlay
      * @param state
      * @returns void
-    */
+     */
     togglePromptOverlay (state): void {
       const promptOverlay = state.appView.promptOverlay
 
@@ -392,11 +391,26 @@ export default new Vuex.Store({
         slider: {
           activeItem: 0,
           items: [
-            { id: 0, name: 'People' },
-            { id: 1, name: 'Places' },
-            { id: 2, name: 'Beasts' },
-            { id: 3, name: 'Food' },
-            { id: 4, name: 'Setting' }
+            {
+              id: 0,
+              name: 'People'
+            },
+            {
+              id: 1,
+              name: 'Places'
+            },
+            {
+              id: 2,
+              name: 'Beasts'
+            },
+            {
+              id: 3,
+              name: 'Food'
+            },
+            {
+              id: 4,
+              name: 'Setting'
+            }
           ]
         }
       },

@@ -48,7 +48,7 @@ export default Vue.extend({
      * Returns whether the passed itemId is identical to the id of the active item
      * @param itemId: number
      * @returns boolean
-    */
+     */
     isActiveItem: function (itemId: number): boolean {
       return itemId === this.storeActiveSliderItem
     },
@@ -56,7 +56,7 @@ export default Vue.extend({
     /**
      * Commit decrease active item mutation
      * @returns void
-    */
+     */
     storeDecreaseActiveItem: function (): void {
       this.$store.commit('decreaseActiveItem')
     },
@@ -64,7 +64,7 @@ export default Vue.extend({
     /**
      * Commit increase active item mutation
      * @returns void
-    */
+     */
     storeIncreaseActiveItem: function (): void {
       this.$store.commit('increaseActiveItem')
     }
@@ -74,11 +74,17 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-  button::-moz-focus-inner,
-  input::-moz-focus-inner,
-  a::-moz-focus-inner {
-    border: 0;
-  }
+@use "~@/scss/vars/_breakpoints";
+@use "~@/scss/vars/_colors";
+@use "~@/scss/vars/_dimensions";
+@use "~@/scss/vars/_fonts";
+@use "~@/scss/vars/_icons";
+
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+a::-moz-focus-inner {
+  border: 0;
+}
 
 .slider {
   border: none;
@@ -122,9 +128,8 @@ export default Vue.extend({
     padding: 0;
     position: relative;
     text-align: center;
-    transition:
-      background-color 0.1s ease-out,
-      transform 0.1s ease-out;
+    transition: background-color 0.1s ease-out,
+    transform 0.1s ease-out;
     width: map_get(dimensions.$slider-button-width, "mobile");
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
@@ -173,7 +178,8 @@ export default Vue.extend({
         height: map_get(dimensions.$slider-arrows-height, desktop);
         width: map_get(dimensions.$slider-arrows-width, desktop);
       }
-    };
+    }
+  ;
 
     &::after {
       background-size: 100% 100%;

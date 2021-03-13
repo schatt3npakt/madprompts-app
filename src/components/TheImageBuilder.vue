@@ -69,11 +69,7 @@ export default Vue.extend({
     * @returns void
     */
     toggleImageVisibility (): void {
-      if (this.showImage === false) {
-        this.showImage = true
-      } else {
-        this.showImage = false
-      }
+      this.showImage = !this.showImage
     }
   },
   name: 'theImageBuilder'
@@ -81,100 +77,103 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-  .image-builder {
-    canvas {
-      background-color: colors.$pickled-bluewood;
-      display: none;
-      left: 0;
+@use "~@/scss/vars/_breakpoints";
+@use "~@/scss/vars/_colors";
+
+.image-builder {
+  canvas {
+    background-color: colors.$pickled-bluewood;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 400;
+  }
+
+  img {
+    box-shadow: 0 0 40px rgb(0, 0, 0);
+    display: block;
+    height: 100%;
+    transform: scale(1);
+    transition: transform 0.25s ease-out;
+    width: 100%;
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__background {
+    &.show {
+      background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
       top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
       z-index: 400;
     }
+  }
 
-    img {
-      box-shadow: 0 0 40px rgb(0,0,0);
-      display: block;
+  &__button {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 341px;
+  }
+
+  &__download-link {
+    display: block;
+    height: 0;
+    left: 50%;
+    max-height: 300px;
+    max-width: 300px;
+    opacity: 0;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.25s ease-out;
+    width: 0;
+    z-index: 500;
+
+    @media (min-width: breakpoints.$tablet-portrait) {
+      max-height: 500px;
+      max-width: 500px;
+    }
+
+    &.show {
       height: 100%;
-      transform: scale(1);
-      transition: transform 0.25s ease-out;
+      opacity: 1;
       width: 100%;
 
-      &:active {
-        transform: scale(0.98);
-      }
-    }
-
-    &__background {
-      &.show {
-        background-color: rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        z-index: 400;
-      }
-    }
-
-    &__button {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 341px;
-    }
-
-    &__download-link {
-      display: block;
-      height: 0;
-      left: 50%;
-      max-height: 300px;
-      max-width: 300px;
-      opacity: 0;
-      position: absolute;
-      text-decoration: none;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      transition: opacity 0.25s ease-out;
-      width: 0;
-      z-index: 500;
-
-      @media (min-width: breakpoints.$tablet-portrait) {
-        max-height: 500px;
-        max-width: 500px;
-      }
-
-      &.show {
-        height: 100%;
-        opacity: 1;
-        width: 100%;
-
-        .image-builder__download-hint {
-          &,
-          &:link,
-          &:visited,
-          &:focus,
-          &:hover,
-          &:active {
-            color: white;
-            display: block;
-            font-size: 35px;
-            height: auto;
-            margin-top: 20px;
-            opacity: 1;
-            text-decoration: none;
-          }
+      .image-builder__download-hint {
+        &,
+        &:link,
+        &:visited,
+        &:focus,
+        &:hover,
+        &:active {
+          color: white;
+          display: block;
+          font-size: 35px;
+          height: auto;
+          margin-top: 20px;
+          opacity: 1;
+          text-decoration: none;
         }
       }
     }
+  }
 
-    &__download-hint {
-      &,
-      &:link,
-      &:visited,
-      &:focus,
-      &:hover,
-      &:active {
-        display: none;
-      }
+  &__download-hint {
+    &,
+    &:link,
+    &:visited,
+    &:focus,
+    &:hover,
+    &:active {
+      display: none;
     }
   }
+}
 </style>

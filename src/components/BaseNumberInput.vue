@@ -4,6 +4,10 @@
       <p class="number-input__label__text">Adjectives</p>
     </div>
 
+    <label
+      class="sr-only"
+      for="adjectives">Adjektive</label>
+
     <input
       class="number-input__input"
       id="adjectives"
@@ -11,7 +15,7 @@
       min="0"
       name="adjectives"
       @blur="blurHandler"
-      onclick="javascript: this.value = '';"
+      onclick="this.value = '';"
       @input="inputHandler"
       type="number"
       :value="storeNumberInputValue"
@@ -33,7 +37,7 @@ export default Vue.extend({
      * Keep user input to one digit and pass value to commit-function
      * @param event: any
      * @returns void
-    */
+     */
     inputHandler (event: any): void { // eslint-disable-line
       const target = event.target
       let targetValue = target.value
@@ -47,7 +51,7 @@ export default Vue.extend({
      * Keep user input to one digit and pass value to commit-function
      * @param event: any
      * @returns void
-    */
+     */
     blurHandler (event: any): void { // eslint-disable-line
       const target = event.target
       target.value = this.storeNumberInputValue
@@ -57,7 +61,7 @@ export default Vue.extend({
      * Take in user input value and commit store mutation
      * @param value: number
      * @returns void
-    */
+     */
     storeSetNumberInputValue (value: number): void {
       this.$store.commit('setNumberInputValue', value)
     }
@@ -67,106 +71,111 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-  button::-moz-focus-inner,
-  input::-moz-focus-inner,
-  a::-moz-focus-inner {
-    border: 0;
+@use "~@/scss/vars/_breakpoints";
+@use "~@/scss/vars/_colors";
+@use "~@/scss/vars/_dimensions";
+@use "~@/scss/vars/_fonts";
+@use "~@/scss/vars/_margins";
+
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+a::-moz-focus-inner {
+  border: 0;
+}
+
+.number-input {
+  display: flex;
+  border-radius: 0;
+  box-shadow: colors.$button-shadow;
+  color: white;
+  font-size: map_get(fonts.$button-sizes, "mobile");
+  font-weight: normal;
+  height: map_get(dimensions.$button-height, "mobile");;
+  justify-content: space-between;
+  overflow: hidden;
+  width: 100%;
+
+  @media screen and (min-width: breakpoints.$tablet-portrait) {
+    font-size: map_get(fonts.$button-sizes, "tablet");
+    height: map_get(dimensions.$button-height, "tablet");
   }
 
-  .number-input {
-    display: flex;
-    border-radius: 0;
-    box-shadow: colors.$button-shadow;
+  @media screen and (min-width: breakpoints.$desktop) {
+    font-size: map_get(fonts.$button-sizes, "desktop");
+    height: map_get(dimensions.$button-height, "desktop");
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &__input {
+    background-color: colors.$turqouise;
+    border: 0;
+    border-bottom: 5px solid colors.$green-sea;
     color: white;
     font-size: map_get(fonts.$button-sizes, "mobile");
     font-weight: normal;
-    height: map_get(dimensions.$button-height, "mobile");;
-    justify-content: space-between;
-    overflow: hidden;
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    transition: background-color 0.1s ease-out,
+    transform 0.1s ease-out;
+    width: map_get(dimensions.$number-input-width, "mobile");
 
     @media screen and (min-width: breakpoints.$tablet-portrait) {
       font-size: map_get(fonts.$button-sizes, "tablet");
-      height: map_get(dimensions.$button-height, "tablet");
+      width: map_get(dimensions.$number-input-width, "tablet");
     }
 
     @media screen and (min-width: breakpoints.$desktop) {
+      cursor: pointer;
       font-size: map_get(fonts.$button-sizes, "desktop");
-      height: map_get(dimensions.$button-height, "desktop");
+      margin-left: -1px;
+      width: map_get(dimensions.$number-input-width, "desktop");
     }
 
     &:active,
     &:focus {
+      background-color: colors.$green-sea;
       outline: none;
+      transform: translateY(5px);
     }
 
-    &__input {
-      background-color: colors.$turqouise;
-      border: 0;
-      border-bottom: 5px solid colors.$green-sea;
-      color: white;
-      font-size: map_get(fonts.$button-sizes, "mobile");
-      font-weight: normal;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      transition:
-        background-color 0.1s ease-out,
-        transform 0.1s ease-out;
-      width: map_get(dimensions.$number-input-width, "mobile");
-
-      @media screen and (min-width: breakpoints.$tablet-portrait) {
-        font-size: map_get(fonts.$button-sizes, "tablet");
-        width: map_get(dimensions.$number-input-width, "tablet");
-      }
-
-      @media screen and (min-width: breakpoints.$desktop) {
-        cursor: pointer;
-        font-size: map_get(fonts.$button-sizes, "desktop");
-        margin-left: -1px;
-        width: map_get(dimensions.$number-input-width, "desktop");
-      }
-
-      &:active,
-      &:focus {
-        background-color: colors.$green-sea;
-        outline: none;
-        transform: translateY(5px);
-      }
-
-      &:hover:not(:active):not(:focus) {
-        background-color: lighten(colors.$turqouise, 5%);
-        border-bottom: 5px solid lighten(colors.$green-sea, 5%);
-      }
-
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      &[type=number] {
-        -moz-appearance: textfield;
-      }
+    &:hover:not(:active):not(:focus) {
+      background-color: lighten(colors.$turqouise, 5%);
+      border-bottom: 5px solid lighten(colors.$green-sea, 5%);
     }
 
-    &__label {
-      align-items: center;
-      background-color: colors.$concrete;
-      border: 0;
-      border-bottom: 5px solid colors.$asbestos;
-      display: flex;
-      justify-content: center;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
       margin: 0;
-      padding: 0 0 0 map_get(margins.$number-input-left-padding, "mobile");
-      text-align: center;
-      text-transform: uppercase;
-      transform: none;
-      width: 100%;
+    }
 
-      @media screen and (min-width: breakpoints.$desktop) {
-        padding-left: map_get(margins.$number-input-left-padding, "desktop");
-      }
+    &[type=number] {
+      -moz-appearance: textfield;
     }
   }
+
+  &__label {
+    align-items: center;
+    background-color: colors.$concrete;
+    border: 0;
+    border-bottom: 5px solid colors.$asbestos;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0 0 0 map_get(margins.$number-input-left-padding, "mobile");
+    text-align: center;
+    text-transform: uppercase;
+    transform: none;
+    width: 100%;
+
+    @media screen and (min-width: breakpoints.$desktop) {
+      padding-left: map_get(margins.$number-input-left-padding, "desktop");
+    }
+  }
+}
 </style>
