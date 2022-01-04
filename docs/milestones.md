@@ -1,23 +1,28 @@
 # Milestones
+
 ## 0.1.0
+
 - Logo [X]
 - Prompt-Buttons [X]
-  - Adjektive [X]
-  - Nouns [X]
+    - Adjektive [X]
+    - Nouns [X]
 - Submit-Buttons [X]
 
 ## 0.2.0
+
 - Tablet Styling [X]
 - New Logo in place [X]
 - Footertexts [X]
 - moved components into sepaeate files [X]
 
 ## 0.3.0
+
 - Desktop Styling [X]
 - further scss refactoring [X]
 - fix background sizes [X]
 
 ## 0.4.0
+
 - SCSS Refactoring [X]
 - prompt vocab architecture [X]
 - new prompt on "let's go" click [X]
@@ -29,6 +34,7 @@
 - prevent adjective duplicates [X]
 
 ## 0.5.0
+
 - BACKLOG PRIORIZATION [X]
 - move artist name to store [X]
 - only use general adjectives if challenge mode is enabled [X]
@@ -36,6 +42,7 @@
 - Tablet Landscape fixes [X]
 
 ## 0.6.0
+
 - add artist link property [X]
 - tab index cleanup [X]
 - Start working on prompt vocab [X]
@@ -45,12 +52,14 @@
 - startup animations [X]
 
 ## 0.7.0
+
 - detect disabled js [X]
 - Favicon [X]
 - update layout file [X]
 - meta-data for site and references to project name update [X]
 
 ## 1.0.0
+
 - rework logo files for loading screen [X]
 - new arrows [X]
 - bigger vocab [X]
@@ -85,15 +94,24 @@
 - optimize images [X]
 
 ## 1.0.1
+
 - Add new vocab [X]
 - Edit Image File Name [X]
 
 ## 1.0.2
+
 - speed up animation times and delays [X]
 - Zero Adjective Bug if Challenge is enabled [X]
 - refactor index.ts [X]
 
+## 1.0.3
+
+- Add Nature
+- Add GA
+- Add a Cookie Layer
+
 ## Version end checklist
+
 - all tasks for current version checked?
 - commit and push to remote
 - create PR
@@ -101,15 +119,19 @@
 - priorise backlog and create next milestone
 
 # Tasks
+
 ### Must
+
 - PWA Check for updates
 
 ### Should
+
 - lock terms
 - Refactor prompt build action in store
 - weapon category
 
 ### Nice to have
+
 - Custom Install
 - hint system
 - app options -> themes?
@@ -120,5 +142,6 @@
 - easy mode (toggle just one word with adjectives)
 
 ## Backlog
+
 - small info icon next to theme, to give info about theme
 - notification for new category on slider

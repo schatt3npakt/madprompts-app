@@ -1,20 +1,19 @@
 {
-  "data": 
-    [
-      "anubis",
-      "bald eagle",
-      "combat dolphin",
-      "cthulhu",
-      "elder dragon",
-      "hell hound",
-      "hydra",
-      "king of the slimes",
-      "medusa",
-      "phoenix",
-      "queen of the fairies",
-      "T-Rex",
-      "yeti",
-      "wolpertinger",
-      "white deer"
-    ]
+  "data": [
+    "anubis",
+    "bald eagle",
+    "combat dolphin",
+    "cthulhu",
+    "elder dragon",
+    "hell hound",
+    "hydra",
+    "king of the slimes",
+    "medusa",
+    "phoenix",
+    "queen of the fairies",
+    "T-Rex",
+    "yeti",
+    "wolpertinger",
+    "white deer"
+  ]
 }

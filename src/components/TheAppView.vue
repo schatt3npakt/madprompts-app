@@ -1,58 +1,60 @@
 <template>
   <div class="app-view">
-      <div class="app-view__container">
-        <div class="app-view__container__inner">
-          <a
-            class="logo"
-            href="https://madprompts.com"
-            title="Visit the Homepage of MADPROMPTS"
-          >
-            MADPROMPTS
-          </a>
+    <div class="app-view__container">
+      <div class="app-view__container__inner">
+        <a
+          class="logo"
+          href="https://madprompts.com"
+          title="Visit the Homepage of MADPROMPTS"
+        >
+          MADPROMPTS
+        </a>
 
-          <div>
-            <div class="form">
-              <BaseNumberInput />
+        <div>
+          <div class="form">
+            <BaseNumberInput/>
 
-              <BaseSlider />
+            <BaseSlider/>
 
-              <ToggleButton
-                active-text="Disable challenge"
-                button-id="challenge"
-                button-type="button--challenge"
-                inactive-text="Enable challenge"
-              />
-            </div>
-
-            <BaseButton
-              button-id="submit"
-              button-type="button--submit"
-              button-text="Let's go!"
-              :class="[storeGetDisplayHardMode? hardModeClasses.button: '']"
-              @click.native="submitClickHandler"
+            <ToggleButton
+              active-text="Disable challenge"
+              button-id="challenge"
+              button-type="button--challenge"
+              inactive-text="Enable challenge"
             />
           </div>
-        </div>
 
-        <div class="footer-text">
-          <a
-            class="footer-text__artist"
-            :href="footerText.artistLink"
-            target="_blank"
-            :title="footerText.artistTitle"
-          >
-            {{footerText.artist}}
-          </a>
-          <a
-            class="footer-text__imprint"
-            href="https://madprompts.com/#imprint"
-          >
-            Imprint
-          </a>
+          <BaseButton
+            button-id="submit"
+            button-type="button--submit"
+            button-text="Let's go!"
+            :class="[storeGetDisplayHardMode? hardModeClasses.button: '']"
+            @click.native="submitClickHandler"
+          />
         </div>
+      </div>
 
-        <ThePromptOverlay />
+      <div class="footer-text">
+        <a
+          class="footer-text__artist"
+          :href="footerText.artistLink"
+          target="_blank"
+          :title="footerText.artistTitle"
+        >
+          {{ footerText.artist }}
+        </a>
+        <a
+          class="footer-text__imprint"
+          href="https://madprompts.com/#imprint"
+        >
+          Imprint
+        </a>
+      </div>
+
+      <ThePromptOverlay/>
     </div>
+
+    <TheCookieLayer/>
   </div>
 </template>
 
@@ -61,6 +63,7 @@ import Vue from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseNumberInput from './BaseNumberInput.vue'
 import BaseSlider from './BaseSlider.vue'
+import TheCookieLayer from './TheCookieLayer.vue'
 import ThePromptOverlay from '@/components/ThePromptOverlay.vue'
 import ToggleButton from './ToggleButton.vue'
 
@@ -69,6 +72,7 @@ export default Vue.extend({
     BaseButton,
     BaseNumberInput,
     BaseSlider,
+    TheCookieLayer,
     ThePromptOverlay,
     ToggleButton
   },
@@ -76,7 +80,7 @@ export default Vue.extend({
     /**
      * Returns whether the current prompt configuration enables the hard mode (More than 5 adjectives or challenge enabled and more than 3)
      * @returns boolean
-    */
+     */
     storeGetDisplayHardMode (): boolean {
       return (this.storeGetChallengeValidation && this.storeGetNumberInputValue >= 3) || this.storeGetNumberInputValue >= 5
     },
@@ -84,7 +88,7 @@ export default Vue.extend({
     /**
      * Get whether the user disabled challenges in the Ui
      * @returns boolean
-    */
+     */
     storeGetChallengeValidation (): boolean {
       return this.$store.state.appView.formElements.challengeButton.isActive
     },
@@ -92,7 +96,7 @@ export default Vue.extend({
     /**
      * Get the number input value from the store
      * @returns number
-    */
+     */
     storeGetNumberInputValue (): number {
       return this.$store.state.appView.formElements.numberInput.value
     },
@@ -100,7 +104,7 @@ export default Vue.extend({
     /**
      * Get the current Adjectives from the store
      * @returns any
-    */
+     */
     // eslint-disable-next-line
     storeGetPromptAdjectives (): any {
       return this.$store.state.promptBuilder.adjectives
@@ -121,27 +125,24 @@ export default Vue.extend({
   methods: {
     /**
      * Commit togglePromptOverlay store mutation
-     * @param state
      * @returns void
-    */
+     */
     storeTogglePromptVisibility (): void {
       this.$store.commit('togglePromptOverlay')
     },
 
     /**
      * Set a new challenge in the app state
-     * @param state
      * @returns void
-    */
+     */
     storeBuildPrompt (): void {
       this.$store.dispatch('buildPrompt')
     },
 
     /**
      * Build a new Prompt and toggle layer visibility on submit click
-     * @param state
      * @returns void
-    */
+     */
     submitClickHandler (): void {
       this.storeTogglePromptVisibility()
       this.storeBuildPrompt()
@@ -155,11 +156,18 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-  button::-moz-focus-inner,
-  input::-moz-focus-inner,
-  a::-moz-focus-inner {
-    border: 0;
-  }
+@use "~@/scss/vars/_animations";
+@use "~@/scss/vars/_breakpoints";
+@use "~@/scss/vars/_colors";
+@use "~@/scss/vars/_fonts";
+@use "~@/scss/vars/_margins";
+@use "~@/scss/vars/_z-index";
+
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+a::-moz-focus-inner {
+  border: 0;
+}
 
 .app-view {
   background-image: url(../assets/img/bg-mobile.jpg);
@@ -446,36 +454,89 @@ export default Vue.extend({
 
   .loaded {
     .app-view {
-      .app-view__container {animation-delay: animations.$sidebar-delay};
-      .logo {animation-delay: animations.$logo};
-      .number-input {animation-delay: animations.$numberInput};
-      .slider {animation-delay: animations.$slider};
-      .toggle-button {animation-delay: animations.$toggleButton};
-      .button--submit {animation-delay: animations.$buttonSubmit};
-      .footer-text__imprint {animation-delay: animations.$footerTextVersion};
-      .footer-text__artist {animation-delay: animations.$footerTextArtist};
+      .app-view__container {
+        animation-delay: animations.$sidebar-delay
+      }
+    ;
+
+      .logo {
+        animation-delay: animations.$logo
+      }
+    ;
+
+      .number-input {
+        animation-delay: animations.$numberInput
+      }
+    ;
+
+      .slider {
+        animation-delay: animations.$slider
+      }
+    ;
+
+      .toggle-button {
+        animation-delay: animations.$toggleButton
+      }
+    ;
+
+      .button--submit {
+        animation-delay: animations.$buttonSubmit
+      }
+    ;
+
+      .footer-text__imprint {
+        animation-delay: animations.$footerTextVersion
+      }
+    ;
+
+      .footer-text__artist {
+        animation-delay: animations.$footerTextArtist
+      }
+    ;
     }
   }
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes flyInFromBottom {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes flyInFromTop {
-  from {opacity: 0; transform: translateY(-20px);}
-  to {opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInFromLeft {
-  0% {transform: translateX(-100%);}
-  99% {transform: translateX(0);}
-  100% {transform: none;}
+  0% {
+    transform: translateX(-100%);
+  }
+  99% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: none;
+  }
 }
 </style>

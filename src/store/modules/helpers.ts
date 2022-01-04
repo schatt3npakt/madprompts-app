@@ -4,7 +4,7 @@ export default class Helpers {
    * of the Array is 1 larger that the indexes of the items
    * @param max: number
    * @returns number
-  */
+   */
   arrayRandomizer = (max: number): number => {
     return Math.floor(Math.random() * (max))
   }
@@ -13,7 +13,7 @@ export default class Helpers {
    * Returns a random integer, including the max
    * @param max: number
    * @returns number
-  */
+   */
   randomizer = (max: number) => {
     return Math.floor(Math.random() * (max + 1))
   }
@@ -22,35 +22,32 @@ export default class Helpers {
    * Returns a boolean based on the passed chance parameter according to pattern {chance}
    * @param chance: number
    * @returns boolean
-  */
+   */
   chanceHelper = (chance: number) => {
     return this.randomizer(100) <= chance
   }
 
   /**
-  * helper function to get either:
-  * if the user has selected 1 adjective: a random item from the style Array
-  * OR first, a random item from the style Array, then the remaining random items from the passed Array,
-  * that ensures Adjectives are unique per prompt,
-  * @param state: any
-  * @param passedArray: any
-  * @returns void
-  */
+   * helper function to get either:
+   * if the user has selected 1 adjective: a random item from the style Array
+   * OR first, a random item from the style Array, then the remaining random items from the passed Array,
+   * that ensures Adjectives are unique per prompt,
+   * @param state: any
+   * @param passedArray: any
+   * @returns void
+   */
   // eslint-disable-next-line
   adjectivesHelper = (state: any, passedArray: any): void => {
     // Too few terms in passed array exception
-    try {
-      if (state.appView.formElements.numberInput.value > passedArray.length) throw new Error('adjectivesHelper: Adjectives input exceeds passed array items.')
-    } catch (err) {
-      console.log(err)
-      return
+    if (state.appView.formElements.numberInput.value > passedArray.length) {
+      throw new Error('adjectivesHelper: Adjectives input exceeds passed array items.')
     }
 
     /**
      * Empty Array and define Array for adjective Ids in use
-    * This will be used to determine if an adjective id has already been added to the prompt,
-    * preventing duplicates
-    */
+     * This will be used to determine if an adjective id has already been added to the prompt,
+     * preventing duplicates
+     */
     state.promptBuilder.adjectives = []
     const exsistingAdjectiveIds = [{}]
 
@@ -128,43 +125,40 @@ export default class Helpers {
    * @param array: any
    * @param specialArray: any
    * @returns void
-  */
+   */
   // eslint-disable-next-line
   themeHelper = (state: any, array: any, specialArray: any): void => {
     // Too few items in passed array exception
-    try {
-      if (array.length < 1 || specialArray.length < 1) throw new Error('themeHelper: Too few items in passed array for prompt contstruction.')
-    } catch (err) {
-      console.log(err)
-      return
+    if (array.length < 1 || specialArray.length < 1) {
+      throw new Error('themeHelper: Too few items in passed array for prompt contstruction.')
     }
 
     // Determine whether to show normal or special value (5% Chance to get Special)
     if (this.chanceHelper(95)) {
       state.promptBuilder.theme =
-      [
-        // Add two values to theme Array inside the app state
-        {
-          id: 'theme0',
-          // Get a random entry from general array
-          text: state.lib.theme.general[this.arrayRandomizer(state.lib.theme.general.length)]
-        },
-        {
-          id: 'theme1',
-          // Get a random entry from normal theme array
-          text: array[this.arrayRandomizer(array.length)]
-        }
-      ]
+        [
+          // Add two values to theme Array inside the app state
+          {
+            id: 'theme0',
+            // Get a random entry from general array
+            text: state.lib.theme.general[this.arrayRandomizer(state.lib.theme.general.length)]
+          },
+          {
+            id: 'theme1',
+            // Get a random entry from normal theme array
+            text: array[this.arrayRandomizer(array.length)]
+          }
+        ]
     } else {
       // Add one value to theme Array
       state.promptBuilder.theme =
-      [
-        {
-          id: 'theme0',
-          // Get a random entry from special theme array
-          text: specialArray[this.arrayRandomizer(specialArray.length)]
-        }
-      ]
+        [
+          {
+            id: 'theme0',
+            // Get a random entry from special theme array
+            text: specialArray[this.arrayRandomizer(specialArray.length)]
+          }
+        ]
     }
   }
 }

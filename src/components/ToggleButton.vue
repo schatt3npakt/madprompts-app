@@ -5,7 +5,7 @@
     :buttonType="buttonType"
     class="toggle-button"
     :class="[storeIsActive? activeClass : '']"
-    @click.native="storeToggleChallenge" />
+    @click.native="storeToggleChallenge"/>
 </template>
 
 <script lang="ts">
@@ -30,7 +30,7 @@ export default Vue.extend({
     /**
      * Commit toggleChallenge mutation
      * @returns void
-    */
+     */
     storeToggleChallenge () {
       this.$store.commit('toggleChallenge')
     }
@@ -47,6 +47,9 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+@use "~@/scss/vars/_breakpoints";
+@use "~@/scss/vars/_colors";
+
 button::-moz-focus-inner,
 input::-moz-focus-inner,
 a::-moz-focus-inner {

@@ -1,21 +1,20 @@
 {
-  "data": 
-    [
-      "archangel",
-      "archmage",
-      "elder god",
-      "gundam",
-      "final boss",
-      "opera singer",
-      "italian plumber",
-      "jack-in-a-box",
-      "king of thieves",
-      "master of the elements",
-      "monster-truck driver",
-      "one-man-army",
-      "one-man-band",
-      "small monster trainer",
-      "stand user",
-      "ventriloquist"
-    ]
+  "data": [
+    "archangel",
+    "archmage",
+    "elder god",
+    "gundam",
+    "final boss",
+    "opera singer",
+    "italian plumber",
+    "jack-in-a-box",
+    "king of thieves",
+    "master of the elements",
+    "monster-truck driver",
+    "one-man-army",
+    "one-man-band",
+    "small monster trainer",
+    "stand user",
+    "ventriloquist"
+  ]
 }
