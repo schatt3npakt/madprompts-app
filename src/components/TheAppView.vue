@@ -45,7 +45,7 @@
         </a>
         <a
           class="footer-text__imprint"
-          href="https://madprompts.com/#imprint"
+          href="https://bitheart.de/imprint/"
         >
           Imprint
         </a>
@@ -53,8 +53,6 @@
 
       <ThePromptOverlay/>
     </div>
-
-    <TheCookieLayer/>
   </div>
 </template>
 
@@ -63,7 +61,6 @@ import Vue from 'vue'
 import BaseButton from './BaseButton.vue'
 import BaseNumberInput from './BaseNumberInput.vue'
 import BaseSlider from './BaseSlider.vue'
-import TheCookieLayer from './TheCookieLayer.vue'
 import ThePromptOverlay from '@/components/ThePromptOverlay.vue'
 import ToggleButton from './ToggleButton.vue'
 
@@ -72,7 +69,6 @@ export default Vue.extend({
     BaseButton,
     BaseNumberInput,
     BaseSlider,
-    TheCookieLayer,
     ThePromptOverlay,
     ToggleButton
   },
